@@ -81,7 +81,7 @@ content:
   - name: templates
     label: Page Templates
     type: collection
-    path: src/content/templates
+    path: src/templates
     view:
       fields: [title, type, country]
     fields:
