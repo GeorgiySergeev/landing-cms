@@ -6,7 +6,7 @@ content:
   - name: landings
     label: Landing Pages
     type: collection
-    path: src/content/landings
+    path: src/content
     view:
       fields: [title, layout, country, language, article, variant, draft]
     fields:
