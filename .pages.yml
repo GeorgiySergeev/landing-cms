@@ -1,0 +1,39 @@
+media:
+  input: public
+  output: /
+
+content:
+  - name: landings
+    label: Landings
+    type: collection
+    path: src/content/landings
+    view:
+      fields: [title, country, language, draft, date]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: country, label: Country, type: string }
+      - { name: language, label: Language, type: string }
+      - { name: theme, label: Theme, type: string }
+      - { name: pubDatetime, label: Publish Date, type: date }
+      - { name: modDatetime, label: Modified Date, type: date }
+      - { name: slug, label: Slug, type: string }
+      - { name: draft, label: Draft, type: boolean }
+      - { name: description, label: Description, type: string }
+      - { name: body, label: Body, type: rich-text }
+      - { name: ogImage, label: OG Image, type: string }
+      - { name: featured, label: Featured, type: boolean }
+      - { name: tags, label: Tags, type: string, list: true }
+
+  - name: about
+    label: About page
+    type: file
+    path: src/pages/about.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: '../layouts/AboutLayout.astro' }
+      - { name: title, label: Title, type: string }
+      - {
+          name: body,
+          label: Body,
+          type: rich-text,
+          options: { input: public/assets, output: /assets },
+        }
