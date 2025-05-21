@@ -4,28 +4,104 @@ media:
 
 content:
   - name: landings
-    label: Landings
+    label: Landing Pages
     type: collection
     path: src/content/landings
     view:
-      fields: [title, country, language, draft, date]
+      fields: [title, layout, country, language, article, variant, draft]
     fields:
       - { name: title, label: Title, type: string, required: true }
+      - {
+          name: layout,
+          label: Layout,
+          type: string,
+          required: true,
+          options: [BaseLayout, NewsLayout, UniversalAdultLayout],
+        }
+      - { name: country, label: Country, type: string, required: true }
+      - { name: language, label: Language, type: string, required: true }
+      - { name: article, label: Article Type, type: string, required: true }
+      - { name: variant, label: Variant, type: string, required: true }
+      - {
+          name: theme,
+          label: Theme,
+          type: string,
+          options: [default, arabic, chinese, german, bn-bd-adult],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: publishDate, label: Publish Date, type: date }
+      - { name: modifiedDate, label: Modified Date, type: date }
+      - { name: isAdult, label: Adult Content, type: boolean, default: false }
+      - { name: isBreakingNews, label: Breaking News, type: boolean, default: false }
+      - { name: draft, label: Draft, type: boolean, default: true }
+      - { name: slug, label: URL Slug, type: string }
+      - {
+          name: author,
+          label: Author,
+          type: object,
+          fields:
+            [
+              { name: name, label: Name, type: string },
+              { name: image, label: Image, type: string },
+              { name: bio, label: Biography, type: string },
+              { name: url, label: URL, type: string },
+            ],
+        }
+      - {
+          name: image,
+          label: Featured Image,
+          type: object,
+          fields:
+            [
+              { name: url, label: Image URL, type: string },
+              { name: alt, label: Alt Text, type: string },
+              { name: caption, label: Caption, type: string },
+            ],
+        }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: category, label: Category, type: string }
+      - { name: ogImage, label: OG Image, type: string }
+      - { name: body, label: Content, type: rich-text }
+      - { name: showSubscription, label: Show Subscription, type: boolean, default: false }
+      - { name: showTestimonials, label: Show Testimonials, type: boolean, default: false }
+      - { name: showCategories, label: Show Categories, type: boolean, default: false }
+      - {
+          name: relatedArticles,
+          label: Related Articles,
+          type: list,
+          fields:
+            [
+              { name: url, label: URL, type: string },
+              { name: title, label: Title, type: string },
+              { name: image, label: Image, type: string },
+              { name: publishDate, label: Publish Date, type: string },
+            ],
+        }
+
+  - name: templates
+    label: Page Templates
+    type: collection
+    path: src/content/templates
+    view:
+      fields: [title, type, country]
+    fields:
+      - { name: title, label: Template Name, type: string, required: true }
+      - {
+          name: type,
+          label: Content Type,
+          type: string,
+          required: true,
+          options: [news, blog, adult, media],
+        }
+      - { name: category, label: Category, type: string }
       - { name: country, label: Country, type: string }
       - { name: language, label: Language, type: string }
-      - { name: theme, label: Theme, type: string }
-      - { name: pubDatetime, label: Publish Date, type: date }
-      - { name: modDatetime, label: Modified Date, type: date }
-      - { name: slug, label: Slug, type: string }
-      - { name: draft, label: Draft, type: boolean }
+      - { name: layout, label: Layout Component, type: string }
       - { name: description, label: Description, type: string }
-      - { name: body, label: Body, type: rich-text }
-      - { name: ogImage, label: OG Image, type: string }
-      - { name: featured, label: Featured, type: boolean }
-      - { name: tags, label: Tags, type: string, list: true }
+      - { name: body, label: Template HTML/CSS, type: rich-text }
 
   - name: about
-    label: About page
+    label: About Page
     type: file
     path: src/pages/about.md
     fields:
