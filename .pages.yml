@@ -6,7 +6,7 @@ content:
   - name: content
     label: Content
     type: collection
-    path: src/content
+    path: src/pages
     view:
       fields: [title, country, language, article, variant, draft]
     fields:
