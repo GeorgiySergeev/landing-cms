@@ -1,0 +1,150 @@
+/* bn-BD Adult Theme - Theme color settings for Bengali adult content */
+
+/* Import the appropriate fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+/* Theme variables */
+.theme-bn-bd-adult {
+  /* Primary color palette - rich and seductive tones */
+  --primary-color: #d41e3b; /* Crimson red - attention grabbing */
+  --primary-hover: #b3182f;
+  --secondary-color: #1e293b; /* Dark slate blue - sophisticated */
+  --text-color: #f8fafc;
+  --accent-color: #eab308; /* Gold for highlights and CTAs */
+  
+  /* Background colors */
+  --bg-dark: #0f172a; /* Very dark blue - main background */
+  --bg-card: #1e293b; /* Slightly lighter for cards */
+  --bg-input: #334155; /* Input field backgrounds */
+  
+  /* Other colors */
+  --border-color: #475569;
+  --success-color: #10b981;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  
+  /* Apply base theme settings */
+  font-family: 'Hind Siliguri', sans-serif;
+  background-color: var(--bg-dark);
+  color: var(--text-color);
+}
+
+/* Links */
+.theme-bn-bd-adult a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.theme-bn-bd-adult a:hover {
+  color: var(--accent-color);
+}
+
+/* Buttons */
+.theme-bn-bd-adult .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.theme-bn-bd-adult .btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.theme-bn-bd-adult .btn-primary:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 30, 59, 0.3);
+}
+
+.theme-bn-bd-adult .btn-outline {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 2px solid var(--primary-color);
+}
+
+.theme-bn-bd-adult .btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Headings */
+.theme-bn-bd-adult h1,
+.theme-bn-bd-adult h2,
+.theme-bn-bd-adult h3 {
+  color: var(--text-color);
+  font-weight: 700;
+}
+
+.theme-bn-bd-adult h1 {
+  font-size: 2.5rem;
+}
+
+.theme-bn-bd-adult h2 {
+  font-size: 2rem;
+}
+
+.theme-bn-bd-adult h3 {
+  font-size: 1.5rem;
+}
+
+/* Gradients and effects for premium feel */
+.theme-bn-bd-adult .gradient-text {
+  background: linear-gradient(to right, var(--text-color), var(--accent-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.theme-bn-bd-adult .card {
+  background-color: var(--bg-card);
+  border-radius: 0.5rem;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Forms */
+.theme-bn-bd-adult input,
+.theme-bn-bd-adult select,
+.theme-bn-bd-adult textarea {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+}
+
+.theme-bn-bd-adult input:focus,
+.theme-bn-bd-adult select:focus,
+.theme-bn-bd-adult textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(212, 30, 59, 0.2);
+}
+
+/* Special animations */
+.theme-bn-bd-adult .pulse {
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 0 0 rgba(212, 30, 59, 0.7);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 30, 59, 0.7);
+  }
+  
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(212, 30, 59, 0);
+  }
+  
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(212, 30, 59, 0);
+  }
+} 

@@ -1,0 +1,204 @@
+---
+import { getContentLayout } from '../../layouts/getLayout';
+
+// Get the appropriate layout based on content type and category
+const { Component: Layout } = await getContentLayout(
+  'news',
+  'health',
+  'us'
+);
+
+// Page-specific props
+const pageProps = {
+  title: "New Study Shows Benefits of Intermittent Fasting",
+  description: "Recent research indicates that intermittent fasting may have significant health benefits for metabolic health.",
+  publishDate: "2023-09-15T09:30:00Z",
+  author: {
+    name: "Dr. Jane Smith",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    bio: "Health and nutrition specialist with over 15 years of clinical experience.",
+    url: "/authors/dr-jane-smith"
+  },
+  category: "Nutrition",
+  tags: ["intermittent fasting", "metabolism", "weight loss", "diabetes"],
+  image: {
+    src: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=675&q=80",
+    alt: "Person preparing a healthy meal",
+  },
+  expertReview: {
+    name: "Dr. Michael Johnson, MD",
+    credentials: "Board Certified in Endocrinology",
+    date: "2023-09-14"
+  },
+  sourcesAndReferences: [
+    {
+      title: "Effects of Intermittent Fasting on Health, Aging, and Disease",
+      url: "https://www.nejm.org/doi/full/10.1056/NEJMra1905136"
+    },
+    {
+      title: "Metabolic Effects of Intermittent Fasting",
+      url: "https://www.annualreviews.org/doi/abs/10.1146/annurev-nutr-082018-124320"
+    },
+    {
+      title: "The Journal of Nutrition, Volume 151, Issue 7, July 2021",
+      url: "https://academic.oup.com/jn/article/151/7/1599/6218117"
+    }
+  ],
+  relatedConditions: [
+    "Type 2 Diabetes",
+    "Metabolic Syndrome",
+    "Obesity",
+    "Insulin Resistance"
+  ],
+  relatedArticles: [
+    {
+      title: "The Science Behind the Ketogenic Diet",
+      url: "/health/ketogenic-diet-science",
+      image: "https://images.unsplash.com/photo-1535914254981-b5012eebbd15?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      publishDate: "2023-08-10T14:30:00Z",
+      excerpt: "Explore the metabolic changes that occur during ketosis and the potential benefits for various health conditions."
+    },
+    {
+      title: "Mediterranean Diet and Heart Health",
+      url: "/health/mediterranean-diet-heart-health",
+      image: "https://images.unsplash.com/photo-1526470498-9ae73c665de8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      publishDate: "2023-07-22T10:15:00Z",
+      excerpt: "How the Mediterranean diet can reduce the risk of cardiovascular disease and promote longevity."
+    },
+    {
+      title: "Time-Restricted Eating: Benefits Beyond Weight Loss",
+      url: "/health/time-restricted-eating-benefits",
+      image: "https://images.unsplash.com/photo-1542822038-3a1810a5fb69?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80",
+      publishDate: "2023-09-05T08:45:00Z",
+      excerpt: "New research suggests time-restricted eating patterns may improve various aspects of health."
+    }
+  ]
+};
+---
+
+<Layout {...pageProps}>
+  <p class="lead">
+    A growing body of research suggests that intermittent fasting—cycling between periods of eating and fasting—can lead to significant improvements in metabolic health, weight management, and potentially even longevity.
+  </p>
+  
+  <h2>What the Research Shows</h2>
+  
+  <p>
+    According to a recent study published in the New England Journal of Medicine, intermittent fasting triggers a metabolic switch from glucose-based to ketone-based energy, with significant effects on cellular and organ function.
+  </p>
+  
+  <p>
+    "We're finding that the timing of meals may be just as important as what you eat," says lead researcher Dr. Rachel Chen. "The periodic fasting gives the digestive system time to rest and triggers a range of beneficial metabolic processes."
+  </p>
+  
+  <figure>
+    <img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80" alt="Healthy meal with vegetables and lean protein" />
+    <figcaption>Nutritionists recommend focusing on nutrient-dense foods during eating windows. Photo: Unsplash</figcaption>
+  </figure>
+  
+  <h2>Different Approaches to Intermittent Fasting</h2>
+  
+  <p>
+    The study examined several intermittent fasting protocols, including:
+  </p>
+  
+  <ul>
+    <li><strong>16:8 method:</strong> Restricting eating to an 8-hour window each day</li>
+    <li><strong>5:2 approach:</strong> Eating normally five days per week and restricting calories on two non-consecutive days</li>
+    <li><strong>Alternate-day fasting:</strong> Alternating between eating normally one day and fasting or significantly restricting calories the next</li>
+  </ul>
+  
+  <p>
+    The 16:8 method proved most sustainable for participants, with the highest compliance rates after six months. However, the 5:2 approach showed slightly greater improvements in insulin sensitivity.
+  </p>
+  
+  <h2>Metabolic Benefits</h2>
+  
+  <p>
+    The study participants following the 16:8 protocol for 12 weeks experienced:
+  </p>
+  
+  <ul>
+    <li>An average 7.3% reduction in weight</li>
+    <li>Significant decreases in blood pressure (by an average of 11/6 mm Hg)</li>
+    <li>Improved insulin sensitivity by 57%</li>
+    <li>Decreased levels of oxidative stress markers</li>
+  </ul>
+  
+  <h2>Who Should Consider Intermittent Fasting?</h2>
+  
+  <p>
+    The researchers suggest that intermittent fasting may be particularly beneficial for those with:
+  </p>
+  
+  <ul>
+    <li>Insulin resistance or prediabetes</li>
+    <li>Metabolic syndrome</li>
+    <li>Difficulty managing weight with traditional approaches</li>
+    <li>High blood pressure</li>
+  </ul>
+  
+  <p>
+    However, they caution that intermittent fasting is not appropriate for everyone. Children, pregnant or breastfeeding women, those with a history of eating disorders, and people taking certain medications should consult with healthcare providers before attempting fasting regimens.
+  </p>
+  
+  <h2>Future Research Directions</h2>
+  
+  <p>
+    Dr. Chen and her team are now designing a larger, long-term study to track the sustained effects of intermittent fasting over a two-year period.
+  </p>
+  
+  <p>
+    "We're particularly interested in examining whether the benefits persist over time, and whether there are different optimal fasting protocols for different age groups and health conditions," Dr. Chen explains.
+  </p>
+  
+  <blockquote>
+    "What's exciting about this approach is that it doesn't necessarily change what you eat, but when you eat. This can make it more accessible and sustainable for many people than traditional diets that restrict specific foods."
+    <cite>— Dr. Rachel Chen, Study Lead</cite>
+  </blockquote>
+</Layout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+  
+  figure {
+    margin: 2rem 0;
+  }
+  
+  figure img {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+  
+  figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+  
+  blockquote {
+    border-left: 4px solid var(--color-primary, #0066cc);
+    padding-left: 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+  }
+  
+  blockquote cite {
+    display: block;
+    font-size: 0.875rem;
+    font-style: normal;
+    margin-top: 0.5rem;
+  }
+</style> 

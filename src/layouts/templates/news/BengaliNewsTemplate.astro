@@ -1,0 +1,333 @@
+---
+import BaseLayout from '../../base/BaseLayout.astro';
+
+export interface Props {
+  title: string;
+  description?: string;
+  publishDate?: string;
+  modifiedDate?: string;
+  author?: {
+    name: string;
+    title?: string;
+    image?: string;
+    bio?: string;
+    url?: string;
+    credentials?: string;
+  };
+  category?: string;
+  tags?: string[];
+  image?: {
+    src: string;
+    alt: string;
+    width?: number;
+    height?: number;
+    caption?: string;
+  };
+  expertQuote?: {
+    text: string;
+    author: string;
+    credentials?: string;
+  };
+  relatedArticles?: any[];
+  lang?: string;
+  dir?: string;
+  themeColor?: string;
+}
+
+const {
+  title,
+  description,
+  publishDate,
+  modifiedDate,
+  author,
+  category,
+  tags = [],
+  image,
+  expertQuote,
+  relatedArticles = [],
+  lang = "bn", // Bengali language code
+  dir = "ltr", // Bengali is written left-to-right
+  themeColor = "default"
+} = Astro.props;
+
+// Format date in Bengali style (DD.MM.YYYY HH:MM)
+function formatBengaliDate(dateString: string): string {
+  const date = new Date(dateString);
+  return `${date.getDate().toString().padStart(2, '0')}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getFullYear()} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+}
+---
+
+<BaseLayout title={title} lang={lang} dir={dir} themeColor={themeColor}>
+  <slot name="head" slot="head">
+    <meta name="description" content={description} />
+    {publishDate && <meta property="article:published_time" content={publishDate} />}
+    {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+    {tags && tags.map(tag => <meta property="article:tag" content={tag} />)}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  </slot>
+
+  <header slot="header" class="bengali-header">
+    <div class="nav-bar">
+      <div class="nav-container">
+        <nav>
+          <ul>
+            <li><a href="#">সমাজ</a></li>
+            <li><a href="#">খবর</a></li>
+            <li><a href="#">ভিডিও</a></li>
+            <li><a href="#">লাইভ দেখান</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+    {publishDate && 
+      <div class="date-container">
+        <time datetime={publishDate}>{formatBengaliDate(publishDate)}</time>
+      </div>
+    }
+    
+    <h1 class="article-title">{title}</h1>
+  </header>
+  
+  <article class="bengali-article">
+    <div class="article-content">
+      {expertQuote && (
+        <div class="expert-quote">
+          <p class="expert-name">{expertQuote.author} <span class="credentials">{expertQuote.credentials}</span></p>
+          <p class="quote-text">{expertQuote.text}</p>
+        </div>
+      )}
+      
+      <slot />
+      
+      {image && (
+        <figure class="main-image">
+          <img 
+            src={image.src} 
+            alt={image.alt} 
+            width={image.width} 
+            height={image.height}
+          />
+          {image.caption && (
+            <figcaption>{image.caption}</figcaption>
+          )}
+        </figure>
+      )}
+    </div>
+    
+    {relatedArticles.length > 0 && (
+      <div class="related-content">
+        <h3>সম্পর্কিত পোস্ট</h3>
+        <ul>
+          {relatedArticles.map((article: any) => (
+            <li>
+              <a href={article.url}>
+                {article.image && <img src={article.image} alt={article.title} />}
+                <h4>{article.title}</h4>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
+  </article>
+  
+  <slot name="footer" slot="footer" />
+  <slot name="scripts" slot="scripts" />
+</BaseLayout>
+
+<style>
+  /* Global styles for Bengali template */
+  :global(body) {
+    font-family: 'Noto Sans Bengali', sans-serif;
+    line-height: 1.6;
+  }
+  
+  /* Header navigation */
+  .nav-bar {
+    background-color: #0099e5;
+    color: white;
+    width: 100%;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .nav-bar nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-bar nav ul li {
+    padding: 0.75rem 1.5rem;
+  }
+  
+  .nav-bar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
+  
+  /* Date display */
+  .date-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  /* Article title */
+  .article-title {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.5rem 1rem 1.5rem;
+    font-size: 1.8rem;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+  
+  /* Expert quote styling */
+  .expert-quote {
+    margin: 1.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  
+  .expert-name {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+  }
+  
+  .credentials {
+    font-weight: normal;
+  }
+  
+  .quote-text {
+    margin-top: 0.5rem;
+  }
+  
+  /* Main article container */
+  .bengali-article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+  }
+  
+  .article-content {
+    width: 100%;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+  
+  /* Image styling */
+  .main-image {
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+  
+  .main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .main-image figcaption {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    color: #333;
+    text-align: center;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  /* Related content */
+  .related-content {
+    margin-top: 2rem;
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+  }
+  
+  .related-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .related-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .related-content li {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+  }
+  
+  .related-content a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .related-content img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 1rem;
+  }
+  
+  .related-content h4 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  /* Responsive adjustments */
+  @media (min-width: 768px) {
+    .article-title {
+      font-size: 2.2rem;
+    }
+    
+    .related-content ul {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .bengali-article {
+      grid-template-columns: 2fr 1fr;
+    }
+    
+    .article-content {
+      grid-column: 1;
+    }
+    
+    .related-content {
+      grid-column: 2;
+      margin-top: 0;
+      border-top: none;
+      padding-top: 0;
+      padding-left: 1.5rem;
+      border-left: 1px solid #eee;
+    }
+    
+    .related-content ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 

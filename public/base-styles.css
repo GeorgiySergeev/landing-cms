@@ -1,0 +1,9 @@
+/* Base styles for all landing pages - Globally accessible CSS */
+
+/* Import the base CSS from the layouts directory */
+@import '../src/layouts/styles/base.css';
+
+/* Any additional global styles that should be available via direct URL can be added here */
+
+/* This file is directly served at /base-styles.css and accessible from any page */
+/* It's a thin wrapper around the main base.css to enable direct URL access */ 

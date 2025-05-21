@@ -1,0 +1,49 @@
+---
+title: "Premium Health Supplement"
+---
+
+import CTAButton from "../../../../components/CTAButton.jsx";
+import Testimonial from "../../../../components/Testimonial.jsx";
+
+# {import.meta.env.DEV ? 'Premium Health Supplement' : '{_offer_value:product_name}'}
+
+## Transform Your Health Today
+
+Discover the breakthrough formula that's helping thousands of people improve their health and vitality.
+
+<div class="mt-6 mb-8">
+    <img
+        src="/images/sample-product.webp"
+        alt={import.meta.env.DEV ? 'Product Image' : '{_offer_value:product_image_alt}'}
+        class="rounded-lg shadow-md w-full max-w-md mx-auto"
+    />
+</div>
+
+## Benefits
+
+- Increased energy throughout the day
+- Supports healthy immune function
+- Promotes better sleep and recovery
+- {import.meta.env.DEV ? 'Improves mental clarity' : '{_offer_value:benefit_4}'}
+
+## Limited Time Offer
+
+For a limited time, get your first bottle for just
+**${import.meta.env.DEV ? '39.99' : '{_offer_value:price}'}**
+(Regular price: ${import.meta.env.DEV ? '59.99' : '{_offer_value:regular_price}'})
+
+<div class="mt-6">
+    <CTAButton
+        text={import.meta.env.DEV ? 'Claim Your Discount Now' : '{_offer_value:cta_text}'}
+        color="green"
+        href={import.meta.env.DEV ? '#order-now' : '{_offer_value:cta_url}'}
+    />
+</div>
+
+<div class="mt-10">
+    <Testimonial
+        quote={import.meta.env.DEV ? "This product has completely changed my life. I have so much more energy now!" : "{_offer_value:testimonial_1_text}"}
+        author={import.meta.env.DEV ? "Sarah Johnson" : "{_offer_value:testimonial_1_author}"}
+        role={import.meta.env.DEV ? "Verified Customer" : "{_offer_value:testimonial_1_role}"}
+    />
+</div>

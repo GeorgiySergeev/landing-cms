@@ -1,0 +1,88 @@
+---
+import { getLayout } from '../../layouts/getLayout';
+import { getLangAndDir } from '../../layouts/utils';
+
+// Examples of using the Universal Adult Layout
+const layoutName = 'UniversalAdultLayout';
+
+// First example - Nigeria (English, LTR)
+const { Component: NGLayout } = await getLayout(layoutName, 'ng', 'en');
+
+// Second example - Iraq (Arabic, RTL)
+const { Component: IQLayout } = await getLayout(layoutName, 'iq', 'ar');
+---
+
+<!doctype html>
+<html>
+  <head>
+    <title>Universal Adult Layout Test</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        padding: 2rem;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .example-card {
+        background: #f0f0f0;
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+      }
+      .buttons {
+        display: flex;
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+      .btn {
+        background: #3b82f6;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Universal Adult Layout Test</h1>
+      <p>
+        This page demonstrates the new UniversalAdultLayout that supports both LTR and RTL content.
+      </p>
+
+      <div class="example-card">
+        <h2>LTR Example - Nigeria (English)</h2>
+        <p>This example shows the layout in English (LTR) with Nigerian content.</p>
+        <p>
+          <strong>Layout name:</strong> UniversalAdultLayout<br />
+          <strong>Country:</strong> ng<br />
+          <strong>Language:</strong> en<br />
+          <strong>Direction:</strong> ltr
+        </p>
+      </div>
+
+      <div class="example-card">
+        <h2>RTL Example - Iraq (Arabic)</h2>
+        <p>This example shows the layout in Arabic (RTL) with Iraqi content.</p>
+        <p>
+          <strong>Layout name:</strong> UniversalAdultLayout<br />
+          <strong>Country:</strong> iq<br />
+          <strong>Language:</strong> ar<br />
+          <strong>Direction:</strong> rtl
+        </p>
+      </div>
+
+      <div class="buttons">
+        <a href="/landing/UniversalAdultLayout/ng/en/potency/womencheating/" class="btn">
+          View Nigeria Example (LTR)
+        </a>
+        <a href="/landing/UniversalAdultLayout/iq/ar/potency/killerimpotence/" class="btn">
+          View Iraq Example (RTL)
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

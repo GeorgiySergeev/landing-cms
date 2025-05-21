@@ -1,0 +1,299 @@
+---
+// Adult content template targeting Bangladeshi audience
+import BaseLayout from "../../layouts/base/BaseLayout.astro";
+import "../../styles/global.css";
+import "./style.css";
+
+// Get props from MDX frontmatter or use defaults
+const {
+  title = "সর্বোচ্চ আবেগময় কাহিনী সংগ্রহ | Premium Stories",
+  description = "বাংলাদেশের সেরা এবং সবচেয়ে আবেগময় গল্প সংগ্রহ এখন আপনার নখদর্পণে",
+  showSubscription = true,
+  showTestimonials = true,
+  showCategories = true,
+  isAdult = true,
+  theme,
+} = Astro.props;
+---
+
+<BaseLayout title={title} lang="bn-BD" dir="ltr" themeColor="bn-bd-adult">
+  <div class="adult-landing">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="main-title">
+            আমাদের প্রিমিয়াম কাহিনী সংগ্রহে অ্যাক্সেস পান
+          </h1>
+          <p class="subtitle">{description}</p>
+
+          <div class="cta-container">
+            <a
+              href="#subscription"
+              class="btn btn-primary btn-lg pulse-animation"
+              >বিনামূল্যে শুরু করুন</a
+            >
+            <p class="cta-subtext">
+              ১৮+ বয়সের জন্য। একাউন্ট তৈরি করে আপনি আমাদের <a href="#"
+                >শর্তাবলী</a
+              > মেনে নিচ্ছেন
+            </p>
+          </div>
+        </div>
+
+        <!-- Eye-catching image with censoring -->
+        <div class="hero-image">
+          <div class="blur-overlay">
+            <div class="promo-badge">
+              <span class="promo-text">সীমিত সময়ের জন্য</span>
+              <span class="discount">৫০% ছাড়</span>
+            </div>
+            <p class="unlock-message">সাবস্ক্রাইব করে সবকিছু আনলক করুন</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content Area for slot -->
+    <div class="content-container container">
+      <slot />
+    </div>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="container">
+        <h2 class="section-title">আমাদের গল্পগুলোর বৈশিষ্ট্য</h2>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon private-icon"></div>
+            <h3>সম্পূর্ণ গোপনীয়তা</h3>
+            <p>আপনার ডেটা এবং পছন্দসমূহ সম্পূর্ণ গোপন রাখা হয়</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon hd-icon"></div>
+            <h3>উচ্চমানের বিবরণ</h3>
+            <p>প্রতিটি গল্প অত্যন্ত বিস্তারিতভাবে লেখা হয়েছে</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon exclusive-icon"></div>
+            <h3>এক্সক্লুসিভ কন্টেন্ট</h3>
+            <p>অন্য কোথাও পাওয়া যাবে না এমন বিশেষ কন্টেন্ট</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon update-icon"></div>
+            <h3>নিয়মিত আপডেট</h3>
+            <p>প্রতি সপ্তাহে নতুন গল্প যোগ করা হয়</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {
+      showCategories && (
+        <section class="categories-section">
+          <div class="container">
+            <h2 class="section-title">আমাদের জনপ্রিয় বিভাগসমূহ</h2>
+
+            <div class="categories-grid">
+              <a href="#" class="category-card">
+                <span class="category-name">রোমান্টিক কাহিনী</span>
+                <span class="story-count">১৫০+ গল্প</span>
+              </a>
+
+              <a href="#" class="category-card">
+                <span class="category-name">প্রেম কাহিনী</span>
+                <span class="story-count">২০০+ গল্প</span>
+              </a>
+
+              <a href="#" class="category-card">
+                <span class="category-name">দাম্পত্য জীবন</span>
+                <span class="story-count">১২০+ গল্প</span>
+              </a>
+
+              <a href="#" class="category-card">
+                <span class="category-name">ফ্যান্টাসি</span>
+                <span class="story-count">৯০+ গল্প</span>
+              </a>
+
+              <a href="#" class="category-card">
+                <span class="category-name">রহস্যময়</span>
+                <span class="story-count">৮০+ গল্প</span>
+              </a>
+
+              <a href="#" class="category-card">
+                <span class="category-name">অন্যান্য</span>
+                <span class="story-count">১০০+ গল্প</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      showTestimonials && (
+        <section class="testimonials-section">
+          <div class="container">
+            <h2 class="section-title">গ্রাহকদের মতামত</h2>
+
+            <div class="testimonials-slider">
+              <div class="testimonial">
+                <div class="rating">★★★★★</div>
+                <p class="quote">
+                  "আমি ৬ মাস ধরে সাবস্ক্রাইব করে আছি। কাহিনীগুলো অসাধারণ, একদম
+                  বাস্তব ঘটনা নিয়ে লেখা।"
+                </p>
+                <p class="author">— রহিম, ৩২</p>
+              </div>
+
+              <div class="testimonial">
+                <div class="rating">★★★★★</div>
+                <p class="quote">
+                  "এই সাইটের কন্টেন্ট অন্য কোথাও পাওয়া যায় না। সাবস্ক্রিপশন
+                  নেয়ার সিদ্ধান্ত নিয়ে খুব খুশি আমি।"
+                </p>
+                <p class="author">— করিম, ৩৬</p>
+              </div>
+
+              <div class="testimonial">
+                <div class="rating">★★★★☆</div>
+                <p class="quote">
+                  "প্রতি সপ্তাহে নতুন গল্প পাই। লেখকদের দক্ষতা অসাধারণ, আবেগময়
+                  বর্ণনা দারুণ।"
+                </p>
+                <p class="author">— জামাল, ৪০</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    {
+      showSubscription && (
+        <section id="subscription" class="subscription-section">
+          <div class="container">
+            <h2 class="section-title">আজই সাবস্ক্রাইব করুন</h2>
+
+            <div class="pricing-container">
+              <div class="pricing-card popular">
+                <div class="popular-badge">সবচেয়ে জনপ্রিয়</div>
+                <h3 class="plan-name">৬ মাসের প্যাকেজ</h3>
+                <div class="price">
+                  <span class="original-price">৯৯৯৳</span>
+                  <span class="discounted-price">৪৯৯৳</span>
+                </div>
+                <p class="price-duration">৬ মাসের জন্য</p>
+
+                <ul class="benefits-list">
+                  <li>সকল গল্পে অবারিত অ্যাক্সেস</li>
+                  <li>নতুন কন্টেন্টে আগে অ্যাক্সেস</li>
+                  <li>বিজ্ঞাপন ছাড়া পড়ুন</li>
+                  <li>সর্বাধিক পরিমাণ সাশ্রয়</li>
+                </ul>
+
+                <a href="#signup-form" class="btn btn-primary btn-block">
+                  এখনই কিনুন
+                </a>
+              </div>
+
+              <div class="pricing-card">
+                <h3 class="plan-name">১ মাসের প্যাকেজ</h3>
+                <div class="price">
+                  <span class="original-price">২৯৯৳</span>
+                  <span class="discounted-price">১৪৯৳</span>
+                </div>
+                <p class="price-duration">১ মাসের জন্য</p>
+
+                <ul class="benefits-list">
+                  <li>সকল গল্পে অবারিত অ্যাক্সেস</li>
+                  <li>নতুন কন্টেন্টে অ্যাক্সেস</li>
+                  <li>বিজ্ঞাপন ছাড়া পড়ুন</li>
+                </ul>
+
+                <a href="#signup-form" class="btn btn-outline btn-block">
+                  এখনই কিনুন
+                </a>
+              </div>
+            </div>
+
+            <div id="signup-form" class="signup-form">
+              <h3 class="form-title">আপনার তথ্য দিন</h3>
+
+              <form>
+                <div class="form-group">
+                  <label for="phone">মোবাইল নম্বর</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="01XXXXXXXXX"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="password">পাসওয়ার্ড</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="পাসওয়ার্ড দিন"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="package">প্যাকেজ বাছাই করুন</label>
+                  <select id="package" name="package">
+                    <option value="6month">৬ মাসের প্যাকেজ - ৪৯৯৳</option>
+                    <option value="1month">১ মাসের প্যাকেজ - ১৪৯৳</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="payment">পেমেন্ট মেথড</label>
+                  <select id="payment" name="payment">
+                    <option value="bkash">বিকাশ</option>
+                    <option value="nagad">নগদ</option>
+                    <option value="rocket">রকেট</option>
+                  </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                  অ্যাকাউন্ট খুলুন এবং পেমেন্ট করুন
+                </button>
+
+                <p class="terms-text">
+                  সাইন আপ করে আপনি আমাদের <a href="#">গোপনীয়তা নীতি</a> এবং{" "}
+                  <a href="#">শর্তাবলী</a> মেনে নিচ্ছেন।
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-text">
+          © 2023 প্রিমিয়াম স্টোরিজ। সর্বস্বত্ব সংরক্ষিত।
+        </p>
+        <p class="age-disclaimer">
+          ১৮+ বয়সের প্রাপ্তবয়স্কদের জন্য। কেবল বিনোদনমূলক উদ্দেশ্যে।
+        </p>
+        <div class="footer-links">
+          <a href="#">গোপনীয়তা নীতি</a>
+          <a href="#">শর্তাবলী</a>
+          <a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>
+

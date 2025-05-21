@@ -1,0 +1,270 @@
+---
+import NewsLayout from '../../layouts/base/NewsLayout.astro';
+
+// Page-specific props
+const pageProps = {
+  title: 'Global Climate Agreement Reached at International Summit',
+  description:
+    '193 countries sign historic agreement to limit global warming and transition to renewable energy sources by 2050.',
+  publishDate: '2023-12-15T14:30:00Z',
+  modifiedDate: '2023-12-16T09:15:00Z',
+  author: {
+    name: 'Sarah Johnson',
+    image: 'https://randomuser.me/api/portraits/women/32.jpg',
+    bio: 'Environmental policy correspondent with over 10 years of experience covering climate issues.',
+  },
+  country: 'gb', // United Kingdom
+  category: 'Environment',
+  tags: ['climate change', 'renewable energy', 'global policy', 'Paris Agreement'],
+  image: {
+    src: 'https://images.unsplash.com/photo-1470723710355-95304d8aece4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&h=900&q=80',
+    alt: 'Global leaders at climate summit',
+    caption: 'World leaders gather at the International Climate Summit in London. Photo: Reuters',
+  },
+  readTime: 8,
+  isBreakingNews: true,
+  relatedArticles: [
+    {
+      title: 'Rising Sea Levels Threaten Coastal Cities',
+      url: '/news/rising-sea-levels',
+      image:
+        'https://images.unsplash.com/photo-1515162305285-0293e4767cc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+      publishDate: '2023-11-28T10:15:00Z',
+    },
+    {
+      title: 'Renewable Energy Investments Reach Record High',
+      url: '/news/renewable-energy-investments',
+      image:
+        'https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+      publishDate: '2023-12-03T16:45:00Z',
+    },
+    {
+      title: 'Extreme Weather Events Linked to Climate Change',
+      url: '/news/extreme-weather-climate-link',
+      image:
+        'https://images.unsplash.com/photo-1532982711217-9061d0c64b14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80',
+      publishDate: '2023-12-10T09:30:00Z',
+    },
+  ],
+};
+---
+
+<NewsLayout {...pageProps}>
+  <p class="lead">
+    After two weeks of intense negotiations, representatives from 193 countries have signed a
+    landmark agreement to combat climate change and accelerate the transition to renewable energy
+    sources.
+  </p>
+
+  <p>
+    The historic agreement, reached early this morning at the International Climate Summit in
+    London, commits signatories to limiting global warming to 1.5 degrees Celsius above
+    pre-industrial levels and achieving net-zero carbon emissions by 2050.
+  </p>
+
+  <h2>Key Provisions of the Agreement</h2>
+
+  <p>
+    The agreement includes several groundbreaking provisions that go beyond previous climate
+    accords:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Carbon Pricing Mechanism:</strong> A global framework for carbon pricing, with a minimum
+      price floor to be phased in over the next five years.
+    </li>
+    <li>
+      <strong>Renewable Energy Targets:</strong> Commitment to achieve at least 60% of electricity from
+      renewable sources by 2035 and 90% by 2050.
+    </li>
+    <li>
+      <strong>Climate Finance:</strong> Advanced economies will contribute $100 billion annually to help
+      developing nations adapt to climate change and build clean energy infrastructure.
+    </li>
+    <li>
+      <strong>Methane Reduction:</strong> A pledge to reduce methane emissions by 30% by 2030 compared
+      to 2020 levels.
+    </li>
+    <li>
+      <strong>Deforestation Halt:</strong> End and reverse deforestation by 2030, with significant investments
+      in reforestation projects.
+    </li>
+  </ul>
+
+  <h2>Breakthrough After Years of Stalemate</h2>
+
+  <p>
+    The agreement represents a significant breakthrough after years of deadlocked climate
+    negotiations. "This is a moment of hope in our collective fight against climate change," said
+    United Nations Secretary-General António Guterres. "For the first time, we have a truly global
+    commitment with concrete mechanisms to ensure accountability."
+  </p>
+
+  <figure>
+    <img
+      src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800&q=80"
+      alt="Delegates applauding after the agreement was signed"
+    />
+    <figcaption>Delegates celebrate as the agreement is formally adopted. Photo: AFP</figcaption>
+  </figure>
+
+  <p>
+    The road to consensus was not easy. Negotiations nearly collapsed several times, particularly
+    over the issues of historical responsibility and financing for developing nations. A last-minute
+    compromise proposed by a coalition of small island states and European countries helped bridge
+    the gap between major emitters and vulnerable nations.
+  </p>
+
+  <h2>Implementation and Enforcement</h2>
+
+  <p>
+    Unlike previous climate agreements, this pact includes robust mechanisms for implementation and
+    enforcement:
+  </p>
+
+  <ul>
+    <li>An independent monitoring body will track progress toward national commitments</li>
+    <li>
+      A compliance committee with authority to impose gradual sanctions for nations failing to meet
+      targets
+    </li>
+    <li>Five-year review cycles with increasingly ambitious targets</li>
+  </ul>
+
+  <p>
+    "What makes this agreement different is that it has teeth," explained Dr. Elena Fernandez,
+    climate policy expert at the University of Cambridge. "The compliance mechanisms actually create
+    consequences for inaction, which has been the missing piece in previous agreements."
+  </p>
+
+  <h2>Economic Implications</h2>
+
+  <p>
+    The agreement is expected to accelerate the already booming clean energy sector. Initial
+    analysis suggests the commitments could drive more than $3 trillion in clean energy investments
+    over the next decade, creating millions of jobs worldwide.
+  </p>
+
+  <p>
+    However, fossil fuel-dependent economies face significant challenges. The agreement includes
+    provisions for a "just transition" to help workers and communities currently reliant on fossil
+    fuel industries, though some critics argue these measures are insufficient.
+  </p>
+
+  <blockquote>
+    <p>
+      This agreement sends an unmistakable signal to markets and investors: the age of fossil fuels
+      is coming to an end, and the clean energy future is here.
+    </p>
+    <cite>— Emma Reynolds, Executive Director, Climate Action Network</cite>
+  </blockquote>
+
+  <h2>Public and Corporate Response</h2>
+
+  <p>
+    Public reaction to the agreement has been overwhelmingly positive, with climate activism groups
+    calling it "a turning point for humanity." Major corporations have also welcomed the agreement,
+    with over 200 multinational companies pledging to align their business models with the new
+    targets.
+  </p>
+
+  <p>
+    Financial markets have responded with significant gains in renewable energy stocks, while fossil
+    fuel companies have seen their valuations decline by an average of 3% since the announcement.
+  </p>
+
+  <h2>The Path Forward</h2>
+
+  <p>
+    Countries now have 12 months to submit updated national climate plans aligned with the
+    agreement's targets. A formal ratification process will begin next month, with the agreement
+    expected to enter into force in early 2024.
+  </p>
+
+  <p>
+    While the agreement has been hailed as historic, climate scientists caution that its success
+    ultimately depends on implementation. "This is an impressive framework," said Dr. Michael Chen
+    of the Global Climate Institute. "But the real work begins now. We need to see these commitments
+    translated into rapid, concrete action in every country."
+  </p>
+</NewsLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.7;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+
+  figure {
+    margin: 2rem 0;
+  }
+
+  figure img {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+
+  figcaption {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  blockquote {
+    border-left: 4px solid var(--color-primary, #0066cc);
+    padding: 1rem 0 1rem 1.5rem;
+    margin: 2rem 0;
+    font-style: italic;
+    background-color: #f8f9fa;
+    border-radius: 0 0.5rem 0.5rem 0;
+  }
+
+  blockquote p {
+    margin-bottom: 0.5rem;
+  }
+
+  blockquote cite {
+    display: block;
+    font-size: 0.875rem;
+    font-style: normal;
+    margin-top: 0.5rem;
+    color: #666;
+  }
+
+  @media (min-width: 768px) {
+    .lead {
+      font-size: 1.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    blockquote {
+      padding: 1.5rem 0 1.5rem 2rem;
+      margin: 2.5rem 0;
+    }
+  }
+</style>

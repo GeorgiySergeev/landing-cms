@@ -1,0 +1,52 @@
+---
+import { landings } from '@/landings.ts';
+import { getLayout } from '@layouts/getLayout.ts';
+
+export async function getStaticPaths() {
+  return landings.map((landing) => ({
+    params: {
+      layout: landing.layout,
+      country: landing.country,
+      language: landing.language,
+      article: landing.article,
+      variant: landing.variant,
+    },
+    props: landing,
+  }));
+}
+
+const { contentPath, layout } = Astro.props;
+const { country, language } = Astro.params;
+console.log('Landing Page:', { contentPath, layout, country, language });
+// Get the appropriate layout component using our helper
+// Pass the templatePath if available for custom templates
+const { Component: Layout, theme } = await getLayout(layout, country, language);
+
+// Define type for MDX module
+interface MDXModule {
+  default: any;
+  frontmatter?: Record<string, any>;
+}
+
+// Use Astro's glob imports to get all MDX files
+const allContent = import.meta.glob<MDXModule>('/src/content/**/*.mdx');
+
+// Normalize the path to match the glob pattern
+const normalizedPath = `/src/content${contentPath}`;
+
+// Check if the content exists
+if (!allContent[normalizedPath]) {
+  throw new Error(`Content not found at path: ${normalizedPath}`);
+}
+
+// Import the content
+const contentModule = await allContent[normalizedPath]();
+const Content = contentModule.default;
+
+// Get the title and other frontmatter from the content
+const { title = 'Landing Page', ...frontmatter } = contentModule.frontmatter || {};
+---
+
+<Layout title={title} theme={theme} {...frontmatter} country={country} language={language}>
+  <Content />
+</Layout>

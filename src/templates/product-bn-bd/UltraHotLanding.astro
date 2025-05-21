@@ -1,0 +1,238 @@
+---
+// UltraHot product landing page template targeting Bangladeshi audience
+import BaseLayout from '../../layouts/base/BaseLayout.astro';
+import '../../styles/global.css';
+import './style.css';
+
+// Get props from MDX frontmatter or use defaults
+const { 
+  title = "আল্ট্রা হট | পুরুষের শক্তি বৃদ্ধির সেরা সমাধান", 
+  description = "আল্ট্রা হট - শারীরিক শক্তি বাড়ান এবং আপনার সম্পর্ক উজ্জ্বল করুন",
+  price = "১৯৯৯",
+  discountPrice = "১৪৯৯",
+  showReviews = true,
+  showBenefits = true,
+  theme
+} = Astro.props;
+---
+
+<BaseLayout title={title} lang="bn-BD" dir="ltr" themeColor="product-bn-bd">
+  <div class="product-landing">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <div class="product-title">
+            <h1 class="main-title">Ultra Hot</h1>
+            <div class="slogan">
+              <span>BOOST</span>
+              <span>ENERGY!</span>
+            </div>
+          </div>
+          
+          <div class="product-benefits">
+            <ul class="benefits-list">
+              <li>লিঙ্গ পুরুষত্ব বৃদ্ধিতে সাহায্য করুন</li>
+              <li>যৌন ক্ষমতা বৃদ্ধি করে</li>
+              <li>দীর্ঘক্ষণ টিকে থাকতে সাহায্য করে</li>
+              <li>দীর্ঘায়িত মিলনে টিকে থাকা যায়</li>
+              <li>টানা বেশি উত্তেজনা সক্রিয় করে</li>
+              <li>দৃঢ় উত্তেজনা সক্রিয় করে এবং লিঙ্গের শক্তি বৃদ্ধি করে</li>
+            </ul>
+          </div>
+          
+          <div class="awards">
+            <div class="award-badge"></div>
+            <div class="award-badge"></div>
+            <div class="award-badge"></div>
+          </div>
+        </div>
+        
+        <div class="hero-image">
+          <img src="/images/ultrahot-hero.jpg" alt="UltraHot - Strong Athletic Man" class="model-image" />
+          <img src="/images/ultrahot-product.png" alt="UltraHot Product Bottle" class="product-image" />
+        </div>
+      </div>
+    </section>
+    
+    <!-- Product Quote -->
+    <section class="product-quote">
+      <div class="container">
+        <blockquote>
+          <p>" শেষের সময় মূর্তিতে দেখানোর মত উৎসাহ "</p>
+        </blockquote>
+        <div class="benefits-description">
+          <p>আপনার বয়স ৫০ বছর হলেও এই আল্ট্রাহট বড়ি খেয়ে জোস পাবেন। বড়ি খাওয়ার ৩০ মিনিট পরেই ভাবনাগত চিন্তা সহ আপনার শরীরে একটি অদ্ভুত পরিবর্তন অনুভব করবেন। আর শারীরিক সম্পর্কের সময় এই পরিবর্তন অলৌকিকভাবে কাজ করবে। আপনি আপনার সঙ্গীকে ৩০-৪০ মিনিট একটানা সন্তুষ্ট করতে পারবেন।</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Main Content Area for slot -->
+    <div class="content-container container">
+      <slot />
+    </div>
+    
+    <!-- Benefits Section -->
+    {showBenefits && (
+      <section class="intimate-benefits-section">
+        <div class="container">
+          <div class="benefits-content">
+            <div class="benefits-cta">
+              <h2>ULTRAHOT দিয়ে আপনার লিঙ্গের আকার বড় করুন!</h2>
+              <div class="limited-offer">
+                <span>LIMITED TIME OFFER</span>
+                <span>ORDER NOW!!</span>
+                <div class="offer-arrow"></div>
+              </div>
+            </div>
+            
+            <div class="intimate-image">
+              <img src="/images/ultrahot-couple.jpg" alt="Intimate couple" />
+            </div>
+          </div>
+          
+          <div class="product-features">
+            <h3>ULTRAHOT কেন ব্যবহার করবেন?</h3>
+            <ul>
+              <li>অন্য যেকোনো টেবলেটের চেয়ে ভালো</li>
+              <li>অবাঞ্ছিত পার্শ্বপ্রতিক্রিয়া সাধারণভাবে প্রতিরোধা যোগ্য</li>
+              <li>আমরা দেশে এই ব্যবহার সর্বোচ্চ সফলতার রেকর্ড রয়েছে</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    )}
+    
+    <!-- Product Guarantee Section -->
+    <section class="guarantee-section">
+      <div class="container">
+        <div class="guarantee-content">
+          <h2>এটি নিরাপদ, পরীক্ষিত ও অরিজিনাল।</h2>
+          <ul>
+            <li>কোনটিও ফার্মাসিউটিক্যাল দ্রব্য নয়</li>
+            <li>বিশ্বব্যাপী বিখ্যাত রোগা।</li>
+            <li>১০০% আয়ুর্বেদিক উপাদান দিয়ে তৈরি।</li>
+          </ul>
+        </div>
+        
+        <div class="product-image-large">
+          <img src="/images/ultrahot-product-large.png" alt="UltraHot Supplement" />
+          <div class="limited-offer">
+            <span>LIMITED TIME OFFER</span>
+            <span>ORDER NOW!!</span>
+            <div class="offer-arrow"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Limited Stock Warning -->
+    <section class="stock-warning">
+      <div class="container">
+        <h2>LIMITED STOCKS AVAILABLE</h2>
+        <p class="warning-text">শেষের সময় রাখতে দেশালাই নঃ উৎপাদন!</p>
+        <p>UltraHot দিয়ে আপনার লিঙ্গের আকার বড় করুন - ১৮১% অতিরিক্ত</p>
+      </div>
+    </section>
+    
+    <!-- Order Form Section -->
+    <section class="order-section">
+      <div class="container">
+        <div class="order-content">
+          <div class="product-display">
+            <div class="product-energy">
+              <h2>Ultra Hot</h2>
+              <div class="slogan">
+                <span>BOOST</span>
+                <span>ENERGY!</span>
+              </div>
+              <p>আপনি আরও বেশি আপনার লিঙ্গ আরও বড় আপনি না।</p>
+              <div class="awards">
+                <div class="award-badge"></div>
+                <div class="award-badge"></div>
+                <div class="award-badge"></div>
+              </div>
+              <h2 class="product-title">Ultra Hot</h2>
+            </div>
+            
+            <div class="product-image-container">
+              <img src="/images/ultrahot-product-large.png" alt="UltraHot Product" />
+            </div>
+          </div>
+          
+          <div class="order-form">
+            <div class="form-header">
+              <h3>অর্ডার করতে ফর্মটি পূরণ করুন</h3>
+              <p class="shipping-info">সারা বাংলাদেশে ফ্রি শিপিং!</p>
+            </div>
+            
+            <form id="order-form">
+              <div class="form-group">
+                <input type="text" placeholder="আপনার নাম লিখুন" required />
+              </div>
+              
+              <div class="form-group">
+                <input type="tel" placeholder="আপনার মোবাইল নাম্বার" required />
+              </div>
+              
+              <div class="form-group">
+                <input type="text" placeholder="আপনার সম্পূর্ণ ঠিকানা" required />
+              </div>
+              
+              <div class="price-display">
+                <span>১৯৯৯টাকা</span>
+                <span class="discount-price">{discountPrice}টাকা</span>
+              </div>
+              
+              <button type="submit" class="order-button">
+                <span>LIMITED TIME OFFER</span>
+                <span>RUSH MY ORDER!</span>
+                <div class="button-arrow"></div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    {showReviews && (
+      <section class="reviews-section">
+        <div class="container">
+          <h2 class="section-title">গ্রাহকদের মতামত</h2>
+          
+          <div class="reviews-grid">
+            <div class="review">
+              <div class="rating">★★★★★</div>
+              <p class="quote">"আমি ২ সপ্তাহ ধরে এই প্রোডাক্ট ব্যবহার করছি এবং ফলাফল অবিশ্বাস্য! আমার আত্মবিশ্বাস অনেক বেড়েছে।"</p>
+              <p class="author">— করিম, ৩৮</p>
+            </div>
+            
+            <div class="review">
+              <div class="rating">★★★★★</div>
+              <p class="quote">"আমি আগে কিছু প্রোডাক্ট ব্যবহার করেছি কিন্তু এটি সেরা। আমার পার্টনার এখন অনেক বেশি খুশি।"</p>
+              <p class="author">— রহিম, ৪২</p>
+            </div>
+            
+            <div class="review">
+              <div class="rating">★★★★☆</div>
+              <p class="quote">"প্রথম দিন থেকেই কাজ করেছে। অন্যদের কাছেও সুপারিশ করেছি।"</p>
+              <p class="author">— জামাল, ৩৫</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    )}
+    
+    <footer class="site-footer">
+      <div class="container">
+        <p class="footer-text">© 2023 আল্ট্রা হট। সর্বস্বত্ব সংরক্ষিত।</p>
+        <div class="footer-links">
+          <a href="#">গোপনীয়তা নীতি</a>
+          <a href="#">শর্তাবলী</a>
+          <a href="#">যোগাযোগ</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</BaseLayout> 

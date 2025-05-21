@@ -1,0 +1,34 @@
+<svg width="800" height="400" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#2d1a25" />
+    </linearGradient>
+    <filter id="blur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg-gradient)" />
+  
+  <!-- Decorative elements -->
+  <g opacity="0.1">
+    <circle cx="200" cy="150" r="100" fill="#d41e3b" />
+    <circle cx="600" cy="250" r="120" fill="#eab308" />
+    <rect x="300" y="50" width="200" height="300" rx="20" fill="#1e293b" />
+  </g>
+  
+  <!-- Silhouette figures (intentionally abstract) -->
+  <g filter="url(#blur)">
+    <path d="M300,300 C350,250 450,250 500,300 L500,350 L300,350 Z" fill="#f8fafc" opacity="0.4" />
+    <path d="M350,200 C370,150 430,150 450,200 L450,300 L350,300 Z" fill="#f8fafc" opacity="0.5" />
+  </g>
+  
+  <!-- Text placeholder -->
+  <text x="400" y="200" font-family="Arial" font-size="60" font-weight="bold" text-anchor="middle" fill="#d41e3b" opacity="0.8">18+</text>
+  
+  <!-- Click to view message -->
+  <text x="400" y="240" font-family="Arial" font-size="24" text-anchor="middle" fill="#eab308">সাবস্ক্রাইব করে সবকিছু আনলক করুন</text>
+</svg> 

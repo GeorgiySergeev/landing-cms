@@ -1,0 +1,21 @@
+---
+// Arabic-specific override for Layout2
+import BaseLayout2 from '../../base/Layout2.astro';
+import { getLangAndDir } from '../../utils.ts';
+
+const { title = "صفحة الهبوط" } = Astro.props;
+
+// Always use Arabic theme for this layout
+const theme = 'arabic';
+const { lang, dir } = getLangAndDir(theme);
+---
+
+<BaseLayout2 theme={theme} title={title}>
+  <div class="arabic-custom-content">
+    <div class="text-right mb-8">
+      <h2 class="text-2xl font-bold mb-4">نموذج عربي مخصص</h2>
+      <p class="text-gray-600">هذا نموذج مخصص للمحتوى العربي مع تخطيط يدعم اللغة العربية بالكامل.</p>
+    </div>
+    <slot />
+  </div>
+</BaseLayout2> 

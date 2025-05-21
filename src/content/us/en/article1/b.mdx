@@ -1,0 +1,68 @@
+---
+title: "Premium Health Supplement - Special Offer"
+---
+import CTAButton from "../../../../components/CTAButton.jsx";
+import Testimonial from "../../../../components/Testimonial.jsx";
+
+<div class="text-center">
+  <h1 class="text-4xl font-bold mb-2">{import.meta.env.DEV ? 'Premium Health Supplement' : '{_offer_value:product_name}'}</h1>
+  <p class="text-xl mb-8 text-gray-600">The #1 choice for health-conscious consumers</p>
+</div>
+
+<div class="flex flex-col md:flex-row gap-8 items-center">
+  <div class="md:w-1/2">
+    <img 
+      src="/images/sample-product.webp"
+      alt={import.meta.env.DEV ? 'Product Image' : '{_offer_value:product_image_alt}'} 
+      class="rounded-lg shadow-lg w-full"
+    />
+  </div>
+  
+  <div class="md:w-1/2">
+    <h2 class="text-2xl font-bold mb-4">Why People Love Our Product</h2>
+    
+    <div class="space-y-4 mb-6">
+      <div class="flex items-start">
+        <div class="text-green-500 mr-2">✓</div>
+        <p>Clinically proven ingredients</p>
+      </div>
+      <div class="flex items-start">
+        <div class="text-green-500 mr-2">✓</div>
+        <p>No artificial additives</p>
+      </div>
+      <div class="flex items-start">
+        <div class="text-green-500 mr-2">✓</div>
+        <p>Made in FDA-registered facility</p>
+      </div>
+      <div class="flex items-start">
+        <div class="text-green-500 mr-2">✓</div>
+        <p>{import.meta.env.DEV ? '100% money-back guarantee' : '{_offer_value:benefit_4}'}</p>
+      </div>
+    </div>
+    
+    <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-6">
+      <p class="font-bold text-blue-800">Special Offer</p>
+      <p>Get your first bottle for just <span class="font-bold text-blue-800">${import.meta.env.DEV ? '39.99' : '{_offer_value:price}'}</span> (Regular price: ${import.meta.env.DEV ? '59.99' : '{_offer_value:regular_price}'})</p>
+    </div>
+    
+    <CTAButton 
+      text={import.meta.env.DEV ? 'Get Your Special Discount' : '{_offer_value:cta_text}'} 
+      color="blue"
+      href={import.meta.env.DEV ? '#order-now' : '{_offer_value:cta_url}'}
+    />
+  </div>
+</div>
+
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+  <Testimonial 
+    quote={import.meta.env.DEV ? "This product has completely changed my life. I have so much more energy now!" : "{_offer_value:testimonial_1_text}"}
+    author={import.meta.env.DEV ? "Sarah Johnson" : "{_offer_value:testimonial_1_author}"}
+    role={import.meta.env.DEV ? "Verified Customer" : "{_offer_value:testimonial_1_role}"}
+  />
+  
+  <Testimonial 
+    quote={import.meta.env.DEV ? "I've tried many supplements before, but this one actually delivers results. Highly recommend!" : "{_offer_value:testimonial_2_text}"}
+    author={import.meta.env.DEV ? "Michael Davis" : "{_offer_value:testimonial_2_author}"}
+    role={import.meta.env.DEV ? "Verified Customer" : "{_offer_value:testimonial_2_role}"}
+  />
+</div> 

@@ -1,0 +1,34 @@
+/* Arabic theme styles with RTL support */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap');
+
+.theme-arabic {
+  /* Arabic theme variables */
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --text-color: #1f2937;
+  --background-color: #f9fafb;
+  --header-background: #ffffff;
+  --footer-background: #1f2937;
+  --footer-text: #f9fafb;
+  
+  font-family: 'Cairo', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  direction: rtl;
+  text-align: right;
+}
+
+/* Arabic specific adjustments */
+.theme-arabic .nav ul {
+  flex-direction: row-reverse;
+}
+
+.theme-arabic .flex {
+  flex-direction: row-reverse;
+}
+
+/* Reset direction for specific elements if needed */
+.theme-arabic .no-rtl {
+  direction: ltr;
+  text-align: left;
+} 

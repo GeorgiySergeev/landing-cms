@@ -1,0 +1,26 @@
+{
+  "name": "vibe-astro-landings-v3",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "build:isolated": "astro build && node scripts/build-isolated.js",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.2.6",
+    "@astrojs/preact": "^4.0.11",
+    "@tailwindcss/vite": "^4.1.5",
+    "astro": "^5.7.12",
+    "preact": "^10.26.6",
+    "tailwindcss": "^4.1.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "purgecss": "^7.0.2"
+  }
+}
