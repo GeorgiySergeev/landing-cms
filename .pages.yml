@@ -6,7 +6,7 @@ content:
   - name: landings
     label: Landing Pages
     type: collection
-    path: src/pages/examples/bengali-news-example.astro
+    path: src/pages
     view:
       fields: [title, layout, country, language, article, variant, draft]
     fields:
