@@ -17,6 +17,11 @@ interface LayoutResult {
   theme: Theme;
 }
 
+// Use import.meta.glob to statically import all possible layouts and templates
+const localeLayouts = import.meta.glob('./locale/*/*.astro');
+const baseLayouts = import.meta.glob('./base/*.astro');
+const templateLayouts = import.meta.glob('./templates/**/*.astro');
+
 /**
  * Legacy layout resolver for backward compatibility
  */
@@ -25,38 +30,44 @@ export async function getLayout(
   country: Country,
   language: string,
 ): Promise<LayoutResult> {
-  // Determine which theme to use based on country code
   const theme = getThemeFromCountry(country);
+
   // Special case for UniversalAdultLayout
   if (layoutName === 'UniversalAdultLayout') {
-    try {
-      const universalLayout = await import('./base/UniversalAdultLayout.astro');
-      return { Component: universalLayout.default, theme };
-    } catch (e) {
-      console.log('Failed to load UniversalAdultLayout, falling back to base layout');
-    }
+    const mod = await baseLayouts['./base/UniversalAdultLayout.astro']();
+    return { Component: (mod as any).default, theme };
   }
 
   // Try to load locale-specific layout
-  try {
-    // Attempt to load a locale-specific layout based on theme
-    if (theme !== 'default') {
-      try {
-        const localeLayout = await import(`./locale/${theme}/${layoutName}.astro`);
-        return { Component: localeLayout.default, theme };
-      } catch (e) {
-        // Specific layout doesn't exist, fall through to base layout
-      }
+  if (theme !== 'default') {
+    const localeKey = `./locale/${theme}/${layoutName}.astro`;
+    if (localeLayouts[localeKey]) {
+      const mod = await localeLayouts[localeKey]!();
+      return { Component: (mod as any).default, theme };
     }
-  } catch (error) {
-    // If locale-specific layout doesn't exist, continue to base layout
-    console.log(
-      `No locale-specific layout found for ${layoutName} and theme ${theme}. Using base layout.`,
-    );
   }
 
-  const baseLayout = await import(`./base/${layoutName}.astro`);
-  return { Component: baseLayout.default, theme };
+  // Try to load from templates
+  // Support both one-level and two-level template directories
+  const templateKey1 = `./templates/${layoutName}.astro`;
+  const templateKey2 = `./templates/${theme}/${layoutName}.astro`;
+  if (templateLayouts[templateKey1]) {
+    const mod = await templateLayouts[templateKey1]!();
+    return { Component: (mod as any).default, theme };
+  }
+  if (templateLayouts[templateKey2]) {
+    const mod = await templateLayouts[templateKey2]!();
+    return { Component: (mod as any).default, theme };
+  }
+
+  // Fallback to base layout
+  const baseKey = `./base/${layoutName}.astro`;
+  if (baseLayouts[baseKey]) {
+    const mod = await baseLayouts[baseKey]!();
+    return { Component: (mod as any).default, theme };
+  }
+
+  throw new Error(`Layout not found: ${layoutName} (theme: ${theme})`);
 }
 
 /**
@@ -93,7 +104,12 @@ export async function getContentLayout(
   // If a custom template path is provided, use it first
   if (customTemplatePath) {
     try {
-      const customLayout = await import(`..${customTemplatePath}`);
+      // Ensure the path has the .astro extension
+      const fullPath = customTemplatePath.endsWith('.astro')
+        ? `..${customTemplatePath}`
+        : `..${customTemplatePath}.astro`;
+
+      const customLayout = await import(fullPath);
       return { Component: customLayout.default, theme };
     } catch (error) {
       console.error(`Custom template at ${customTemplatePath} not found!`, error);
@@ -104,31 +120,45 @@ export async function getContentLayout(
   // Get the template path based on content type and category
   const templatePath = getTemplatePath(contentType, category);
 
+  // Ensure the templatePath has the .astro extension
+  const normalizedTemplatePath = templatePath.endsWith('.astro')
+    ? templatePath
+    : `${templatePath}.astro`;
+
   // Try to load locale-specific template if localization is enabled
   if (useLocalization && theme !== 'default') {
     try {
-      const localeTemplate = await import(`./locale/${theme}/${templatePath}.astro`);
-      return { Component: localeTemplate.default, theme };
+      const localeKey = `./locale/${theme}/${normalizedTemplatePath}`;
+      if (localeLayouts[localeKey]) {
+        const mod = await localeLayouts[localeKey]!();
+        return { Component: (mod as any).default, theme };
+      }
     } catch (error) {
       // If locale-specific template doesn't exist, continue to base template
       console.log(
-        `No locale-specific template found for ${templatePath} and theme ${theme}. Using base template.`,
+        `No locale-specific template found for ${normalizedTemplatePath} and theme ${theme}. Using base template.`,
       );
     }
   }
 
-  // Load the base template
-  try {
-    const baseTemplate = await import(`./${templatePath}.astro`);
-    return { Component: baseTemplate.default, theme };
-  } catch (error) {
-    console.error(`Template ${templatePath} not found!`, error);
-
-    // Fallback to a basic content layout based on content type
-    const fallbackPath = `content/${
-      contentType.charAt(0).toUpperCase() + contentType.slice(1)
-    }Layout`;
-    const fallbackLayout = await import(`./${fallbackPath}.astro`);
-    return { Component: fallbackLayout.default, theme };
+  // Load the template using import.meta.glob
+  const templateKey = `./${normalizedTemplatePath}`;
+  if (templateLayouts[templateKey]) {
+    const mod = await templateLayouts[templateKey]!();
+    return { Component: (mod as any).default, theme };
   }
+
+  // Fallback to a basic content layout based on content type
+  console.error(`Template ${normalizedTemplatePath} not found!`);
+  const fallbackName = `${contentType.charAt(0).toUpperCase() + contentType.slice(1)}Layout.astro`;
+  const fallbackKey = `./base/${fallbackName}`;
+
+  if (baseLayouts[fallbackKey]) {
+    const mod = await baseLayouts[fallbackKey]!();
+    return { Component: (mod as any).default, theme };
+  }
+
+  throw new Error(
+    `Layout not found: ${normalizedTemplatePath} and fallback ${fallbackKey} do not exist.`,
+  );
 }

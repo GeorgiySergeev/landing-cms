@@ -1,19 +1,15 @@
 ---
-import FlagLayout from '../../layouts/base/FlagLayout.astro';
+import BaseLayout from '../../layouts/base/BaseLayout.astro';
 
 // Get country from URL parameter or use default
 const { country = 'us' } = Astro.url.searchParams;
 ---
 
-<FlagLayout
-  title="Flag Layout Example"
-  themeColor="default"
-  country={country}
->
+<BaseLayout title="Flag Layout Example" themeColor="default" country={country}>
   <div class="country-demo">
     <h1>Flag Layout Example</h1>
     <p>This page demonstrates the dynamic flag layout.</p>
-    
+
     <div class="country-selector">
       <h2>Try different countries:</h2>
       <div class="flag-buttons">
@@ -23,13 +19,13 @@ const { country = 'us' } = Astro.url.searchParams;
         <a href="?country=unknown" class="flag-btn">Unknown Country (Placeholder)</a>
       </div>
     </div>
-    
+
     <div class="current-country">
       <h3>Current Country Code:</h3>
       <code>{country}</code>
     </div>
   </div>
-  
+
   <style>
     .country-demo {
       max-width: 800px;
@@ -39,18 +35,18 @@ const { country = 'us' } = Astro.url.searchParams;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
-    
+
     .country-selector {
       margin: 2rem 0;
     }
-    
+
     .flag-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 1rem;
     }
-    
+
     .flag-btn {
       display: inline-block;
       padding: 0.5rem 1rem;
@@ -60,18 +56,18 @@ const { country = 'us' } = Astro.url.searchParams;
       border-radius: 4px;
       transition: background-color 0.2s;
     }
-    
+
     .flag-btn:hover {
       background-color: #dee2e6;
     }
-    
+
     .current-country {
       margin-top: 2rem;
       padding: 1rem;
       background-color: #e9ecef;
       border-radius: 4px;
     }
-    
+
     code {
       background-color: #f1f3f5;
       padding: 0.2rem 0.4rem;
@@ -79,4 +75,4 @@ const { country = 'us' } = Astro.url.searchParams;
       font-family: monospace;
     }
   </style>
-</FlagLayout> 
+</BaseLayout>

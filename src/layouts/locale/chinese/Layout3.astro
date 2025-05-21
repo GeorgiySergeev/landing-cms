@@ -1,16 +1,16 @@
 ---
 // Chinese-specific override for Layout3
-import BaseLayout3 from '../../base/Layout3.astro';
+import BaseLayout from '../../base/BaseLayout.astro';
 import { getLangAndDir } from '../../utils.ts';
 
-const { title = "登陆页面" } = Astro.props;
+const { title = '登陆页面' } = Astro.props;
 
 // Always use Chinese theme for this layout
 const theme = 'chinese';
 const { lang, dir } = getLangAndDir(theme);
 ---
 
-<BaseLayout3 theme={theme} title={title}>
+<BaseLayout theme={theme} title={title}>
   <div class="chinese-custom-content">
     <div class="text-center mb-8">
       <h2 class="text-2xl font-bold mb-4">中文自定义模板</h2>
@@ -20,4 +20,4 @@ const { lang, dir } = getLangAndDir(theme);
       <slot />
     </div>
   </div>
-</BaseLayout3> 
+</BaseLayout>

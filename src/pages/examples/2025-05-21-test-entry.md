@@ -1,6 +1,6 @@
 ---
 title: Test Entry
-layout: NewsLayout
+layout: ../../layouts/base/NewsLayout.astro
 country: ar
 language: ar
 article: string

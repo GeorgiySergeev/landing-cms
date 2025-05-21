@@ -1,16 +1,16 @@
 ---
 // German-specific override for Layout3
-import BaseLayout3 from '../../base/Layout3.astro';
+import BaseLayout from '../../base/BaseLayout.astro';
 import { getLangAndDir } from '../../utils.ts';
 
-const { title = "Landingpage" } = Astro.props;
+const { title = 'Landingpage' } = Astro.props;
 
 // Always use German theme for this layout
 const theme = 'german';
 const { lang, dir } = getLangAndDir(theme);
 ---
 
-<BaseLayout3 theme={theme} title={title}>
+<BaseLayout theme={theme} title={title}>
   <div class="german-custom-content">
     <div class="text-center mb-6">
       <h2 class="text-2xl font-bold mb-3">Deutsche Vorlage</h2>
@@ -25,4 +25,4 @@ const { lang, dir } = getLangAndDir(theme);
       <span class="text-sm bg-black/20 px-3 py-1 rounded-full">Effizienz</span>
     </div>
   </div>
-</BaseLayout3> 
+</BaseLayout>

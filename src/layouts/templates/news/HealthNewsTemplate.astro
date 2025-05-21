@@ -1,5 +1,5 @@
 ---
-import NewsLayout from '../../content/NewsLayout.astro';
+import NewsLayout from '../../base/NewsLayout.astro';
 
 export interface Props {
   title: string;
@@ -38,7 +38,7 @@ export interface Props {
   relatedArticles?: any[];
 }
 
-const { 
+const {
   expertReview,
   medicalDisclaimer = true,
   sourcesAndReferences = [],
@@ -49,54 +49,72 @@ const {
 
 <NewsLayout {...rest}>
   <slot />
-  
-  {expertReview && (
-    <div class="expert-review">
-      <h3>Expert Reviewed</h3>
-      <p>
-        This article was reviewed by <strong>{expertReview.name}</strong>,
-        {expertReview.credentials} on {expertReview.date}.
-      </p>
-    </div>
-  )}
-  
-  {medicalDisclaimer && (
-    <div class="medical-disclaimer">
-      <h3>Medical Disclaimer</h3>
-      <p>
-        This content is for informational and educational purposes only. It is not intended to provide medical advice or to take the place of such advice or treatment from a personal physician.
-        All readers of this content are advised to consult their doctors or qualified health professionals regarding specific health questions.
-        Neither the publisher nor the writer takes responsibility for possible health consequences of any person reading or following the information in this article.
-      </p>
-    </div>
-  )}
-  
-  {sourcesAndReferences.length > 0 && (
-    <div class="sources-references">
-      <h3>Sources & References</h3>
-      <ol>
-        {sourcesAndReferences.map(source => (
-          <li>
-            {source.url 
-              ? <a href={source.url} target="_blank" rel="noopener noreferrer">{source.title}</a>
-              : source.title
-            }
-          </li>
-        ))}
-      </ol>
-    </div>
-  )}
-  
-  {relatedConditions.length > 0 && (
-    <div class="related-conditions">
-      <h3>Related Conditions</h3>
-      <ul class="tags">
-        {relatedConditions.map(condition => (
-          <li><a href={`/conditions/${condition.toLowerCase().replace(/\s+/g, '-')}`}>{condition}</a></li>
-        ))}
-      </ul>
-    </div>
-  )}
+
+  {
+    expertReview && (
+      <div class="expert-review">
+        <h3>Expert Reviewed</h3>
+        <p>
+          This article was reviewed by <strong>{expertReview.name}</strong>,
+          {expertReview.credentials} on {expertReview.date}.
+        </p>
+      </div>
+    )
+  }
+
+  {
+    medicalDisclaimer && (
+      <div class="medical-disclaimer">
+        <h3>Medical Disclaimer</h3>
+        <p>
+          This content is for informational and educational purposes only. It is not intended to
+          provide medical advice or to take the place of such advice or treatment from a personal
+          physician. All readers of this content are advised to consult their doctors or qualified
+          health professionals regarding specific health questions. Neither the publisher nor the
+          writer takes responsibility for possible health consequences of any person reading or
+          following the information in this article.
+        </p>
+      </div>
+    )
+  }
+
+  {
+    sourcesAndReferences.length > 0 && (
+      <div class="sources-references">
+        <h3>Sources & References</h3>
+        <ol>
+          {sourcesAndReferences.map((source) => (
+            <li>
+              {source.url ? (
+                <a href={source.url} target="_blank" rel="noopener noreferrer">
+                  {source.title}
+                </a>
+              ) : (
+                source.title
+              )}
+            </li>
+          ))}
+        </ol>
+      </div>
+    )
+  }
+
+  {
+    relatedConditions.length > 0 && (
+      <div class="related-conditions">
+        <h3>Related Conditions</h3>
+        <ul class="tags">
+          {relatedConditions.map((condition) => (
+            <li>
+              <a href={`/conditions/${condition.toLowerCase().replace(/\s+/g, '-')}`}>
+                {condition}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
 </NewsLayout>
 
 <style>
@@ -109,7 +127,7 @@ const {
     border-radius: 0.5rem;
     background-color: var(--color-bg-secondary, #f8f9fa);
   }
-  
+
   .expert-review h3,
   .medical-disclaimer h3,
   .sources-references h3,
@@ -119,13 +137,13 @@ const {
     margin-bottom: 0.75rem;
     color: var(--color-primary, #0066cc);
   }
-  
+
   .medical-disclaimer {
     border-left: 4px solid var(--color-warning, #f0ad4e);
     font-size: 0.875rem;
     line-height: 1.6;
   }
-  
+
   .tags {
     display: flex;
     flex-wrap: wrap;
@@ -133,7 +151,7 @@ const {
     list-style: none;
     padding: 0;
   }
-  
+
   .tags li a {
     display: inline-block;
     padding: 0.35rem 0.75rem;
@@ -142,14 +160,16 @@ const {
     border-radius: 2rem;
     text-decoration: none;
     font-size: 0.875rem;
-    transition: background-color 0.2s, color 0.2s;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
   }
-  
+
   .tags li a:hover {
     background-color: var(--color-primary, #0066cc);
     color: white;
   }
-  
+
   /* Mobile-first responsive design */
   @media (min-width: 768px) {
     .expert-review,
@@ -159,4 +179,4 @@ const {
       padding: 2rem;
     }
   }
-</style> 
+</style>
