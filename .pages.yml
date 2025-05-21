@@ -3,12 +3,12 @@ media:
   output: /
 
 content:
-  - name: landings
-    label: Landing Pages
+  - name: content
+    label: Content
     type: collection
     path: src/content
     view:
-      fields: [title, layout, country, language, article, variant, draft]
+      fields: [title, country, language, article, variant, draft]
     fields:
       - { name: title, label: Title, type: string, required: true }
       - {
@@ -31,10 +31,10 @@ content:
       - { name: description, label: Description, type: string }
       - { name: publishDate, label: Publish Date, type: date }
       - { name: modifiedDate, label: Modified Date, type: date }
-      - { name: isAdult, label: Adult Content, type: boolean, default: false }
-      - { name: isBreakingNews, label: Breaking News, type: boolean, default: false }
       - { name: draft, label: Draft, type: boolean, default: true }
       - { name: slug, label: URL Slug, type: string }
+      - { name: isAdult, label: Adult Content, type: boolean, default: false }
+      - { name: isBreakingNews, label: Breaking News, type: boolean, default: false }
       - {
           name: author,
           label: Author,
@@ -79,7 +79,7 @@ content:
         }
 
   - name: templates
-    label: Page Templates
+    label: Templates
     type: collection
     path: src/templates
     view:
@@ -93,23 +93,32 @@ content:
           required: true,
           options: [news, blog, adult, media],
         }
-      - { name: category, label: Category, type: string }
       - { name: country, label: Country, type: string }
       - { name: language, label: Language, type: string }
       - { name: layout, label: Layout Component, type: string }
       - { name: description, label: Description, type: string }
       - { name: body, label: Template HTML/CSS, type: rich-text }
 
-  - name: about
-    label: About Page
-    type: file
-    path: src/pages/about.md
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/pages
+    view:
+      fields: [title, layout]
     fields:
-      - { name: layout, type: string, hidden: true, default: '../layouts/AboutLayout.astro' }
-      - { name: title, label: Title, type: string }
-      - {
-          name: body,
-          label: Body,
-          type: rich-text,
-          options: { input: public/assets, output: /assets },
-        }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: layout, label: Layout, type: string }
+      - { name: description, label: Description, type: string }
+      - { name: body, label: Content, type: rich-text }
+
+  - name: components
+    label: Components
+    type: collection
+    path: src/components
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Component Name, type: string, required: true }
+      - { name: type, label: Component Type, type: string }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: Component Code, type: code, language: tsx }
