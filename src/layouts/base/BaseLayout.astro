@@ -13,6 +13,8 @@ const {
 
 // Import base CSS first - this should apply to all layouts
 import '../styles/base.css';
+// Import theme script to ensure theme functionality is available
+import '../../scripts/theme.ts';
 
 // Conditionally import theme-specific CSS
 const importThemeStyles = () => {
@@ -44,6 +46,32 @@ const canonicalLink = canonicalUrl || currentUrl;
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
     <meta name="description" content={description} />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Inline script for immediate theme application to prevent flashing -->
+    <script is:inline>
+      (function() {
+        // Get the saved theme or detect system preference
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        // Apply appropriate theme class immediately
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else if (savedTheme === 'light') {
+          document.documentElement.classList.add('light');
+        }
+        
+        // Log theme detection for debugging
+        console.log('Early theme detection:', {
+          savedTheme,
+          prefersDark,
+          appliedClass: document.documentElement.className
+        });
+      })();
+    </script>
+    
+    <!-- Подключаем theme.js напрямую для доступности функций toggleTheme и initializeTheme -->
+    <script is:inline src="/theme.js"></script>
     
     <!-- Preconnect to critical domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -96,7 +124,7 @@ const canonicalLink = canonicalUrl || currentUrl;
       /* Base critical styles */
       body {
         min-height: 100vh;
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
         color: var(--color-text);
         background-color: var(--color-background);
         line-height: 1.5;
@@ -187,6 +215,11 @@ const canonicalLink = canonicalUrl || currentUrl;
         
         // Show body content when ready
         document.body.style.opacity = '1';
+        
+        // Initialize theme (with a more robust check)
+        if (typeof window !== 'undefined' && typeof window.initializeTheme === 'function') {
+          window.initializeTheme();
+        }
         
         // Use data to update the page dynamically
         console.log('Dynamic data loaded:', data);

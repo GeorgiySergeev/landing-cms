@@ -10,12 +10,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.2.6",
-    "@astrojs/preact": "^4.0.11",
-    "@tailwindcss/vite": "^4.1.5",
-    "astro": "^5.7.12",
+    "@astrojs/mdx": "^4.3.0",
+    "@astrojs/preact": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.7",
+    "@types/react": "^19.1.5",
+    "astro": "^5.8.0",
+    "lucide-preact": "^0.511.0",
     "preact": "^10.26.6",
-    "tailwindcss": "^4.1.5"
+    "react": "^19.1.0",
+    "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",

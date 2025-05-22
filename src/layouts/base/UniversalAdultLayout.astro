@@ -21,7 +21,7 @@ export interface Props {
 const {
   title = 'Universal Landing Page',
   description = 'Product description goes here',
-  country = 'us',
+  country = 'iq',
   language = 'en',
   isRTL = false, // Automatically determined based on language below, but can be overridden
   themeColor = 'default',
@@ -437,7 +437,7 @@ const formattedDate = new Intl.DateTimeFormat(language, {
 
   <body>
     <!-- Header -->
-    <header class="site-header">
+    <!-- <header class="site-header">
       <div class="container header-container">
         <div class="logo-container">
           <img
@@ -458,11 +458,20 @@ const formattedDate = new Intl.DateTimeFormat(language, {
           </ul>
         </nav>
       </div>
-    </header>
+    </header> -->
 
     <!-- Main Content -->
     <main class="main-content">
       <div class="container">
+        <div class="logo-container">
+          <img
+            class="country-flag"
+            src={`/images/flags/${country.toLowerCase()}.svg`}
+            alt={countryName}
+            onerror="this.src='/images/flags/placeholder.svg'; this.onerror=null;"
+          />
+          <div class="site-name">{countryName}</div>
+        </div>
         <article class="content-container">
           <div class="article-date">{formattedDate}</div>
           <h1 class="article-title">{title}</h1>

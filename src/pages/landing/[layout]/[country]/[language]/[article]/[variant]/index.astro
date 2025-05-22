@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     props: landing,
   }));
 }
-
+console.log('landings', landings);
 const { contentPath, layout } = Astro.props;
 const { country, language } = Astro.params;
 console.log('Landing Page:', { contentPath, layout, country, language });

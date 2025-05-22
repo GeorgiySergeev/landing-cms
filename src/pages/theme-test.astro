@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/base/BaseLayout.astro';
+import '@styles/global.css';
+---
+
+<BaseLayout title="Theme Test Page">
+  <!-- Отладочные скрипты -->
+  <script is:inline>
+    // Добавляем консоль-лог для проверки загрузки
+    console.log('Theme test page loaded');
+    // Проверка наличия функций темы
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOMContentLoaded fired');
+      console.log('window.toggleTheme exists:', typeof window.toggleTheme === 'function');
+      console.log('window.initializeTheme exists:', typeof window.initializeTheme === 'function');
+
+      // Показываем статус темы
+      const themeStatus = document.getElementById('themeStatus');
+      const htmlClasses = document.getElementById('htmlClasses');
+
+      if (themeStatus) {
+        themeStatus.textContent = document.documentElement.classList.contains('dark')
+          ? 'Dark mode active'
+          : 'Light mode active';
+      }
+
+      if (htmlClasses) {
+        htmlClasses.textContent = document.documentElement.className;
+      }
+    });
+  </script>
+
+  <!-- Главный скрипт темы -->
+  <script is:inline src="/theme.js"></script>
+
+  <div
+    class="container mx-auto p-6 min-h-screen transition-colors duration-300 bg-white dark:bg-gray-900"
+  >
+    <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Theme Testing Page</h1>
+
+    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
+      <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Theme Switch Test</h2>
+      <p class="text-gray-700 dark:text-gray-300 mb-4">
+        This page demonstrates the theme switching functionality. The page should automatically
+        apply the correct theme based on your system preferences or previous choice.
+      </p>
+
+      <button
+        id="themeToggle"
+        class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors shadow-md"
+      >
+        Toggle Theme
+      </button>
+
+      <div class="mt-4 p-4 bg-gray-100 dark:bg-gray-700 rounded-md">
+        <p class="text-gray-600 dark:text-gray-300 text-sm">
+          <strong>Theme status:</strong>
+          <span id="themeStatus">Checking...</span>
+        </p>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mt-1">
+          <strong>Classes on HTML element:</strong>
+          <span id="htmlClasses">Checking...</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">Light/Dark Card 1</h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          This card should change appearance based on the current theme.
+        </p>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
+        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">Light/Dark Card 2</h3>
+        <p class="text-gray-600 dark:text-gray-400">
+          This card should also change appearance based on the current theme.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Theme toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeStatus = document.getElementById('themeStatus');
+    const htmlClasses = document.getElementById('htmlClasses');
+
+    // Set initial button text based on current theme
+    if (themeToggleBtn) {
+      updateUI();
+
+      // Add click event listener
+      themeToggleBtn.addEventListener('click', () => {
+        if (typeof window.toggleTheme === 'function') {
+          window.toggleTheme();
+          updateUI();
+        } else {
+          console.error('toggleTheme function is not available');
+        }
+      });
+
+      // Also observe theme changes from other sources
+      const observer = new MutationObserver(() => {
+        updateUI();
+      });
+
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    }
+
+    // Update UI based on current theme
+    function updateUI() {
+      if (!themeToggleBtn) return;
+
+      const isDark = document.documentElement.classList.contains('dark');
+
+      // Update button
+      themeToggleBtn.textContent = isDark ? '☀️ Switch to Light Mode' : '🌙 Switch to Dark Mode';
+      themeToggleBtn.className = isDark
+        ? 'px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors shadow-md'
+        : 'px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors shadow-md';
+
+      // Update status
+      if (themeStatus) {
+        themeStatus.textContent = isDark ? 'Dark mode active' : 'Light mode active';
+      }
+
+      // Update html classes display
+      if (htmlClasses) {
+        htmlClasses.textContent = document.documentElement.className;
+      }
+    }
+  });
+</script>
