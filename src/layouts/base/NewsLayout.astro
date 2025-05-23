@@ -96,26 +96,6 @@ const displayModified = modifiedDate ? formatDate(modifiedDate) : '';
     {image && <meta property="og:image" content={image.src} />}
   </slot>
 
-  <div slot="header" class="news-header">
-    <!-- Country flag -->
-    <div class="country-flag-container">
-      <img
-        src={flagPath}
-        alt={`Flag of ${normalizedCountry}`}
-        class="country-flag"
-        onerror="this.src='/images/flags/placeholder.svg'; this.onerror=null;"
-      />
-    </div>
-
-    <!-- Breaking news banner if applicable -->
-    {isBreakingNews && <div class="breaking-news-banner">Breaking News</div>}
-
-    <!-- Category badge -->
-    {category && <div class="category-badge">{category}</div>}
-
-    <slot name="pre-header" />
-  </div>
-
   <div class="article-container">
     <!-- Reading progress indicator -->
     <div class="reading-progress-container">
@@ -207,7 +187,7 @@ const displayModified = modifiedDate ? formatDate(modifiedDate) : '';
 
       <!-- Main article content -->
       <div class="article-content">
-        <slot />
+        <!-- <slot /> -->
       </div>
 
       <!-- Article footer with tags -->

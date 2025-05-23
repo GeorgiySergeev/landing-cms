@@ -2,13 +2,14 @@
 // Base layout that will be extended by specific layouts
 const { 
   title = "Landing Page", 
-  country = "us",
   lang = "en",
   dir = "ltr",
-  themeColor = "default",
+  country = "us",
   description = "Landing page for your product or service",
+  themeColor = "default",
   ogImage = "/images/og-image.jpg",
   canonicalUrl
+  
 } = Astro.props;
 
 // Import base CSS first - this should apply to all layouts
@@ -164,10 +165,12 @@ const canonicalLink = canonicalUrl || currentUrl;
   </head>
   <body class={`theme-${themeColor}`}>
     <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="/" class="skip-link">Skip to content</a>
     
     <header class="site-header">
+      <p>BASE LAYOUT</p>
       <slot name="header">
+       
         <!-- Default header content if none provided -->
         <div class="container flex justify-between items-center py-4">
           <div class="logo">
