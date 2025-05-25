@@ -1,0 +1,45 @@
+---
+import UniversalAdultLayout from '../layouts/base/UniversalAdultLayout.astro';
+---
+
+<UniversalAdultLayout
+  title="Test Responsive Header"
+  description="Testing responsive header with burger menu"
+  country="us"
+  language="en"
+  themeColor="light"
+>
+  <div style="min-height: calc(100vh - 200px); padding: 2rem;">
+    <h1>Responsive Header Test</h1>
+    <p>
+      This page demonstrates the responsive header with burger menu
+      functionality.
+    </p>
+
+    <h2>Features:</h2>
+    <ul>
+      <li>✅ Desktop navigation with borders</li>
+      <li>✅ Mobile burger menu</li>
+      <li>✅ Smooth animations</li>
+      <li>✅ Proper z-index layering</li>
+      <li>✅ Body scroll prevention when menu is open</li>
+      <li>✅ Click outside to close menu</li>
+    </ul>
+
+    <h2>How to test:</h2>
+    <ol>
+      <li>Resize browser window to mobile size (below 768px)</li>
+      <li>Click the burger menu (hamburger icon)</li>
+      <li>Navigation should slide down from top</li>
+      <li>Click a navigation item or outside to close</li>
+    </ol>
+
+    <div
+      style="height: 800px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); margin: 2rem 0; border-radius: 8px; display: flex; align-items: center; justify-content: center;"
+    >
+      <p style="font-size: 1.2rem; color: #666;">
+        Scroll test area - content should not scroll when mobile menu is open
+      </p>
+    </div>
+  </div>
+</UniversalAdultLayout>

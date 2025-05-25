@@ -1,20 +1,21 @@
 ---
-title: "Premium Küchenmixer"
+title: 'Premium Küchenmixer'
 ---
-import CTAButton from "../../../../components/CTAButton.jsx";
-import Testimonial from "../../../../components/Testimonial.jsx";
 
-# {import.meta.env.DEV ? 'Premium Küchenmixer' : '{_offer_value:product_name}'}
+import CTAButton from '../../../../components/CTAButton.jsx';
+import Testimonial from '../../../../components/Testimonial.jsx';
+
+# {import.meta.env.DEV ? 'Premium Küchenmixer' : '{\_offer_value:product_name}'}
 
 ## Professionelle Ergebnisse für Ihre Küche
 
 Unser leistungsstarker Mixer verarbeitet mühelos Obst, Gemüse und Eis für perfekte Smoothies und Suppen.
 
 <div class="mt-6 mb-8">
-  <img 
-    src="./pic.webp" 
-    alt={import.meta.env.DEV ? 'Küchenmixer' : '{_offer_value:product_image_alt}'} 
-    class="rounded-lg shadow-md w-full max-w-md mx-auto"
+  <img
+    src="./pic.webp"
+    alt={import.meta.env.DEV ? 'Küchenmixer' : '{_offer_value:product_image_alt}'}
+    class="mx-auto w-full max-w-md rounded-lg shadow-md"
   />
 </div>
 
@@ -23,27 +24,31 @@ Unser leistungsstarker Mixer verarbeitet mühelos Obst, Gemüse und Eis für per
 - 1000 Watt Hochleistungsmotor
 - 6 Geschwindigkeitsstufen + Pulse-Funktion
 - Robuster Glasbehälter (1,5 Liter)
-- {import.meta.env.DEV ? 'Einfach zu reinigen und spülmaschinengeeignet' : '{_offer_value:feature_4}'}
+- {import.meta.env.DEV ? 'Einfach zu reinigen und spülmaschinengeeignet' : '{\_offer_value:feature_4}'}
 
 ## Sonderangebot für deutsche Kunden
 
-Für kurze Zeit erhalten Sie den Premium Mixer für nur 
-**€{import.meta.env.DEV ? '89,99' : '{_offer_value:price}'}** 
-(Regulärer Preis: €{import.meta.env.DEV ? '129,99' : '{_offer_value:regular_price}'})
+Für kurze Zeit erhalten Sie den Premium Mixer für nur
+**€{import.meta.env.DEV ? '89,99' : '{\_offer_value:price}'}**
+(Regulärer Preis: €{import.meta.env.DEV ? '129,99' : '{\_offer_value:regular_price}'})
 
 <div class="mt-6">
-  <CTAButton 
-    text={import.meta.env.DEV ? 'Jetzt bestellen' : '{_offer_value:cta_text}'} 
+  <CTAButton
+    text={import.meta.env.DEV ? 'Jetzt bestellen' : '{_offer_value:cta_text}'}
     color="red"
     href={import.meta.env.DEV ? '#bestellen' : '{_offer_value:cta_url}'}
   />
 </div>
 
 <div class="mt-10">
-  <Testimonial 
-    quote={import.meta.env.DEV ? "Dieser Mixer ist fantastisch! Macht perfekte Smoothies und ist sehr einfach zu bedienen." : "{_offer_value:testimonial_1_text}"}
-    author={import.meta.env.DEV ? "Hannah Schmidt" : "{_offer_value:testimonial_1_author}"}
-    role={import.meta.env.DEV ? "Verifizierter Kunde" : "{_offer_value:testimonial_1_role}"}
+  <Testimonial
+    quote={
+      import.meta.env.DEV
+        ? 'Dieser Mixer ist fantastisch! Macht perfekte Smoothies und ist sehr einfach zu bedienen.'
+        : '{_offer_value:testimonial_1_text}'
+    }
+    author={import.meta.env.DEV ? 'Hannah Schmidt' : '{_offer_value:testimonial_1_author}'}
+    role={import.meta.env.DEV ? 'Verifizierter Kunde' : '{_offer_value:testimonial_1_role}'}
     theme="dark"
   />
-</div> 
+</div>

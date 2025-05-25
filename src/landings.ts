@@ -93,14 +93,7 @@ export const landings: Landing[] = [
     layout: 'UniversalAdultLayout',
     contentPath: '/ng/en/potency/womencheating.mdx',
   },
-  {
-    country: 'ng',
-    language: 'en',
-    article: 'potency',
-    variant: 'womencheating-2',
-    layout: 'UniversalAdultLayout',
-    contentPath: '/ng/en/potency/womencheating.mdx',
-  },
+
   // Universal Adult Layout - Iraq potency page (RTL)
   {
     country: 'iq',
@@ -111,12 +104,4 @@ export const landings: Landing[] = [
     contentPath: '/iq/ar/potency/killerimpotence.mdx',
   },
   // Additional combinations can be added as needed
-  {
-    country: 'us',
-    language: 'en',
-    article: 'potency',
-    variant: 'killerimpotence',
-    layout: 'NewsLayout',
-    contentPath: '/us/en/potency/killerimpotence.mdx',
-  },
 ];

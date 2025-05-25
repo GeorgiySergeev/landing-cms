@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} - Breaking News in {country_name}</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header - News Style -->
+    <header class="news-header">
+      <div class="breaking-news-bar">
+        <span class="breaking-text">BREAKING NEWS</span>
+        <span class="news-ticker"
+          >Revolutionary health breakthrough discovered in {country_name} -
+          Scientists amazed by results</span
+        >
+      </div>
+      <div class="header-content">
+        <div class="container">
+          <div class="news-logo">
+            <h1>{country_name} Health Tribune</h1>
+            <p class="news-date">
+              Today's Edition - <span id="current-date"></span>
+            </p>
+          </div>
+          <nav class="news-nav">
+            <a href="#" class="nav-item">Health</a>
+            <a href="#" class="nav-item">Science</a>
+            <a href="#" class="nav-item">Wellness</a>
+            <a href="#" class="nav-item">Research</a>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <!-- Title Section -->
+        <section class="title-section">
+          <h1 class="main-title">{title}</h1>
+          <p class="subtitle">
+            Exclusive investigation reveals shocking health breakthrough
+          </p>
+          <div class="article-meta">
+            <span class="author"
+              >By Dr. Sarah Mitchell, Health Correspondent</span
+            >
+            <span class="publish-date"
+              >Published <span id="article-date"></span
+            ></span>
+            <div class="share-buttons">
+              <button class="share-btn"><i class="fab fa-facebook"></i></button>
+              <button class="share-btn"><i class="fab fa-twitter"></i></button>
+              <button class="share-btn"><i class="fab fa-linkedin"></i></button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Hero Image Section -->
+        <section class="hero-section">
+          <div class="hero-image-container">
+            <img
+              src="{hero_image}"
+              alt="Revolutionary Health Product"
+              class="hero-image"
+            />
+            <div class="hero-overlay">
+              <div class="hero-caption">
+                <p>
+                  Breakthrough discovery is changing lives across {country_name}
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Article Introduction -->
+        <section class="article-intro">
+          <p class="lead-paragraph">
+            In an exclusive investigation, our health team has uncovered a
+            revolutionary breakthrough that has medical experts across
+            {country_name} talking. What we discovered will shock you.
+          </p>
+
+          <div class="urgent-notice">
+            <div class="notice-header">
+              <i class="fas fa-exclamation-triangle"></i>
+              <span>URGENT UPDATE</span>
+            </div>
+            <p>
+              Due to overwhelming demand, supplies are extremely limited. Don't
+              wait - secure your order now!
+            </p>
+            <button class="cta-button primary-cta">
+              <span>CLAIM YOUR DISCOUNT NOW</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </section>
+
+        <!-- Expert Opinions Section -->
+        <section class="expert-opinions">
+          <h2 class="section-title">What Leading Health Experts Are Saying</h2>
+          <div class="opinions-grid">
+            <div class="expert-card">
+              <div class="expert-quote">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>{expert_opinions}</p>
+              </div>
+              <div class="expert-info">
+                <img
+                  src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=100&h=100&fit=crop&crop=face"
+                  alt="Dr. Expert"
+                  class="expert-photo"
+                />
+                <div class="expert-details">
+                  <h4>Dr. Michael Stevens</h4>
+                  <p>Chief Medical Officer, Health Institute</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="expert-card">
+              <div class="expert-quote">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p>
+                  "The clinical results we've seen are unprecedented. This could
+                  revolutionize how we approach wellness and health
+                  maintenance."
+                </p>
+              </div>
+              <div class="expert-info">
+                <img
+                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face"
+                  alt="Dr. Expert"
+                  class="expert-photo"
+                />
+                <div class="expert-details">
+                  <h4>Dr. Lisa Rodriguez</h4>
+                  <p>Research Director, Wellness Foundation</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Product Photos Section -->
+        <section class="product-showcase">
+          <h2 class="section-title">The Scientific Breakthrough</h2>
+          <div class="product-gallery">
+            <div class="main-product-image">
+              <img
+                src="{product_photos}"
+                alt="Revolutionary Health Product"
+                class="product-image"
+              />
+              <div class="product-badges">
+                <span class="badge">Clinically Tested</span>
+                <span class="badge">FDA Compliant</span>
+                <span class="badge">100% Natural</span>
+              </div>
+            </div>
+            <div class="product-features">
+              <h3>Key Benefits:</h3>
+              <ul class="benefits-list">
+                <li>
+                  <i class="fas fa-check-circle"></i> Scientifically proven
+                  formula
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> 30-day money-back
+                  guarantee
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> No side effects reported
+                </li>
+                <li>
+                  <i class="fas fa-check-circle"></i> Recommended by doctors
+                </li>
+              </ul>
+              <div class="cta-container">
+                <button class="cta-button secondary-cta">
+                  <span>LEARN MORE</span>
+                  <i class="fas fa-info-circle"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Wheel of Fortune Section -->
+        <section class="wheel-section">
+          <div class="wheel-container">
+            <h2 class="wheel-title">🎯 EXCLUSIVE READER BONUS!</h2>
+            <p class="wheel-subtitle">
+              Spin the wheel to claim your special discount!
+            </p>
+
+            <div class="wheel-game">
+              <div class="wheel-wrapper">
+                <div class="wheel" id="wheel">
+                  <div class="wheel-segment" data-discount="10%">10% OFF</div>
+                  <div class="wheel-segment" data-discount="15%">15% OFF</div>
+                  <div class="wheel-segment" data-discount="20%">20% OFF</div>
+                  <div class="wheel-segment" data-discount="25%">25% OFF</div>
+                  <div class="wheel-segment" data-discount="30%">30% OFF</div>
+                  <div class="wheel-segment" data-discount="35%">35% OFF</div>
+                  <div class="wheel-segment" data-discount="50%">50% OFF</div>
+                </div>
+                <div class="wheel-pointer"></div>
+              </div>
+              <button class="spin-button" id="spinButton">
+                <span>SPIN TO WIN!</span>
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+
+            <div class="wheel-result" id="wheelResult" style="display: none">
+              <h3>🎉 Congratulations!</h3>
+              <p>You won <span id="discountAmount"></span> discount!</p>
+              <p class="urgency-text">
+                This offer expires in: <span id="countdown">15:00</span>
+              </p>
+              <button class="cta-button primary-cta claim-button">
+                <span>CLAIM YOUR DISCOUNT</span>
+                <i class="fas fa-gift"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+          <h2 class="section-title">What Our Readers Are Saying</h2>
+          <div class="reviews-grid">
+            <div class="review-card">
+              <div class="review-header">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-date">3 days ago</span>
+              </div>
+              <p class="review-text">{reviews}</p>
+              <div class="reviewer-info">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108755-2616b612b1c3?w=50&h=50&fit=crop&crop=face"
+                  alt="Reviewer"
+                  class="reviewer-photo"
+                />
+                <div>
+                  <h4>Sarah M.</h4>
+                  <p>Verified Purchase</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-date">1 week ago</span>
+              </div>
+              <p class="review-text">
+                "I was skeptical at first, but the results speak for themselves.
+                This product has genuinely changed my life. Highly recommend!"
+              </p>
+              <div class="reviewer-info">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face"
+                  alt="Reviewer"
+                  class="reviewer-photo"
+                />
+                <div>
+                  <h4>Mike T.</h4>
+                  <p>Verified Purchase</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-header">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span class="review-date">2 weeks ago</span>
+              </div>
+              <p class="review-text">
+                "Amazing results in just a few weeks! My doctor is impressed
+                with the improvements. Worth every penny."
+              </p>
+              <div class="reviewer-info">
+                <img
+                  src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face"
+                  alt="Reviewer"
+                  class="reviewer-photo"
+                />
+                <div>
+                  <h4>Jennifer L.</h4>
+                  <p>Verified Purchase</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta">
+          <div class="cta-box">
+            <h2>Don't Miss This Opportunity!</h2>
+            <p>
+              Join thousands of satisfied customers in {country_name} who have
+              already transformed their lives.
+            </p>
+            <div class="pricing-info">
+              <span class="original-price">$149.99</span>
+              <span class="sale-price">$79.99</span>
+              <span class="savings">Save $70!</span>
+            </div>
+            <button class="cta-button primary-cta large-cta">
+              <span>ORDER NOW - LIMITED TIME</span>
+              <i class="fas fa-shopping-cart"></i>
+            </button>
+            <div class="guarantees">
+              <span class="guarantee-item"
+                ><i class="fas fa-shield-alt"></i> 30-Day Money Back</span
+              >
+              <span class="guarantee-item"
+                ><i class="fas fa-truck"></i> Free Shipping</span
+              >
+              <span class="guarantee-item"
+                ><i class="fas fa-lock"></i> Secure Checkout</span
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>{country_name} Health Tribune</h4>
+            <p>Your trusted source for health and wellness news.</p>
+          </div>
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Customer Support</h4>
+            <p>Email: support@healthtribune.com</p>
+            <p>Phone: 1-800-HEALTH</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>{footer}</p>
+          <p class="disclaimer">
+            *These statements have not been evaluated by the FDA. This product
+            is not intended to diagnose, treat, cure, or prevent any disease.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+    <!-- Contact Form Modal (hidden by default) -->
+    <div id="contactFormModal" class="contact-form-modal" style="display: none">
+      <div class="contact-form-overlay"></div>
+      <div class="contact-form-content">
+        <button class="close-contact-form" id="closeContactForm">
+          &times;
+        </button>
+        <h2>Congratulations! Claim Your 50% Discount</h2>
+        <p>
+          Enter your details below and our team will contact you to complete
+          your order.
+        </p>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" name="contactName" required />
+          </div>
+          <div class="form-group">
+            <label for="contactPhone">Phone</label>
+            <input
+              type="tel"
+              id="contactPhone"
+              name="contactPhone"
+              required
+              pattern="[0-9\-\+\s\(\)]{7,}"
+            />
+          </div>
+          <button type="submit" class="cta-button primary-cta">Submit</button>
+        </form>
+        <div
+          id="contactFormSuccess"
+          style="
+            display: none;
+            color: #10b981;
+            margin-top: 20px;
+            font-weight: bold;
+          "
+        >
+          Thank you! We have received your details.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,7 @@
 ---
+import SocialShareButtons from '../../components/SocialShareButtons.tsx';
+import OrderForm from '../../components/OrderForm.tsx';
+
 // Define interface for props
 export interface Props {
   title?: string;
@@ -17,7 +20,7 @@ export interface Props {
 
 // Get props with defaults
 const {
-  title = '',
+  title = null,
   description = '',
   country = 'iq',
   language = 'ar',
@@ -56,7 +59,8 @@ const countryNames: Record<string, string> = {
 };
 
 // Get country name for display
-const countryName = countryNames[country.toLowerCase()] || country.toUpperCase();
+const countryName =
+  countryNames[country.toLowerCase()] || country.toUpperCase();
 
 // Format current date
 const currentDate = new Date();
@@ -95,524 +99,186 @@ const formattedDate = new Intl.DateTimeFormat(language, {
       )
     }
 
+    <!-- Import external styles -->
+    <link rel="stylesheet" href="/src/styles/variables.css" />
+    <!-- <link rel="stylesheet" href="/src/styles/universal-layout.css" /> -->
+    <!-- <link rel="stylesheet" href="/src/styles/responsive-header.css" /> -->
+    <link rel="stylesheet" href="/src/styles/base-copy.css" />
+
+    <!-- Dynamic styles with variables -->
     <style define:vars={{ fontFamily }}>
-      /* Base styles */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --primary-color: #1a53ff; /* Blue */
-        --secondary-color: #ff5722; /* Orange */
-        --accent-color: #4caf50; /* Green */
-        --text-color: #333333;
-        --light-text: #ffffff;
-        --bg-color: #f5f5f5;
-        --container-width: 1200px;
-        --header-bg: #1a53ff;
-        --button-bg: #ff5722;
-        --button-hover: #e64a19;
-      }
-      /* Base styles */
-
-      /* Add these styles for the sticky footer */
-      html,
-      body {
-        height: 100%;
-      }
-
+      /* Dynamic font family based on language/direction */
       body {
         font-family: var(--fontFamily);
-        line-height: 1.6;
-        color: var(--text-color);
-        background-color: var(--bg-color);
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh; /* Use viewport height */
-      }
-
-      /* Make the main content grow to push footer down */
-      .main-content {
-        flex: 1 0 auto; /* This is the important part - allows main to grow */
-        padding: 2rem 0;
-      }
-
-      /* Make the footer stay at the bottom */
-      .site-footer {
-        flex-shrink: 0; /* Prevent footer from shrinking */
-        background: #333;
-        color: #ccc;
-        padding: 2rem 0;
-        margin-top: auto; /* This pushes the footer to the bottom */
-        font-size: 0.9rem;
-      }
-
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      ul,
-      ol {
-        list-style-position: inside;
-        margin: 1rem 0;
-      }
-
-      p {
-        margin-bottom: 1rem;
-      }
-
-      h1,
-      h2,
-      h3 {
-        line-height: 1.3;
-        margin-bottom: 1rem;
-      }
-
-      /* Container */
-      .container {
-        width: 100%;
-        max-width: var(--container-width);
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-
-      /* Header */
-      .site-header {
-        background: var(--header-bg);
-        color: white;
-        padding: 1rem 0;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .header-container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-      }
-
-      .country-flag {
-        width: 24px;
-        height: auto;
-        border-radius: 2px;
-      }
-
-      .site-name {
-        font-size: 1.2rem;
-        font-weight: bold;
-      }
-
-      .nav-list {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        gap: 1.5rem;
-      }
-
-      .nav-item {
-        font-size: 0.9rem;
-      }
-
-      /* Main Content */
-      .main-content {
-        padding: 2rem 0;
-      }
-
-      .content-container {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        padding: 1.5rem;
-      }
-
-      .article-date {
-        color: #666;
-        margin-bottom: 1rem;
-        font-size: 0.9rem;
-      }
-
-      .article-title {
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-        font-weight: 700;
-      }
-
-      .article-content {
-        margin-bottom: 2rem;
-      }
-
-      .article-content figure {
-        margin: 1.5rem 0;
-        text-align: center;
-      }
-
-      .article-content figcaption {
-        font-size: 0.85rem;
-        color: #666;
-        margin-top: 0.5rem;
-        padding: 0 0.5rem;
-      }
-
-      .article-content img {
-        margin: 0 auto;
-        border-radius: 4px;
-      }
-
-      .article-content blockquote {
-        border-left: 4px solid var(--primary-color);
-        padding-left: 1rem;
-        font-style: italic;
-        margin: 1.5rem 0;
-      }
-
-      /* Order Form */
-      .order-form {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
-        margin: 2rem 0;
-      }
-
-      .form-title {
-        text-align: center;
-        margin-bottom: 1.5rem;
-        font-size: 1.5rem;
-      }
-
-      .form-group {
-        margin-bottom: 1rem;
-      }
-
-      .form-label {
-        display: block;
-        margin-bottom: 0.5rem;
-        font-weight: 500;
-      }
-
-      .form-input {
-        width: 100%;
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        font-family: inherit;
-      }
-
-      .submit-button {
-        background: var(--button-bg);
-        color: white;
-        border: none;
-        border-radius: 4px;
-        padding: 1rem;
-        font-size: 1.1rem;
-        font-weight: bold;
-        width: 100%;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 1rem;
-      }
-
-      .submit-button:hover {
-        background: var(--button-hover);
-      }
-
-      /* Product Highlight */
-      .product-highlight {
-        background: rgba(76, 175, 80, 0.1);
-        border-left: 4px solid var(--accent-color);
-        padding: 1rem;
-        margin: 1.5rem 0;
-        border-radius: 0 4px 4px 0;
-      }
-
-      .product-name {
-        color: var(--accent-color);
-        font-weight: bold;
-      }
-
-      /* CTA Button */
-      .cta-button {
-        display: block;
-        background: var(--button-bg);
-        color: white;
-        text-align: center;
-        padding: 1rem 2rem;
-        border-radius: 4px;
-        font-weight: bold;
-        margin: 1.5rem auto;
-        max-width: 400px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition:
-          transform 0.3s,
-          background-color 0.3s;
-      }
-
-      .cta-button:hover {
-        background: var(--button-hover);
-        transform: translateY(-2px);
-      }
-
-      .cta-button:active {
-        transform: translateY(0);
-      }
-
-      /* Footer */
-      .site-footer {
-        background: #333;
-        color: #ccc;
-        padding: 2rem 0;
-        margin-top: 2rem;
-        font-size: 0.9rem;
-      }
-
-      .footer-links {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-        margin-top: 1rem;
-      }
-
-      .footer-links a:hover {
-        text-decoration: underline;
-      }
-
-      /* Animation for CTA button */
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .pulse-animation {
-        animation: pulse 2s infinite;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .header-container {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .nav-list {
-          flex-wrap: wrap;
-          justify-content: center;
-        }
-
-        .article-title {
-          font-size: 1.6rem;
-        }
-
-        .order-form {
-          padding: 1.5rem;
-        }
-      }
-
-      /* RTL specific adjustments */
-      .rtl-content {
-        font-family: 'Amiri', 'Noto Sans Arabic', serif;
-      }
-
-      [dir='rtl'] .article-content ul,
-      [dir='rtl'] .article-content ol {
-        padding-right: 1.5rem;
-        padding-left: 0;
-      }
-
-      [dir='rtl'] .product-highlight {
-        border-left: none;
-        border-right: 4px solid var(--accent-color);
-        border-radius: 4px 0 0 4px;
-      }
-
-      /* Highlight text */
-      .highlight {
-        color: var(--secondary-color);
-        font-weight: bold;
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
-    <header class="site-header">
-      <div class="container">
-        <div class="header-container">
-          <div class="logo-container">
-            <img
-              class="country-flag"
-              src={`/images/flags/${country.toLowerCase()}.svg`}
-              alt={countryName}
-              onerror="this.src='/images/flags/placeholder.svg'; this.onerror=null;"
-            />
-            <div class="site-name">{countryName}</div>
-          </div>
-
-          <nav class="site-nav">
-            <ul class="nav-list">
-              <li class="nav-item"><a href="#">News</a></li>
-              <li class="nav-item"><a href="#">Society</a></li>
-              <li class="nav-item"><a href="#">Video</a></li>
-              <li class="nav-item"><a href="#">Live</a></li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Content -->
-    <main class="main-content">
-      <section>
+    <div class="page__wrapper">
+      <!-- Header -->
+      <header class="header">
         <div class="container">
-          <!-- <div class="article-date">{formattedDate}</div> -->
-          <!-- <h1 class="article-title">{title}</h1> -->
+          <div class="header__inner">
+            <div class="header__logo">
+              <img
+                class="header__country-flag"
+                src={`/images/flags/${country.toLowerCase()}.svg`}
+                alt={countryName}
+                onerror="this.src='/images/flags/placeholder.svg'; this.onerror=null;"
+              />
+              <a class="logo" data-toggle="scroll" href="#form">
+                NEWS <span>NG</span></a
+              >
+              <a data-toggle="scroll" href="#form" class="spec">Society</a>
+              <!-- <div class="header__country-name">
+                {countryName}
+                <a href="#" class="header__country-name-link">Sosiaty</a>
+              </div> -->
+            </div>
 
-          <!--! Main content from MDX will be inserted here -->
-          <slot />
+            <nav class="header__nav" id="header-nav">
+              <ul class="header__nav-list">
+                <li class="header__nav-item"><a href="#">News</a></li>
+                <li class="header__nav-item"><a href="#">Society</a></li>
+                <li class="header__nav-item"><a href="#">Video</a></li>
+                <li class="header__nav-item"><a href="#">Live</a></li>
+              </ul>
+            </nav>
+            <a data-toggle="scroll" href="#form" class="header__menu-link"></a>
+            <div class="search">
+              <form action="#" class="search__form">
+                <input
+                  class="search__text"
+                  type="text"
+                  name="q"
+                  value=""
+                  placeholder="поиск"
+                />
+                <input class="search__submit" type="submit" value="" />
+              </form>
+            </div>
+          </div>
         </div>
+      </header>
 
-        <!-- Order Form -->
+      <!-- Main Content -->
+      <main class="main__content">
         <section>
-          <div class="container">
-            <!-- Order form content will be inserted here -->
+          <div class="container content">
+            <div class="article">
+              <div class="article__date">{formattedDate}</div>
+              <!-- <h1 class="article-title">{title}</h1> -->
+
+              <!--! Main content from MDX will be inserted here -->
+              <slot />
+            </div>
           </div>
         </section>
-      </section>
-    </main>
-    <!-- Footer -->
 
-    <footer class="article-footer">
-      <div class="container">
-        {
-          tags.length > 0 && (
-            <div class="tags-container">
-              <span class="tags-label">Topics:</span>
-              <ul class="tags-list">
-                {tags.map((tag: string) => (
-                  <li class="tag-item">
-                    <a href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}>{tag}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )
-        }
-
-        <!-- Social share buttons -->
-        <div class="social-share">
-          <div class="share-label">Share this story:</div>
-          <div class="share-buttons">
-            <button
-              class="share-button facebook"
-              aria-label="Share on Facebook"
-              title="Share on Facebook"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                ><path
-                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"
-                ></path></svg
-              >
-            </button>
-            <button
-              class="share-button twitter"
-              aria-label="Share on Twitter"
-              title="Share on Twitter"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                ><path
-                  d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"
-                ></path></svg
-              >
-            </button>
-            <button class="share-button email" aria-label="Share via Email" title="Share via Email">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                ><path
-                  d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z"
-                ></path></svg
-              >
-            </button>
-            <button
-              class="share-button whatsapp"
-              aria-label="Share on WhatsApp"
-              title="Share on WhatsApp"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                ><path
-                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"
-                ></path></svg
-              >
-            </button>
-          </div>
+        <!-- Order Form -->
+        <section class="order__form-section">
+          <OrderForm
+            productName={productName}
+            productPrice={productPrice}
+            discountPercent={discountPercent}
+            oldPrice={oldPrice}
+            currency={currency}
+            language={language}
+            country={country}
+            formId="order_form"
+            submitUrl="#"
+            client:load
+          />
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="container footer__inner footer__inner_top">
+          {
+            tags.length > 0 && (
+              <div class="footer__tags-container">
+                <span class="footer__tags-label">Topics:</span>
+                <ul class="footer__tags-list">
+                  {tags.map((tag: string) => (
+                    <li class="footer__tag-item">
+                      <a
+                        href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                      >
+                        {' '}
+                        # {tag}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          }
+          <p class="footer__social-label">NG news on social networks:</p>
+          <!-- Social share buttons -->
+          <SocialShareButtons title={title || undefined} client:load />
         </div>
-      </div>
-    </footer>
-
+      </footer>
+    </div>
     <!-- Simple client-side script for basic functionality -->
     <script>
       // Smooth scroll to order form
       document.addEventListener('DOMContentLoaded', function () {
         const scrollLinks = document.querySelectorAll('a[href^="#"]');
 
-        scrollLinks.forEach((link) => {
-          link.addEventListener('click', function (this: HTMLAnchorElement, e: Event) {
-            e.preventDefault();
+        scrollLinks.forEach(link => {
+          link.addEventListener(
+            'click',
+            function (this: HTMLAnchorElement, e: Event) {
+              e.preventDefault();
 
-            const targetId = this.getAttribute('href')?.substring(1);
-            if (targetId) {
-              const targetElement = document.getElementById(targetId);
+              const targetId = this.getAttribute('href')?.substring(1);
+              if (targetId) {
+                const targetElement = document.getElementById(targetId);
 
-              if (targetElement) {
-                window.scrollTo({
-                  top: targetElement.offsetTop - 70,
-                  behavior: 'smooth',
-                });
+                if (targetElement) {
+                  window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth',
+                  });
+                }
               }
             }
-          });
+          );
         });
+
+        // Burger menu functionality
+        const burgerMenu = document.getElementById('burger-menu');
+        const headerNav = document.getElementById('header-nav');
+
+        if (burgerMenu && headerNav) {
+          burgerMenu.addEventListener('click', function () {
+            burgerMenu.classList.toggle('active');
+            headerNav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+          });
+
+          // Close menu when clicking nav links
+          const navLinks = headerNav.querySelectorAll('a');
+          navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+              burgerMenu.classList.remove('active');
+              headerNav.classList.remove('active');
+              document.body.classList.remove('menu-open');
+            });
+          });
+
+          // Close menu when clicking outside
+          document.addEventListener('click', function (e) {
+            if (
+              !burgerMenu.contains(e.target as Node) &&
+              !headerNav.contains(e.target as Node)
+            ) {
+              burgerMenu.classList.remove('active');
+              headerNav.classList.remove('active');
+              document.body.classList.remove('menu-open');
+            }
+          });
+        }
       });
     </script>
   </body>

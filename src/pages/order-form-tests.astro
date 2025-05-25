@@ -1,0 +1,275 @@
+---
+// Test page for all OrderForm integrations
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Form Integration Tests</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 2rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+      }
+      .intro {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border-left: 4px solid #007bff;
+      }
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+      .test-card {
+        background: #fff;
+        border: 2px solid #e9ecef;
+        border-radius: 8px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      .test-card:hover {
+        border-color: #007bff;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+      .test-card h3 {
+        color: #495057;
+        margin-bottom: 1rem;
+        font-size: 1.25rem;
+      }
+      .test-card p {
+        color: #6c757d;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+      .btn {
+        display: inline-block;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        border-radius: 6px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .btn:hover {
+        background: linear-gradient(45deg, #0056b3, #004085);
+        transform: translateY(-1px);
+      }
+      .language-tags {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .lang-tag {
+        background: #e9ecef;
+        color: #495057;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+      .features {
+        background: #e8f5e8;
+        padding: 1.5rem;
+        border-radius: 8px;
+        margin-top: 2rem;
+      }
+      .features h2 {
+        color: #155724;
+        margin-bottom: 1rem;
+      }
+      .features ul {
+        color: #155724;
+        margin: 0;
+      }
+      .status {
+        text-align: center;
+        padding: 1rem;
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 6px;
+        color: #155724;
+        margin-bottom: 2rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Order Form Integration Tests</h1>
+
+      <div class="status">
+        ✅ OrderForm component successfully integrated into
+        UniversalAdultLayout.astro
+      </div>
+
+      <div class="intro">
+        <h2>Integration Summary</h2>
+        <p>
+          The <code>OrderForm.astro</code> component has been successfully integrated
+          into the <code>UniversalAdultLayout.astro</code> layout. The form now appears
+          in the designated section and receives all necessary props from the layout.
+        </p>
+      </div>
+
+      <div class="test-grid">
+        <div class="test-card">
+          <h3>🇺🇸 English (LTR) Test</h3>
+          <div class="language-tags">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">LTR</span>
+            <span class="lang-tag">USD</span>
+          </div>
+          <p>
+            Test the order form with English language, left-to-right layout, and
+            USD currency.
+          </p>
+          <a href="/order-form-test" class="btn">View English Test</a>
+        </div>
+
+        <div class="test-card">
+          <h3>🇮🇶 Arabic (RTL) Test</h3>
+          <div class="language-tags">
+            <span class="lang-tag">العربية</span>
+            <span class="lang-tag">RTL</span>
+            <span class="lang-tag">IQD</span>
+          </div>
+          <p>
+            Test the order form with Arabic language, right-to-left layout, and
+            Iraqi Dinar currency.
+          </p>
+          <a href="/order-form-test-ar" class="btn">View Arabic Test</a>
+        </div>
+
+        <div class="test-card">
+          <h3>🇧🇩 Bengali (LTR) Test</h3>
+          <div class="language-tags">
+            <span class="lang-tag">বাংলা</span>
+            <span class="lang-tag">LTR</span>
+            <span class="lang-tag">BDT</span>
+          </div>
+          <p>
+            Test the order form with Bengali language, left-to-right layout, and
+            Bangladeshi Taka currency.
+          </p>
+          <a href="/order-form-test-bn" class="btn">View Bengali Test</a>
+        </div>
+
+        <div class="test-card">
+          <h3>🌍 Nigeria Example</h3>
+          <div class="language-tags">
+            <span class="lang-tag">English</span>
+            <span class="lang-tag">Production</span>
+            <span class="lang-tag">MDX Content</span>
+          </div>
+          <p>
+            Production example using the existing MDX content with real product
+            data.
+          </p>
+          <a
+            href="/landing/UniversalAdultLayout/ng/en/potency/womencheating/"
+            class="btn">View Nigeria Example</a
+          >
+        </div>
+
+        <div class="test-card">
+          <h3>🇮🇶 Iraq Example</h3>
+          <div class="language-tags">
+            <span class="lang-tag">العربية</span>
+            <span class="lang-tag">Production</span>
+            <span class="lang-tag">MDX Content</span>
+          </div>
+          <p>
+            Production example using Arabic RTL layout with real product data
+            from Iraq.
+          </p>
+          <a
+            href="/landing/UniversalAdultLayout/iq/ar/potency/killerimpotence/"
+            class="btn">View Iraq Example</a
+          >
+        </div>
+
+        <div class="test-card">
+          <h3>📋 Layout Examples</h3>
+          <div class="language-tags">
+            <span class="lang-tag">Overview</span>
+            <span class="lang-tag">Documentation</span>
+          </div>
+          <p>
+            Overview of UniversalAdultLayout examples and usage documentation.
+          </p>
+          <a href="/examples/universal-adult-layout" class="btn"
+            >View Layout Examples</a
+          >
+        </div>
+      </div>
+
+      <div class="features">
+        <h2>✨ Integration Features</h2>
+        <ul>
+          <li>
+            <strong>Multi-language Support:</strong> English, Arabic, and Bengali
+            with proper RTL/LTR handling
+          </li>
+          <li>
+            <strong>Responsive Design:</strong> Mobile-first approach with breakpoint
+            optimizations
+          </li>
+          <li>
+            <strong>Dynamic Props:</strong> Product name, price, currency, and discount
+            passed from layout
+          </li>
+          <li>
+            <strong>Form Validation:</strong> Client-side validation with accessibility
+            features
+          </li>
+          <li>
+            <strong>Stock Animation:</strong> Animated stock counter for urgency
+          </li>
+          <li>
+            <strong>Theming:</strong> Consistent styling that matches the layout
+            theme
+          </li>
+          <li>
+            <strong>Accessibility:</strong> ARIA labels, semantic HTML, and keyboard
+            navigation
+          </li>
+          <li>
+            <strong>SEO Friendly:</strong> Proper form structure and hidden fields
+            for tracking
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

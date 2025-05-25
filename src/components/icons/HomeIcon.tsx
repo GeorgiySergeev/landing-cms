@@ -4,7 +4,7 @@ import { Home } from 'lucide-preact';
 export default function HomeIcon({ name }: { name: string }) {
   return (
     <div>
-      <Home class="text-green-500 w-8 h-8" />
+      <Home class="h-8 w-8 text-green-500" />
       <p>{name}</p>
     </div>
   );

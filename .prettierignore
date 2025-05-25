@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+dist-isolated/
+.astro/
+
+# IDE
+.vscode/
+.idea/
+.qodo/
+.continue/
+
+# Git
+.git/
+
+# Temporary files
+temp/
+*.tmp
+*.temp
+
+# Package manager files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Configuration files that shouldn't be formatted
+.pages.yml
+
+# Auto-generated files
+*.d.ts
+!src/**/*.d.ts
+
+# Files with special template syntax that causes prettier issues
+src/layouts/base/BaseLayout.astro
+
+# Logs
+*.log 

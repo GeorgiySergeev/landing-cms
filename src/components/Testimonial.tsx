@@ -9,34 +9,36 @@ interface TestimonialProps {
   theme?: 'light' | 'dark' | 'primary';
 }
 
-export default function Testimonial({ 
-  quote, 
-  author, 
-  role = "", 
-  avatarUrl = null, 
-  theme = "light" 
+export default function Testimonial({
+  quote,
+  author,
+  role = '',
+  avatarUrl = null,
+  theme = 'light',
 }: TestimonialProps): JSX.Element {
   const themeClasses: Record<string, string> = {
-    light: "bg-white text-gray-800 border border-gray-200",
-    dark: "bg-gray-800 text-white",
-    primary: "bg-blue-100 text-blue-900 border border-blue-200"
+    light: 'bg-white text-gray-800 border border-gray-200',
+    dark: 'bg-gray-800 text-white',
+    primary: 'bg-blue-100 text-blue-900 border border-blue-200',
   };
 
   return (
-    <div class={`p-6 rounded-lg shadow-sm ${themeClasses[theme] || themeClasses.light}`}>
-      <div class="flex items-start mb-4">
-        <div class="text-2xl mr-2">"</div>
+    <div
+      class={`rounded-lg p-6 shadow-sm ${themeClasses[theme] || themeClasses.light}`}
+    >
+      <div class="mb-4 flex items-start">
+        <div class="mr-2 text-2xl">"</div>
         <p class="text-lg">{quote}</p>
-        <div class="text-2xl ml-2">"</div>
+        <div class="ml-2 text-2xl">"</div>
       </div>
-      
-      <div class="flex items-center mt-4">
+
+      <div class="mt-4 flex items-center">
         {avatarUrl && (
           <div class="mr-4">
-            <img 
-              src={avatarUrl} 
-              alt={`${author} avatar`} 
-              class="w-12 h-12 rounded-full object-cover"
+            <img
+              src={avatarUrl}
+              alt={`${author} avatar`}
+              class="h-12 w-12 rounded-full object-cover"
             />
           </div>
         )}
@@ -47,4 +49,4 @@ export default function Testimonial({
       </div>
     </div>
   );
-} 
+}

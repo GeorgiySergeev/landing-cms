@@ -3,7 +3,7 @@ import { landings } from '@/landings.ts';
 import { getLayout } from '@layouts/getLayout.ts';
 
 export async function getStaticPaths() {
-  return landings.map((landing) => ({
+  return landings.map(landing => ({
     params: {
       layout: landing.layout,
       country: landing.country,
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
     props: landing,
   }));
 }
-console.log('landings', landings);
+
 const { contentPath, layout } = Astro.props;
 const { country, language } = Astro.params;
 console.log('Landing Page:', { contentPath, layout, country, language });
@@ -44,10 +44,16 @@ const contentModule = await allContent[normalizedPath]();
 const Content = contentModule.default;
 
 // Get the title and other frontmatter from the content
-const { title = 'Landing Page', ...frontmatter } = contentModule.frontmatter || {};
+const { title = 'Landing Page', ...frontmatter } =
+  contentModule.frontmatter || {};
 ---
 
-<Layout title={title} theme={theme} {...frontmatter} country={country} language={language}>
-  <h1>LAYOUT</h1>
+<Layout
+  title={title}
+  theme={theme}
+  {...frontmatter}
+  country={country}
+  language={language}
+>
   <Content />
 </Layout>

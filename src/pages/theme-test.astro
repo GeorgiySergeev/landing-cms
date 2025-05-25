@@ -11,15 +11,23 @@ import '@styles/global.css';
     // Проверка наличия функций темы
     document.addEventListener('DOMContentLoaded', () => {
       console.log('DOMContentLoaded fired');
-      console.log('window.toggleTheme exists:', typeof window.toggleTheme === 'function');
-      console.log('window.initializeTheme exists:', typeof window.initializeTheme === 'function');
+      console.log(
+        'window.toggleTheme exists:',
+        typeof window.toggleTheme === 'function'
+      );
+      console.log(
+        'window.initializeTheme exists:',
+        typeof window.initializeTheme === 'function'
+      );
 
       // Показываем статус темы
       const themeStatus = document.getElementById('themeStatus');
       const htmlClasses = document.getElementById('htmlClasses');
 
       if (themeStatus) {
-        themeStatus.textContent = document.documentElement.classList.contains('dark')
+        themeStatus.textContent = document.documentElement.classList.contains(
+          'dark'
+        )
           ? 'Dark mode active'
           : 'Light mode active';
       }
@@ -36,13 +44,18 @@ import '@styles/global.css';
   <div
     class="container mx-auto p-6 min-h-screen transition-colors duration-300 bg-white dark:bg-gray-900"
   >
-    <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Theme Testing Page</h1>
+    <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
+      Theme Testing Page
+    </h1>
 
     <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6">
-      <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Theme Switch Test</h2>
+      <h2 class="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
+        Theme Switch Test
+      </h2>
       <p class="text-gray-700 dark:text-gray-300 mb-4">
-        This page demonstrates the theme switching functionality. The page should automatically
-        apply the correct theme based on your system preferences or previous choice.
+        This page demonstrates the theme switching functionality. The page
+        should automatically apply the correct theme based on your system
+        preferences or previous choice.
       </p>
 
       <button
@@ -66,14 +79,18 @@ import '@styles/global.css';
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">Light/Dark Card 1</h3>
+        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">
+          Light/Dark Card 1
+        </h3>
         <p class="text-gray-600 dark:text-gray-400">
           This card should change appearance based on the current theme.
         </p>
       </div>
 
       <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg">
-        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">Light/Dark Card 2</h3>
+        <h3 class="text-lg font-medium mb-3 text-gray-800 dark:text-gray-200">
+          Light/Dark Card 2
+        </h3>
         <p class="text-gray-600 dark:text-gray-400">
           This card should also change appearance based on the current theme.
         </p>
@@ -108,7 +125,10 @@ import '@styles/global.css';
         updateUI();
       });
 
-      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
     }
 
     // Update UI based on current theme
@@ -118,14 +138,18 @@ import '@styles/global.css';
       const isDark = document.documentElement.classList.contains('dark');
 
       // Update button
-      themeToggleBtn.textContent = isDark ? '☀️ Switch to Light Mode' : '🌙 Switch to Dark Mode';
+      themeToggleBtn.textContent = isDark
+        ? '☀️ Switch to Light Mode'
+        : '🌙 Switch to Dark Mode';
       themeToggleBtn.className = isDark
         ? 'px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors shadow-md'
         : 'px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md transition-colors shadow-md';
 
       // Update status
       if (themeStatus) {
-        themeStatus.textContent = isDark ? 'Dark mode active' : 'Light mode active';
+        themeStatus.textContent = isDark
+          ? 'Dark mode active'
+          : 'Light mode active';
       }
 
       // Update html classes display

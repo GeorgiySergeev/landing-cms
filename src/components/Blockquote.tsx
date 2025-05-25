@@ -8,15 +8,17 @@ interface BlockquoteProps {
   className?: string;
 }
 
-export default function Blockquote({ 
-  quote, 
-  author, 
+export default function Blockquote({
+  quote,
+  author,
   position,
-  className = ""
+  className = '',
 }: BlockquoteProps): JSX.Element {
   return (
-    <blockquote className={`border-l-4 border-gray-800 pl-6 py-6 my-8 ${className}`}>
-      <p className="text-xl md:text-2xl font-medium text-gray-800 italic mb-4">
+    <blockquote
+      className={`my-8 border-l-4 border-gray-800 py-6 pl-6 ${className}`}
+    >
+      <p className="mb-4 text-xl font-medium text-gray-800 italic md:text-2xl">
         "{quote}"
       </p>
       {(author || position) && (
@@ -28,4 +30,4 @@ export default function Blockquote({
       )}
     </blockquote>
   );
-} 
+}

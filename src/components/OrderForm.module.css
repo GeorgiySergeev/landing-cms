@@ -1,0 +1,123 @@
+.formContainer {
+  /* background: white; */
+  padding: 20px;
+  max-width: 600px;
+  font-family: Arial;
+  text-align: center;
+  margin: 20px auto;
+  background-image: url(/images/ng/formbg.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-bottom: 55px;
+  color: #333;
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.formLogo {
+  max-width: 60px;
+  height: auto;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+.formTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  line-height: 1.2;
+}
+
+.formNumber {
+  font-size: 16px;
+  color: #3498db;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+}
+
+.toReceive {
+  font-size: 20px;
+  margin: 0 0 25px 0;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.offerBox {
+  border: 3px solid #3498db;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 0 0 30px 0;
+  background-color: rgba(52, 152, 219, 0.05);
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  color: #2c3e50;
+}
+
+.formGroup {
+  margin: 0 0 25px 0;
+  text-align: center;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-align: center;
+}
+
+.formInput {
+  width: 100%;
+  max-width: 400px;
+  padding: 15px 20px;
+  font-size: 16px;
+  border: 2px solid #bdc3c7;
+  border-radius: 8px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #ffffff;
+  color: #2c3e50;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.formInput:focus {
+  border-color: #3498db;
+}
+
+.submitButton {
+  width: 100%;
+  max-width: 500px;
+  padding: 18px 30px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 30px auto 20px auto;
+  display: block;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submitButton:hover {
+  background-color: #2980b9;
+}
+
+.confidentialText {
+  font-size: 14px;
+  color: #7f8c8d;
+  font-style: italic;
+  margin-top: 15px;
+  line-height: 1.3;
+}

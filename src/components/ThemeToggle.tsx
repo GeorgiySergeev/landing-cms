@@ -10,10 +10,11 @@ export default function ThemeToggle() {
     }
 
     // Create a MutationObserver to watch for changes to the class attribute
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(mutation => {
         if (mutation.attributeName === 'class') {
-          const hasDarkClass = document.documentElement.classList.contains('dark');
+          const hasDarkClass =
+            document.documentElement.classList.contains('dark');
           setIsDark(hasDarkClass);
         }
       });
@@ -35,8 +36,9 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded-md transition-colors"
-      aria-label="Toggle dark mode">
+      className="rounded-md bg-gray-200 px-4 py-2 transition-colors dark:bg-gray-700"
+      aria-label="Toggle dark mode"
+    >
       {isDark ? '☀️ Light Mode' : '🌙 Dark Mode'}
     </button>
   );

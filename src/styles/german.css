@@ -10,7 +10,7 @@
   --header-background: #1a4a7c;
   --footer-background: #333333;
   --footer-text: #f0f0f0;
-  
+
   font-family: 'Roboto', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -29,4 +29,4 @@
 .theme-german header {
   background-color: var(--header-background);
   color: white;
-} 
+}

@@ -14,18 +14,18 @@ export default function ImageWithCaption({
   alt,
   caption,
   credit,
-  className = ""
+  className = '',
 }: ImageWithCaptionProps): JSX.Element {
   return (
     <figure className={`my-8 ${className}`}>
-      <div className="rounded-lg overflow-hidden">
-        <img 
-          src={src} 
-          alt={alt || caption || "Blog image"} 
-          className="w-full h-auto"
+      <div className="overflow-hidden rounded-lg">
+        <img
+          src={src}
+          alt={alt || caption || 'Blog image'}
+          className="h-auto w-full"
         />
       </div>
-      
+
       {(caption || credit) && (
         <figcaption className="mt-2 text-sm text-gray-600 italic">
           {caption && <span>{caption}</span>}
@@ -35,4 +35,4 @@ export default function ImageWithCaption({
       )}
     </figure>
   );
-} 
+}

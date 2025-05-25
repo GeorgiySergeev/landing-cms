@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 
 // Import base CSS first - this should apply to all layouts
-import '../styles/base.css';
+import '@styles/base.css';
 // Import theme script to ensure theme functionality is available
 import '../../scripts/theme.ts';
 
@@ -21,15 +21,15 @@ import '../../scripts/theme.ts';
 const importThemeStyles = () => {
   switch(themeColor) {
     case 'arabic':
-      return import('../styles/arabic.css');
+      return import('@styles/arabic.css');
     case 'chinese':
-      return import('../styles/chinese.css');
+      return import('@styles/chinese.css');
     case 'german':
-      return import('../styles/german.css');
+      return import('@styles/german.css');
     case 'bn-bd-adult':
-      return import('../styles/bn-bd-adult.css');
+      return import('@styles/bn-bd-adult.css');
     default:
-      return import('../styles/default.css');
+      return import('@styles/default.css');
   }
 };
 
@@ -153,8 +153,12 @@ const canonicalLink = canonicalUrl || currentUrl;
     <noscript><link rel="stylesheet" href="/base-styles.css" /></noscript>
     
     <!-- Template-specific styles (if any) -->
-    {Astro.url.pathname.includes('/templates/') && <link rel="stylesheet" href="./style.css" media="print" onload="this.media='all'" />}
-    {Astro.url.pathname.includes('/templates/') && <noscript><link rel="stylesheet" href="./style.css" /></noscript>}
+    {Astro.url.pathname.includes('/templates/') && (
+      <>
+        <link rel="stylesheet" href="@styles/styles.css" media="print" onload="this.media='all'" />
+        <noscript><link rel="stylesheet" href="@styles/styles.css" /></noscript>
+      </>
+    )}
     
     <!-- JavaScript modernizr detection -->
     <script is:inline>

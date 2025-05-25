@@ -19,8 +19,19 @@ export type NewsCategory =
   | 'briefing'
   | 'bengali'
   | string;
-export type BlogCategory = 'standard' | 'longform' | 'photoEssay' | 'opinion' | 'review' | string;
-export type MediaCategory = 'video' | 'podcast' | 'liveCoverage' | 'interactive' | string;
+export type BlogCategory =
+  | 'standard'
+  | 'longform'
+  | 'photoEssay'
+  | 'opinion'
+  | 'review'
+  | string;
+export type MediaCategory =
+  | 'video'
+  | 'podcast'
+  | 'liveCoverage'
+  | 'interactive'
+  | string;
 export type AdultCategory = 'potency' | 'healthProduct' | 'dating' | string;
 
 interface LangDirResult {
@@ -67,7 +78,7 @@ export function getThemeFromCountry(country: Country): Theme {
  */
 export function getTemplatePath(
   contentType: ContentType,
-  category: NewsCategory | BlogCategory | MediaCategory | AdultCategory,
+  category: NewsCategory | BlogCategory | MediaCategory | AdultCategory
 ): string {
   if (contentType === 'news') {
     switch (category) {

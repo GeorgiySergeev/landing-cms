@@ -1,0 +1,226 @@
+media:
+  input: public
+  output: /
+
+content:
+  # Content collection - organized by country/language structure
+  - name: content
+    label: Content
+    type: collection
+    path: src/content
+    view:
+      fields: [title, country, language, article, variant, draft]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - {
+          name: layout,
+          label: Layout,
+          type: string,
+          required: true,
+          options: [BaseLayout, NewsLayout, UniversalAdultLayout],
+        }
+      - { name: country, label: Country, type: string, required: true }
+      - { name: language, label: Language, type: string, required: true }
+      - { name: article, label: Article Type, type: string, required: true }
+      - { name: variant, label: Variant, type: string, required: true }
+      - {
+          name: theme,
+          label: Theme,
+          type: string,
+          options: [default, arabic, chinese, german, bn-bd-adult],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: publishDate, label: Publish Date, type: date }
+      - { name: modifiedDate, label: Modified Date, type: date }
+      - { name: draft, label: Draft, type: boolean, default: true }
+      - { name: slug, label: URL Slug, type: string }
+      - { name: isAdult, label: Adult Content, type: boolean, default: false }
+      - {
+          name: isBreakingNews,
+          label: Breaking News,
+          type: boolean,
+          default: false,
+        }
+      - {
+          name: author,
+          label: Author,
+          type: object,
+          fields:
+            [
+              { name: name, label: Name, type: string },
+              { name: image, label: Image, type: string },
+              { name: bio, label: Biography, type: string },
+              { name: url, label: URL, type: string },
+            ],
+        }
+      - {
+          name: image,
+          label: Featured Image,
+          type: object,
+          fields:
+            [
+              { name: url, label: Image URL, type: string },
+              { name: alt, label: Alt Text, type: string },
+              { name: caption, label: Caption, type: string },
+            ],
+        }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: category, label: Category, type: string }
+      - { name: ogImage, label: OG Image, type: string }
+      - { name: body, label: Content, type: rich-text }
+      - {
+          name: showSubscription,
+          label: Show Subscription,
+          type: boolean,
+          default: false,
+        }
+      - {
+          name: showTestimonials,
+          label: Show Testimonials,
+          type: boolean,
+          default: false,
+        }
+      - {
+          name: showCategories,
+          label: Show Categories,
+          type: boolean,
+          default: false,
+        }
+      - {
+          name: relatedArticles,
+          label: Related Articles,
+          type: list,
+          fields:
+            [
+              { name: url, label: URL, type: string },
+              { name: title, label: Title, type: string },
+              { name: image, label: Image, type: string },
+              { name: publishDate, label: Publish Date, type: string },
+            ],
+        }
+
+  # Templates collection - corrected path
+  - name: templates
+    label: Page Templates
+    type: collection
+    path: src/templates
+    view:
+      fields: [title, type, country]
+    fields:
+      - { name: title, label: Template Name, type: string, required: true }
+      - {
+          name: type,
+          label: Content Type,
+          type: string,
+          required: true,
+          options: [news, blog, adult, media, product],
+        }
+      - { name: country, label: Country, type: string }
+      - { name: language, label: Language, type: string }
+      - { name: layout, label: Layout Component, type: string }
+      - { name: description, label: Description, type: string }
+      - { name: body, label: Template HTML/CSS, type: rich-text }
+
+  # Pages collection - Astro pages
+  - name: pages
+    label: Pages
+    type: collection
+    path: src/pages
+    view:
+      fields: [title, layout]
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: layout, label: Layout, type: string }
+      - { name: description, label: Description, type: string }
+      - { name: draft, label: Draft, type: boolean, default: false }
+      - { name: body, label: Content, type: rich-text }
+
+  # Components collection - React/Preact components
+  - name: components
+    label: Components
+    type: collection
+    path: src/components
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Component Name, type: string, required: true }
+      - {
+          name: type,
+          label: Component Type,
+          type: string,
+          options: [tsx, astro, css],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: Component Code, type: code, language: tsx }
+
+  # Layouts collection - Layout components
+  - name: layouts
+    label: Layouts
+    type: collection
+    path: src/layouts
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Layout Name, type: string, required: true }
+      - {
+          name: type,
+          label: Layout Type,
+          type: string,
+          options: [base, template, locale],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: Layout Code, type: code, language: tsx }
+
+  # Styles collection - CSS and styling files
+  - name: styles
+    label: Styles
+    type: collection
+    path: src/styles
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Style Name, type: string, required: true }
+      - {
+          name: type,
+          label: Style Type,
+          type: string,
+          options: [css, scss, module],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: CSS Code, type: code, language: css }
+
+  # Utils collection - Utility functions and scripts
+  - name: utils
+    label: Utilities
+    type: collection
+    path: src/utils
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Utility Name, type: string, required: true }
+      - {
+          name: type,
+          label: Utility Type,
+          type: string,
+          options: [ts, js, helper],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: Utility Code, type: code, language: typescript }
+
+  # Scripts collection - Build and utility scripts
+  - name: scripts
+    label: Scripts
+    type: collection
+    path: src/scripts
+    view:
+      fields: [name, type]
+    fields:
+      - { name: name, label: Script Name, type: string, required: true }
+      - {
+          name: type,
+          label: Script Type,
+          type: string,
+          options: [ts, js, build],
+        }
+      - { name: description, label: Description, type: string }
+      - { name: code, label: Script Code, type: code, language: typescript }

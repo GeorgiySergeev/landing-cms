@@ -1,0 +1,448 @@
+---
+// Order form component for adult landing pages
+export interface Props {
+  productName?: string;
+  productPrice?: string;
+  discountPercent?: string;
+  oldPrice?: string;
+  currency?: string;
+  language?: string;
+  country?: string;
+  formId?: string;
+  submitUrl?: string;
+}
+
+const {
+  productName = 'Product',
+  productPrice = '100',
+  discountPercent = '50',
+  oldPrice = '200',
+  currency = 'USD',
+  language = 'en',
+  country = 'us',
+  formId = 'order_form',
+  submitUrl = '#',
+} = Astro.props;
+
+// Language-specific text
+const texts = {
+  en: {
+    formTitle: 'Order Form',
+    productOffer: `To order "${productName}" for ${productPrice} ${currency}`,
+    nameLabel: 'Your name:',
+    namePlaceholder: 'Your name:',
+    phoneLabel: 'Your phone number:',
+    phonePlaceholder: 'Your phone number:',
+    submitButton: `ORDER FOR ${productPrice} ${currency}`,
+    confidential:
+      '* Confidential. Your information will only be used for ordering and delivery.',
+    stockLeft: 'Items left in stock:',
+    guarantee: 'at a guaranteed 50% discount, fill out the form below',
+  },
+  ar: {
+    formTitle: 'نموذج الطلب',
+    productOffer: `لطلب "${productName}" مقابل ${productPrice} ${currency}`,
+    nameLabel: 'اسمك:',
+    namePlaceholder: 'اسمك:',
+    phoneLabel: 'رقم هاتفك:',
+    phonePlaceholder: 'رقم هاتفك:',
+    submitButton: `اطلب مقابل ${productPrice} ${currency}`,
+    confidential: '* سري. سيتم استخدام معلوماتك فقط للطلب والتسليم.',
+    stockLeft: 'العناصر المتبقية في المخزون:',
+    guarantee: 'بخصم مضمون 50%، املأ النموذج أدناه',
+  },
+  bn: {
+    formTitle: 'অর্ডার ফর্ম',
+    productOffer: `"${productName}" অর্ডার করতে ${productPrice} ${currency} এর জন্য`,
+    nameLabel: 'আপনার নাম:',
+    namePlaceholder: 'আপনার নাম লিখুন',
+    phoneLabel: 'আপনার মোবাইল নম্বর:',
+    phonePlaceholder: 'আপনার মোবাইল নম্বর',
+    submitButton: `${productPrice} ${currency} এর জন্য অর্ডার করুন`,
+    confidential:
+      '* গোপনীয়। আপনার তথ্য শুধুমাত্র অর্ডার ও ডেলিভারির জন্য ব্যবহৃত হবে।',
+    stockLeft: 'স্টকে বাকি আইটেম:',
+    guarantee: 'গ্যারান্টিযুক্ত ৫০% ছাড়ে, নিচের ফর্মটি পূরণ করুন',
+  },
+};
+
+const currentLanguage =
+  language === 'ar' ? 'ar' : language === 'bn' ? 'bn' : 'en';
+const t = texts[currentLanguage];
+
+// Calculate stock left (random number for demo)
+const stockLeft = Math.floor(Math.random() * 100) + 50;
+---
+
+<div id="form" class="order-form-section">
+  <div class="container">
+    <div class="form-container">
+      <!-- Product Image -->
+      <div class="product-showcase">
+        <img
+          src="/images/product-image.png"
+          alt={productName}
+          class="product-image"
+        />
+        <div class="price-badge">
+          <span class="old-price">{oldPrice} {currency}</span>
+          <span class="new-price">{productPrice} {currency}</span>
+          <span class="discount">-{discountPercent}%</span>
+        </div>
+      </div>
+
+      <!-- Form Header -->
+      <div class="form-header">
+        <h2 class="form-title">{t.formTitle}</h2>
+        <p class="form-number">
+          №{Math.floor(Math.random() * 10000) + 20000} of 30 000
+        </p>
+      </div>
+
+      <!-- Stock Counter -->
+      <div class="stock-info">
+        <p class="stock-text">{t.stockLeft}</p>
+        <div class="stock-counter">
+          <span class="stock-number">{stockLeft}</span>
+        </div>
+        <p class="guarantee-text">{t.guarantee}</p>
+      </div>
+
+      <!-- Order Form -->
+      <form
+        action={submitUrl}
+        id={formId}
+        method="POST"
+        class="order-form"
+        style="background-image: url('/images/ng/formbg.webp');
+      background-position: center;
+      background-repeat: no-repeat;"
+      >
+        <div class="form-instructions">
+          <span class="instructions-text">{t.productOffer}</span>
+        </div>
+
+        <div class="form-fields">
+          <div class="form-group">
+            <label for="name" class="form-label">{t.nameLabel}</label>
+            <input
+              name="name"
+              id="name"
+              placeholder={t.namePlaceholder}
+              required
+              type="text"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone" class="form-label">{t.phoneLabel}</label>
+            <input
+              minlength="5"
+              name="phone"
+              id="phone"
+              placeholder={t.phonePlaceholder}
+              required
+              type="tel"
+              class="form-input"
+            />
+          </div>
+
+          <div class="submit-section">
+            <button type="submit" class="submit-button">
+              {t.submitButton}
+            </button>
+          </div>
+
+          <div class="confidential-note">
+            <span class="confidential-text">{t.confidential}</span>
+          </div>
+        </div>
+
+        <!-- Hidden fields for form processing -->
+        <input type="hidden" name="product_name" value={productName} />
+        <input type="hidden" name="product_price" value={productPrice} />
+        <input type="hidden" name="currency" value={currency} />
+        <input type="hidden" name="country" value={country} />
+        <input type="hidden" name="language" value={language} />
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .order-form-section {
+    background-image: url('/images/ng/formbg.webp');
+    background: #f8f9fa;
+    padding: 2rem 0;
+    margin: 2rem 0;
+  }
+
+  .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .product-showcase {
+    position: relative;
+    text-align: center;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .product-image {
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .price-badge {
+    display: none;
+    /* Initially hidden, shown on hover */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff4757;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-weight: bold;
+    transform: rotate(-7deg);
+  }
+
+  .old-price {
+    text-decoration: line-through;
+    font-size: 0.9em;
+    opacity: 0.8;
+    display: block;
+  }
+
+  .new-price {
+    font-size: 1.2em;
+    display: block;
+  }
+
+  .discount {
+    background: #2ed573;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.8em;
+    margin-top: 0.2rem;
+    display: inline-block;
+  }
+
+  .form-header {
+    text-align: center;
+    padding: 1.5rem 1.5rem 0;
+  }
+
+  .form-title {
+    margin: 0 0 0.5rem;
+    color: #333;
+    font-size: 1.5em;
+  }
+
+  .form-number {
+    color: #0066cc;
+    font-size: 0.9em;
+    margin: 0;
+  }
+
+  .stock-info {
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+
+  .stock-text {
+    color: #e74c3c;
+    font-weight: bold;
+    margin: 0 0 0.5rem;
+  }
+
+  .stock-counter {
+    margin: 0.5rem 0;
+  }
+
+  .stock-number {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #e74c3c;
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+  }
+
+  .guarantee-text {
+    color: #27ae60;
+    font-weight: bold;
+    margin: 0.5rem 0 0;
+    font-size: 0.95em;
+  }
+
+  .order-form {
+    padding: 1.5rem;
+  }
+
+  .form-instructions {
+    background: #e3f2fd;
+    border: 2px solid #2196f3;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .instructions-text {
+    font-weight: bold;
+    color: #1976d2;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.1em;
+    border: 2px solid #e9d7dc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #2196f3;
+    box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.2);
+  }
+
+  .submit-section {
+    margin: 1.5rem 0;
+  }
+
+  .submit-button {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    background: #0299ff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 15px rgba(2, 153, 255, 0.3);
+  }
+
+  .submit-button:hover {
+    background: #017acc;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(2, 153, 255, 0.4);
+  }
+
+  .submit-button:active {
+    transform: translateY(1px);
+  }
+
+  .confidential-note {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .confidential-text {
+    font-size: 0.85em;
+    color: #666;
+    font-style: italic;
+  }
+
+  /* RTL Support */
+  [dir='rtl'] .price-badge {
+    right: auto;
+    left: 1rem;
+  }
+
+  /* Mobile Responsiveness */
+  @media (max-width: 480px) {
+    .order-form-section {
+      padding: 1rem 0;
+      margin: 1rem 0;
+    }
+
+    .form-container {
+      margin: 0 1rem;
+    }
+
+    .product-showcase {
+      padding: 1rem;
+    }
+
+    .product-image {
+      max-width: 150px;
+    }
+
+    .form-header {
+      padding: 1rem;
+    }
+
+    .order-form {
+      padding: 1rem;
+    }
+
+    .form-input {
+      font-size: 1em;
+      padding: 0.6rem;
+    }
+
+    .submit-button {
+      font-size: 1em;
+      padding: 0.8rem;
+    }
+
+    .stock-number {
+      font-size: 2em;
+    }
+  }
+
+  @media (max-width: 349px) {
+    .form-input {
+      font-size: 0.95em;
+    }
+  }
+</style>
+
+<script>
+  // Add smooth scrolling and form enhancements
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('order_form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        // Add any form validation or submission logic here
+        console.log('Form submitted');
+      });
+    } // Animate stock counter
+    const stockNumber = document.querySelector('.stock-number');
+    if (stockNumber && stockNumber.textContent) {
+      const targetNumber = parseInt(stockNumber.textContent);
+      let currentNumber = targetNumber + 50;
+      const interval = setInterval(() => {
+        if (currentNumber > targetNumber) {
+          currentNumber--;
+          stockNumber.textContent = currentNumber.toString();
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+  });
+</script>

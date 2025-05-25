@@ -8,28 +8,28 @@ interface CodeBlockProps {
   className?: string;
 }
 
-export default function CodeBlock({ 
-  code, 
-  language = "javascript", 
+export default function CodeBlock({
+  code,
+  language = 'javascript',
   filename,
-  className = ""
+  className = '',
 }: CodeBlockProps): JSX.Element {
   return (
-    <div className={`my-8 rounded-lg overflow-hidden ${className}`}>
+    <div className={`my-8 overflow-hidden rounded-lg ${className}`}>
       {/* Optional filename header */}
       {filename && (
-        <div className="bg-gray-800 px-4 py-2 text-sm text-gray-200 flex items-center justify-between">
+        <div className="flex items-center justify-between bg-gray-800 px-4 py-2 text-sm text-gray-200">
           <span>{filename}</span>
-          <span className="text-xs uppercase tracking-wide text-gray-400">{language}</span>
+          <span className="text-xs tracking-wide text-gray-400 uppercase">
+            {language}
+          </span>
         </div>
       )}
-      
+
       {/* Code section */}
-      <pre className="bg-gray-900 p-4 text-sm text-gray-100 overflow-x-auto">
-        <code className={`language-${language}`}>
-          {code}
-        </code>
+      <pre className="overflow-x-auto bg-gray-900 p-4 text-sm text-gray-100">
+        <code className={`language-${language}`}>{code}</code>
       </pre>
     </div>
   );
-} 
+}

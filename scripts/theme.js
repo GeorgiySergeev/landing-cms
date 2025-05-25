@@ -16,7 +16,7 @@
       'theme-bn-bd-adult',
       'theme-default',
       'dark',
-      'light',
+      'light'
     );
 
     if (theme === 'dark') {
@@ -52,7 +52,8 @@
     console.log('Saved theme from localStorage:', savedTheme);
 
     const systemPrefersDark =
-      window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
     console.log('System prefers dark mode:', systemPrefersDark);
 
     if (savedTheme) {

@@ -19,40 +19,40 @@ export default function AuthorBio({
   avatar,
   bio,
   socialLinks = [],
-  className = ""
+  className = '',
 }: AuthorBioProps): JSX.Element {
   return (
-    <div className={`border-t border-b border-gray-200 py-8 my-12 ${className}`}>
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
+    <div
+      className={`my-12 border-t border-b border-gray-200 py-8 ${className}`}
+    >
+      <div className="flex flex-col items-center gap-6 md:flex-row md:items-start">
         {/* Avatar */}
         {avatar && (
-          <img 
-            src={avatar} 
-            alt={name} 
-            className="w-20 h-20 rounded-full object-cover"
+          <img
+            src={avatar}
+            alt={name}
+            className="h-20 w-20 rounded-full object-cover"
           />
         )}
-        
+
         {/* Bio content */}
         <div className="flex-1 text-center md:text-left">
           {name && (
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{name}</h3>
+            <h3 className="mb-2 text-xl font-bold text-gray-900">{name}</h3>
           )}
-          
-          {bio && (
-            <p className="text-gray-600 mb-4">{bio}</p>
-          )}
-          
+
+          {bio && <p className="mb-4 text-gray-600">{bio}</p>}
+
           {/* Social links */}
           {socialLinks.length > 0 && (
-            <div className="flex space-x-4 justify-center md:justify-start">
+            <div className="flex justify-center space-x-4 md:justify-start">
               {socialLinks.map((link, index) => (
-                <a 
-                  key={index} 
-                  href={link.url} 
-                  target="_blank" 
+                <a
+                  key={index}
+                  href={link.url}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-500 hover:text-gray-800 transition"
+                  className="text-gray-500 transition hover:text-gray-800"
                   aria-label={`${name} on ${link.platform}`}
                 >
                   {/* Use your preferred icon system here */}
@@ -65,4 +65,4 @@ export default function AuthorBio({
       </div>
     </div>
   );
-} 
+}
