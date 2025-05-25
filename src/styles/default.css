@@ -9,7 +9,7 @@
   --header-background: #ffffff;
   --footer-background: #1f2937;
   --footer-text: #f9fafb;
-  
+
   color: var(--text-color);
   background-color: var(--background-color);
 }
@@ -24,4 +24,4 @@
 .theme-default footer {
   background-color: var(--footer-background);
   color: var(--footer-text);
-} 
+}

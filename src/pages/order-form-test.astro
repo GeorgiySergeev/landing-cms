@@ -1,0 +1,42 @@
+---
+import UniversalAdultLayout from '../layouts/base/UniversalAdultLayout.astro';
+---
+
+<UniversalAdultLayout
+  title="Order Form Test"
+  description="Testing the integrated order form component"
+  country="us"
+  language="en"
+  productName="Ultra Hot Pills"
+  productPrice="39"
+  discountPercent="50"
+  oldPrice="78"
+  currency="USD"
+  tags={['health', 'wellness', 'supplements']}
+>
+  <h2>Order Form Integration Test</h2>
+  <p>
+    This page demonstrates the OrderForm component integrated into the
+    UniversalAdultLayout.
+  </p>
+
+  <h3>Product Features</h3>
+  <ul>
+    <li>High-quality natural ingredients</li>
+    <li>Scientifically proven formula</li>
+    <li>Fast-acting results</li>
+    <li>Money-back guarantee</li>
+  </ul>
+
+  <h3>Customer Reviews</h3>
+  <blockquote>
+    "Amazing results! I noticed improvements within just a few days of use." -
+    John D.
+  </blockquote>
+
+  <blockquote>
+    "Great product, exactly as described. Fast shipping too!" - Sarah M.
+  </blockquote>
+
+  <p>The order form should appear below this content...</p>
+</UniversalAdultLayout>

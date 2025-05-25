@@ -13,23 +13,23 @@ type ColorClasses = {
   [key in 'blue' | 'green' | 'yellow' | 'red']: string;
 };
 
-export default function CTAButton({ 
-  text = "Click Here", 
-  color = "blue", 
-  onClick, 
-  href 
+export default function CTAButton({
+  text = 'Click Here',
+  color = 'blue',
+  onClick,
+  href,
 }: CTAButtonProps): JSX.Element {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  
+
   const colorClasses: ColorClasses = {
-    blue: "bg-blue-500 hover:bg-blue-600 text-white",
-    green: "bg-green-500 hover:bg-green-600 text-white",
-    yellow: "bg-yellow-400 hover:bg-yellow-500 text-gray-900",
-    red: "bg-red-500 hover:bg-red-600 text-white",
+    blue: 'bg-blue-500 hover:bg-blue-600 text-white',
+    green: 'bg-green-500 hover:bg-green-600 text-white',
+    yellow: 'bg-yellow-400 hover:bg-yellow-500 text-gray-900',
+    red: 'bg-red-500 hover:bg-red-600 text-white',
   };
-  
+
   const classes = `py-3 px-6 font-bold rounded-lg transition-colors ${colorClasses[color] || colorClasses.blue}`;
-  
+
   const handleClick = (e: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
     if (onClick) {
       onClick(e);
@@ -38,9 +38,9 @@ export default function CTAButton({
       window.location.href = href;
     }
   };
-  
+
   return (
-    <button 
+    <button
       class={classes}
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
@@ -50,4 +50,4 @@ export default function CTAButton({
       {isHovered && <span class="ml-2">→</span>}
     </button>
   );
-} 
+}

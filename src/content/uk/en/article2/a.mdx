@@ -1,20 +1,21 @@
 ---
-title: "Smart Home Security System"
+title: 'Smart Home Security System'
 ---
-import CTAButton from "../../../../components/CTAButton.jsx";
-import Testimonial from "../../../../components/Testimonial.jsx";
 
-# {import.meta.env.DEV ? 'Smart Home Security System' : '{_offer_value:product_name}'}
+import CTAButton from '../../../../components/CTAButton.jsx';
+import Testimonial from '../../../../components/Testimonial.jsx';
+
+# {import.meta.env.DEV ? 'Smart Home Security System' : '{\_offer_value:product_name}'}
 
 ## Protect Your Home with the Latest Technology
 
 Our advanced security system offers peace of mind with 24/7 monitoring and smart alerts.
 
 <div class="mt-6 mb-8">
-  <img 
-    src="./pic.webp" 
-    alt={import.meta.env.DEV ? 'Security System' : '{_offer_value:product_image_alt}'} 
-    class="rounded-lg shadow-md w-full max-w-md mx-auto"
+  <img
+    src="./pic.webp"
+    alt={import.meta.env.DEV ? 'Security System' : '{_offer_value:product_image_alt}'}
+    class="mx-auto w-full max-w-md rounded-lg shadow-md"
   />
 </div>
 
@@ -23,34 +24,42 @@ Our advanced security system offers peace of mind with 24/7 monitoring and smart
 - HD video surveillance with night vision
 - Motion detection with instant alerts
 - Smart home integration
-- {import.meta.env.DEV ? 'Easy DIY installation in minutes' : '{_offer_value:feature_4}'}
+- {import.meta.env.DEV ? 'Easy DIY installation in minutes' : '{\_offer_value:feature_4}'}
 
 ## Special UK Offer
 
-For a limited time, UK residents can get our premium package for just 
-**£{import.meta.env.DEV ? '199.99' : '{_offer_value:price}'}** 
-(Regular price: £{import.meta.env.DEV ? '299.99' : '{_offer_value:regular_price}'})
+For a limited time, UK residents can get our premium package for just
+**£{import.meta.env.DEV ? '199.99' : '{\_offer_value:price}'}**
+(Regular price: £{import.meta.env.DEV ? '299.99' : '{\_offer_value:regular_price}'})
 
 <div class="mt-6">
-  <CTAButton 
-    text={import.meta.env.DEV ? 'Secure Your Home Today' : '{_offer_value:cta_text}'} 
+  <CTAButton
+    text={import.meta.env.DEV ? 'Secure Your Home Today' : '{_offer_value:cta_text}'}
     color="blue"
     href={import.meta.env.DEV ? '#order-now' : '{_offer_value:cta_url}'}
   />
 </div>
 
-<div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4">
-  <Testimonial 
-    quote={import.meta.env.DEV ? "The system was incredibly easy to set up and the app is very user-friendly. Excellent value for money." : "{_offer_value:testimonial_1_text}"}
-    author={import.meta.env.DEV ? "James Wilson" : "{_offer_value:testimonial_1_author}"}
-    role={import.meta.env.DEV ? "London, UK" : "{_offer_value:testimonial_1_location}"}
+<div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2">
+  <Testimonial
+    quote={
+      import.meta.env.DEV
+        ? 'The system was incredibly easy to set up and the app is very user-friendly. Excellent value for money.'
+        : '{_offer_value:testimonial_1_text}'
+    }
+    author={import.meta.env.DEV ? 'James Wilson' : '{_offer_value:testimonial_1_author}'}
+    role={import.meta.env.DEV ? 'London, UK' : '{_offer_value:testimonial_1_location}'}
     theme="primary"
   />
-  
-  <Testimonial 
-    quote={import.meta.env.DEV ? "I feel so much safer now with this system installed. The night vision cameras are brilliant!" : "{_offer_value:testimonial_2_text}"}
-    author={import.meta.env.DEV ? "Emma Thompson" : "{_offer_value:testimonial_2_author}"}
-    role={import.meta.env.DEV ? "Manchester, UK" : "{_offer_value:testimonial_2_location}"}
+
+  <Testimonial
+    quote={
+      import.meta.env.DEV
+        ? 'I feel so much safer now with this system installed. The night vision cameras are brilliant!'
+        : '{_offer_value:testimonial_2_text}'
+    }
+    author={import.meta.env.DEV ? 'Emma Thompson' : '{_offer_value:testimonial_2_author}'}
+    role={import.meta.env.DEV ? 'Manchester, UK' : '{_offer_value:testimonial_2_location}'}
     theme="primary"
   />
-</div> 
+</div>

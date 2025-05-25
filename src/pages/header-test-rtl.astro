@@ -1,0 +1,46 @@
+---
+import UniversalAdultLayout from '../layouts/base/UniversalAdultLayout.astro';
+---
+
+<UniversalAdultLayout
+  title="اختبار الهيدر المتجاوب"
+  description="اختبار الهيدر المتجاوب مع قائمة البرجر"
+  country="iq"
+  language="ar"
+  themeColor="light"
+>
+  <div style="min-height: calc(100vh - 200px); padding: 2rem;">
+    <h1>اختبار الهيدر المتجاوب</h1>
+    <p>
+      هذه الصفحة تُظهر عمل الهيدر المتجاوب مع قائمة البرجر للغات من اليمين
+      لليسار.
+    </p>
+
+    <h2>الميزات:</h2>
+    <ul>
+      <li>✅ التنقل على سطح المكتب مع الحدود</li>
+      <li>✅ قائمة البرجر للجوال</li>
+      <li>✅ انتقالات سلسة</li>
+      <li>✅ ترتيب طبقات مناسب</li>
+      <li>✅ منع التمرير عند فتح القائمة</li>
+      <li>✅ إغلاق القائمة بالنقر خارجها</li>
+      <li>✅ دعم كامل للغات RTL</li>
+    </ul>
+
+    <h2>كيفية الاختبار:</h2>
+    <ol>
+      <li>قم بتغيير حجم المتصفح لحجم الجوال (أقل من 768px)</li>
+      <li>انقر على قائمة البرجر (أيقونة الهامبرجر)</li>
+      <li>يجب أن تنزلق القائمة من الأعلى</li>
+      <li>انقر على عنصر التنقل أو خارج القائمة للإغلاق</li>
+    </ol>
+
+    <div
+      style="height: 800px; background: linear-gradient(45deg, #f0f0f0, #e0e0e0); margin: 2rem 0; border-radius: 8px; display: flex; align-items: center; justify-content: center;"
+    >
+      <p style="font-size: 1.2rem; color: #666;">
+        منطقة اختبار التمرير - لا يجب أن يتمرر المحتوى عند فتح قائمة الجوال
+      </p>
+    </div>
+  </div>
+</UniversalAdultLayout>

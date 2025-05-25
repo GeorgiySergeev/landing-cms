@@ -33,11 +33,11 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .adult-landing .hero-content {
     width: 50%;
   }
-  
+
   .adult-landing .hero-image {
     width: 45%;
   }
@@ -142,7 +142,7 @@
 }
 
 .adult-landing .section-title:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -236,7 +236,7 @@
 }
 
 .adult-landing .category-card:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -398,7 +398,7 @@
 }
 
 .adult-landing .benefits-list li:before {
-  content: "✓";
+  content: '✓';
   position: absolute;
   left: 0;
   color: #10b981;
@@ -430,7 +430,7 @@
   font-weight: 500;
 }
 
-.adult-landing input, 
+.adult-landing input,
 .adult-landing select {
   width: 100%;
   padding: 0.75rem 1rem;
@@ -440,7 +440,7 @@
   color: #f8fafc;
 }
 
-.adult-landing input:focus, 
+.adult-landing input:focus,
 .adult-landing select:focus {
   outline: none;
   border-color: #d41e3b;
@@ -503,12 +503,12 @@
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(212, 30, 59, 0.7);
   }
-  
+
   70% {
     transform: scale(1);
     box-shadow: 0 0 0 10px rgba(212, 30, 59, 0);
   }
-  
+
   100% {
     transform: scale(0.95);
     box-shadow: 0 0 0 0 rgba(212, 30, 59, 0);
@@ -542,7 +542,7 @@
 }
 
 .adult-landing .content-container h2:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -584,4 +584,4 @@
 .adult-landing .content-container strong {
   color: #eab308;
   font-weight: 700;
-} 
+}

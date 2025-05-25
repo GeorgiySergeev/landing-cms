@@ -17,7 +17,7 @@ This project provides a framework for creating landing pages that are:
 ```
 ├── src/
 │   ├── content/       # MDX content organized by country/language
-│   ├── layouts/       
+│   ├── layouts/
 │   │   ├── base/      # Base layout components
 │   │   ├── locale/    # Country/language-specific layout overrides
 │   │   └── getLayout.js # Layout resolution system
@@ -99,7 +99,7 @@ The system supports different themes based on region:
 
 - Default theme: Used for `us`, `uk`
 - Arabic theme: Used for `ar` (with RTL support)
-- Chinese theme: Used for `cn` 
+- Chinese theme: Used for `cn`
 - German theme: Used for `de`
 
 Language and text direction are automatically set based on these themes.

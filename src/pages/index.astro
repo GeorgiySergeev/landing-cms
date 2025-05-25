@@ -16,12 +16,16 @@ import { landings } from '../landings.ts';
       <div class="container mx-auto">
         <div>
           <h1 class="text-3xl font-bold">Isolated Landing Pages System</h1>
-          <p class="mt-2">A system for generating optimized and isolated landing pages</p>
+          <p class="mt-2">
+            A system for generating optimized and isolated landing pages
+          </p>
         </div>
         <nav>
           <ul class="flex mt-4">
             <li><a href="/" class="mr-4 hover:underline">Home</a></li>
-            <li><a href="/examples" class="mr-4 hover:underline">Examples</a></li>
+            <li>
+              <a href="/examples" class="mr-4 hover:underline">Examples</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -30,20 +34,25 @@ import { landings } from '../landings.ts';
       <section class="py-6 mb-8">
         <div class="container p-6 rounded bg-blue-100 mx-auto">
           <h2 class="text-2xl font-bold mb-4">Available Landing Pages</h2>
-          <p class="mb-4">These are the landing pages configured in the system:</p>
+          <p class="mb-4">
+            These are the landing pages configured in the system:
+          </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {
-              landings.map((landing) => (
+              landings.map(landing => (
                 <div class="border rounded-lg p-4 hover:bg-blue-50 transition-colors">
                   <h3 class="font-bold">
-                    {landing.country.toUpperCase()}/{landing.language}/{landing.article}/
-                    {landing.variant}
+                    {landing.country.toUpperCase()}/{landing.language}/
+                    {landing.article}/{landing.variant}
                   </h3>
-                  <p class="text-sm text-gray-600 mb-2">Layout: {landing.layout}</p>
+                  <p class="text-sm text-gray-600 mb-2">
+                    Layout: {landing.layout}
+                  </p>
                   <a
                     href={`/landing/${landing.layout}/${landing.country}/${landing.language}/${landing.article}/${landing.variant}/`}
-                    class="text-green-600 hover:underline transition-all">
+                    class="text-green-600 hover:underline transition-all"
+                  >
                     View Landing Page
                   </a>
                 </div>
@@ -57,19 +66,25 @@ import { landings } from '../landings.ts';
         <div class="container mx-auto">
           <h2 class="text-2xl font-bold mb-4">Development Server</h2>
           <p>Run the following command to start the development server:</p>
-          <pre class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">npm run dev</pre>
+          <pre
+            class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">npm run dev</pre>
         </div>
       </section>
 
       <section class="bg-white rounded-lg shadow p-6">
         <div class="container mx-auto">
           <h2 class="text-2xl font-bold mb-4">Build Isolated Pages</h2>
-          <p>Run the following command to build all landing pages as isolated packages:</p>
+          <p>
+            Run the following command to build all landing pages as isolated
+            packages:
+          </p>
           <pre
             class="bg-gray-800 text-white p-4 rounded-lg mt-2 overflow-x-auto">npm run build:isolated</pre>
 
           <p class="mt-4">
-            The isolated packages will be available in the <code>dist-isolated</code> directory.
+            The isolated packages will be available in the <code
+              >dist-isolated</code
+            > directory.
           </p>
         </div>
       </section>

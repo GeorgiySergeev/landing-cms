@@ -41,11 +41,11 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .product-landing .hero-content {
     width: 50%;
   }
-  
+
   .product-landing .hero-image {
     width: 45%;
   }
@@ -96,7 +96,7 @@
 }
 
 .product-landing .benefits-list li::before {
-  content: "▶";
+  content: '▶';
   position: absolute;
   left: 0;
   color: #c8a158;
@@ -190,11 +190,11 @@
   .product-landing .benefits-content {
     flex-direction: row;
   }
-  
+
   .product-landing .benefits-cta {
     width: 50%;
   }
-  
+
   .product-landing .intimate-image {
     width: 50%;
   }
@@ -275,7 +275,7 @@
 }
 
 .product-landing .product-features li::before {
-  content: "▶";
+  content: '▶';
   position: absolute;
   left: 0;
   color: #ffcc00;
@@ -299,11 +299,11 @@
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .product-landing .guarantee-content {
     width: 45%;
   }
-  
+
   .product-landing .product-image-large {
     width: 50%;
   }
@@ -328,7 +328,7 @@
 }
 
 .product-landing .guarantee-content li::before {
-  content: "✓";
+  content: '✓';
   position: absolute;
   left: 0;
   color: #00cc66;
@@ -389,11 +389,11 @@
   .product-landing .order-content {
     flex-direction: row;
   }
-  
+
   .product-landing .product-display {
     width: 50%;
   }
-  
+
   .product-landing .order-form {
     width: 50%;
   }
@@ -556,7 +556,7 @@
 }
 
 .product-landing .section-title:after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -641,12 +641,12 @@
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
   }
-  
+
   70% {
     transform: scale(1.05);
     box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
   }
-  
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
@@ -656,4 +656,4 @@
 .product-landing .order-button,
 .product-landing .limited-offer {
   animation: pulse 2s infinite;
-} 
+}

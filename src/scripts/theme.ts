@@ -20,7 +20,7 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 
     // Modern browsers
     if (colorSchemeQuery.addEventListener) {
-      colorSchemeQuery.addEventListener('change', (e) => {
+      colorSchemeQuery.addEventListener('change', e => {
         // Only apply if the user hasn't set a preference
         if (!localStorage.getItem('theme')) {
           if (e.matches) {

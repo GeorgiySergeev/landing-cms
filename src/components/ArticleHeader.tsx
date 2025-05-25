@@ -13,7 +13,7 @@ interface ArticleHeaderProps {
   authorAvatar?: string;
 }
 
-export default function ArticleHeader({ 
+export default function ArticleHeader({
   title,
   subtitle,
   category,
@@ -21,49 +21,47 @@ export default function ArticleHeader({
   readTime,
   coverImage,
   authorName,
-  authorAvatar
+  authorAvatar,
 }: ArticleHeaderProps): JSX.Element {
   const formattedDate = new Date(publishDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
-    day: 'numeric'
+    day: 'numeric',
   });
-  
+
   return (
-    <div className="w-full mb-12">
+    <div className="mb-12 w-full">
       {/* Category badge */}
       {category && (
         <div className="mb-4">
-          <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-800 rounded-full">
+          <span className="inline-block rounded-full bg-gray-100 px-3 py-1 text-sm font-medium text-gray-800">
             {category}
           </span>
         </div>
       )}
-      
+
       {/* Title */}
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-cairo">
+      <h1 className="font-cairo mb-4 text-4xl font-bold text-gray-900 md:text-5xl">
         {title}
       </h1>
-      
+
       {/* Subtitle if present */}
-      {subtitle && (
-        <p className="text-xl text-gray-600 mb-6">
-          {subtitle}
-        </p>
-      )}
-      
+      {subtitle && <p className="mb-6 text-xl text-gray-600">{subtitle}</p>}
+
       {/* Author and metadata row */}
-      <div className="flex items-center space-x-4 mb-8">
+      <div className="mb-8 flex items-center space-x-4">
         {authorAvatar && (
-          <img 
-            src={authorAvatar} 
-            alt={authorName || "Author"} 
-            className="w-12 h-12 rounded-full object-cover"
+          <img
+            src={authorAvatar}
+            alt={authorName || 'Author'}
+            className="h-12 w-12 rounded-full object-cover"
           />
         )}
         <div>
-          {authorName && <p className="font-medium text-gray-900">{authorName}</p>}
-          <div className="flex items-center text-sm text-gray-500 space-x-2">
+          {authorName && (
+            <p className="font-medium text-gray-900">{authorName}</p>
+          )}
+          <div className="flex items-center space-x-2 text-sm text-gray-500">
             <span>{formattedDate}</span>
             {readTime && (
               <>
@@ -74,17 +72,17 @@ export default function ArticleHeader({
           </div>
         </div>
       </div>
-      
+
       {/* Cover image */}
       {coverImage && (
-        <div className="rounded-lg overflow-hidden mb-8">
-          <img 
-            src={coverImage} 
-            alt={title} 
-            className="w-full h-auto object-cover"
+        <div className="mb-8 overflow-hidden rounded-lg">
+          <img
+            src={coverImage}
+            alt={title}
+            className="h-auto w-full object-cover"
           />
         </div>
       )}
     </div>
   );
-} 
+}

@@ -1,0 +1,1 @@
+<span style="color: red;">**Attention!** Especially for our readers we are placing a direct online form for [PRODUCT_NAME]. In addition, all our readers get additional discounts on [PRODUCT_NAME] when ordering during the promotion days (from **[date-7]** to **[date-0]** inclusive).</span>

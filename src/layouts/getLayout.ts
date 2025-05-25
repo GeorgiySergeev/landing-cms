@@ -28,13 +28,20 @@ const templateLayouts = import.meta.glob('./templates/**/*.astro');
 export async function getLayout(
   layoutName: string,
   country: Country,
-  language: string,
+  language: string
 ): Promise<LayoutResult> {
   const theme = getThemeFromCountry(country);
 
-  // Special case for UniversalAdultLayout
+  // Special case for UniversalAdultLayout (base layout)
   if (layoutName === 'UniversalAdultLayout') {
     const mod = await baseLayouts['./base/UniversalAdultLayout.astro']();
+    return { Component: (mod as any).default, theme };
+  }
+
+  // Special case for NewsLayout - now it's a template, redirect to appropriate base layout
+  if (layoutName === 'NewsLayout') {
+    // For NewsLayout, use BaseLayout as the base and let templates handle composition
+    const mod = await baseLayouts['./base/BaseLayout.astro']();
     return { Component: (mod as any).default, theme };
   }
 
@@ -51,12 +58,18 @@ export async function getLayout(
   // Support both one-level and two-level template directories
   const templateKey1 = `./templates/${layoutName}.astro`;
   const templateKey2 = `./templates/${theme}/${layoutName}.astro`;
+  const templateKey3 = `./templates/news/${layoutName}.astro`; // For news templates
+
   if (templateLayouts[templateKey1]) {
     const mod = await templateLayouts[templateKey1]!();
     return { Component: (mod as any).default, theme };
   }
   if (templateLayouts[templateKey2]) {
     const mod = await templateLayouts[templateKey2]!();
+    return { Component: (mod as any).default, theme };
+  }
+  if (templateLayouts[templateKey3]) {
+    const mod = await templateLayouts[templateKey3]!();
     return { Component: (mod as any).default, theme };
   }
 
@@ -83,10 +96,16 @@ export async function getContentLayout(
     language?: string;
     customTemplatePath?: string; // Add support for custom template path
     isAdult?: boolean; // Flag for adult content
-  } = {},
+  } = {}
 ): Promise<LayoutResult> {
-  const { useLocalization = true, language = 'en', customTemplatePath, isAdult = false } = options;
+  const {
+    useLocalization = true,
+    language = 'en',
+    customTemplatePath,
+    isAdult = false,
+  } = options;
   const theme = getThemeFromCountry(country);
+
   // Special case for adult content type or isAdult flag - use the universal adult layout
   if (contentType === 'adult' || isAdult) {
     try {
@@ -95,7 +114,7 @@ export async function getContentLayout(
     } catch (error) {
       console.error(
         'Failed to load UniversalAdultLayout, falling back to standard resolution',
-        error,
+        error
       );
       // If adult layout loading fails, fall through to standard resolution
     }
@@ -112,7 +131,10 @@ export async function getContentLayout(
       const customLayout = await import(fullPath);
       return { Component: customLayout.default, theme };
     } catch (error) {
-      console.error(`Custom template at ${customTemplatePath} not found!`, error);
+      console.error(
+        `Custom template at ${customTemplatePath} not found!`,
+        error
+      );
       // If custom template loading fails, fall through to standard resolution
     }
   }
@@ -136,7 +158,7 @@ export async function getContentLayout(
     } catch (error) {
       // If locale-specific template doesn't exist, continue to base template
       console.log(
-        `No locale-specific template found for ${normalizedTemplatePath} and theme ${theme}. Using base template.`,
+        `No locale-specific template found for ${normalizedTemplatePath} and theme ${theme}. Using base template.`
       );
     }
   }
@@ -159,6 +181,6 @@ export async function getContentLayout(
   }
 
   throw new Error(
-    `Layout not found: ${normalizedTemplatePath} and fallback ${fallbackKey} do not exist.`,
+    `Layout not found: ${normalizedTemplatePath} and fallback ${fallbackKey} do not exist.`
   );
 }

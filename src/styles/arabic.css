@@ -10,7 +10,7 @@
   --header-background: #ffffff;
   --footer-background: #1f2937;
   --footer-text: #f9fafb;
-  
+
   font-family: 'Cairo', sans-serif;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -31,4 +31,4 @@
 .theme-arabic .no-rtl {
   direction: ltr;
   text-align: left;
-} 
+}

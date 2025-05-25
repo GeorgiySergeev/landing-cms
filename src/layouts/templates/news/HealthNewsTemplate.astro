@@ -1,5 +1,6 @@
 ---
-import NewsLayout from '../../base/NewsLayout.astro';
+import BaseLayout from '../../base/BaseLayout.astro';
+import NewsComponent from '../NewsComponent.astro';
 
 export interface Props {
   title: string;
@@ -36,6 +37,7 @@ export interface Props {
   themeColor?: string;
   showRelatedArticles?: boolean;
   relatedArticles?: any[];
+  country?: string;
 }
 
 const {
@@ -43,79 +45,160 @@ const {
   medicalDisclaimer = true,
   sourcesAndReferences = [],
   relatedConditions = [],
-  ...rest
+  ...newsProps
 } = Astro.props;
+
+// Determine theme based on country if needed
+function getCountryTheme(country: string | undefined | null) {
+  const countryThemes = {
+    ae: 'arabic',
+    sa: 'arabic',
+    eg: 'arabic',
+    cn: 'chinese',
+    jp: 'japanese',
+    de: 'german',
+    bd: 'bn-bd-adult',
+  };
+
+  const key = country?.toLowerCase() as keyof typeof countryThemes | undefined;
+  return (key && countryThemes[key]) || newsProps.themeColor;
+}
+
+const activeTheme = getCountryTheme(newsProps.country);
+
+// Props for BaseLayout
+const baseLayoutProps = {
+  title: newsProps.title,
+  description: newsProps.description,
+  lang: newsProps.lang,
+  dir: newsProps.dir,
+  themeColor: activeTheme,
+  country: newsProps.country,
+};
 ---
 
-<NewsLayout {...rest}>
-  <slot />
+<BaseLayout {...baseLayoutProps}>
+  <!-- Meta tags for health article -->
+  <slot name="head" slot="head">
+    {
+      newsProps.description && (
+        <meta name="description" content={newsProps.description} />
+      )
+    }
+    {
+      newsProps.publishDate && (
+        <meta
+          property="article:published_time"
+          content={newsProps.publishDate}
+        />
+      )
+    }
+    {
+      newsProps.modifiedDate && (
+        <meta
+          property="article:modified_time"
+          content={newsProps.modifiedDate}
+        />
+      )
+    }
+    {
+      newsProps.tags &&
+        newsProps.tags.map(tag => <meta property="article:tag" content={tag} />)
+    }
+    {
+      newsProps.country && (
+        <meta property="article:region" content={newsProps.country} />
+      )
+    }
+    {
+      newsProps.image && (
+        <meta property="og:image" content={newsProps.image.src} />
+      )
+    }
+    <meta property="article:section" content="Health" />
+  </slot>
 
-  {
-    expertReview && (
-      <div class="expert-review">
-        <h3>Expert Reviewed</h3>
-        <p>
-          This article was reviewed by <strong>{expertReview.name}</strong>,
-          {expertReview.credentials} on {expertReview.date}.
-        </p>
-      </div>
-    )
-  }
+  <!-- Use NewsComponent for article structure -->
+  <NewsComponent {...newsProps}>
+    <!-- Main article content slot -->
+    <slot />
 
-  {
-    medicalDisclaimer && (
-      <div class="medical-disclaimer">
-        <h3>Medical Disclaimer</h3>
-        <p>
-          This content is for informational and educational purposes only. It is not intended to
-          provide medical advice or to take the place of such advice or treatment from a personal
-          physician. All readers of this content are advised to consult their doctors or qualified
-          health professionals regarding specific health questions. Neither the publisher nor the
-          writer takes responsibility for possible health consequences of any person reading or
-          following the information in this article.
-        </p>
-      </div>
-    )
-  }
+    <!-- Health-specific content -->
+    {
+      expertReview && (
+        <div class="expert-review">
+          <h3>Expert Reviewed</h3>
+          <p>
+            This article was reviewed by <strong>{expertReview.name}</strong>,
+            {expertReview.credentials} on {expertReview.date}.
+          </p>
+        </div>
+      )
+    }
 
-  {
-    sourcesAndReferences.length > 0 && (
-      <div class="sources-references">
-        <h3>Sources & References</h3>
-        <ol>
-          {sourcesAndReferences.map((source) => (
-            <li>
-              {source.url ? (
-                <a href={source.url} target="_blank" rel="noopener noreferrer">
-                  {source.title}
+    {
+      medicalDisclaimer && (
+        <div class="medical-disclaimer">
+          <h3>Medical Disclaimer</h3>
+          <p>
+            This content is for informational and educational purposes only. It
+            is not intended to provide medical advice or to take the place of
+            such advice or treatment from a personal physician. All readers of
+            this content are advised to consult their doctors or qualified
+            health professionals regarding specific health questions. Neither
+            the publisher nor the writer takes responsibility for possible
+            health consequences of any person reading or following the
+            information in this article.
+          </p>
+        </div>
+      )
+    }
+
+    {
+      sourcesAndReferences.length > 0 && (
+        <div class="sources-references">
+          <h3>Sources & References</h3>
+          <ol>
+            {sourcesAndReferences.map(source => (
+              <li>
+                {source.url ? (
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {source.title}
+                  </a>
+                ) : (
+                  source.title
+                )}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    {
+      relatedConditions.length > 0 && (
+        <div class="related-conditions">
+          <h3>Related Conditions</h3>
+          <ul class="tags">
+            {relatedConditions.map(condition => (
+              <li>
+                <a
+                  href={`/conditions/${condition.toLowerCase().replace(/\s+/g, '-')}`}
+                >
+                  {condition}
                 </a>
-              ) : (
-                source.title
-              )}
-            </li>
-          ))}
-        </ol>
-      </div>
-    )
-  }
-
-  {
-    relatedConditions.length > 0 && (
-      <div class="related-conditions">
-        <h3>Related Conditions</h3>
-        <ul class="tags">
-          {relatedConditions.map((condition) => (
-            <li>
-              <a href={`/conditions/${condition.toLowerCase().replace(/\s+/g, '-')}`}>
-                {condition}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-</NewsLayout>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </NewsComponent>
+</BaseLayout>
 
 <style>
   .expert-review,

@@ -19,55 +19,65 @@ interface RelatedArticlesProps {
 
 export default function RelatedArticles({
   articles = [],
-  title = "Related Articles",
-  className = ""
+  title = 'Related Articles',
+  className = '',
 }: RelatedArticlesProps): JSX.Element {
   return (
     <div className={`my-12 ${className}`}>
-      <h2 className="text-2xl font-bold text-gray-900 mb-6 font-cairo">{title}</h2>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 className="font-cairo mb-6 text-2xl font-bold text-gray-900">
+        {title}
+      </h2>
+
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {articles.map((article, index) => (
-          <article key={index} className="bg-white border border-gray-200 rounded-lg overflow-hidden transition-shadow hover:shadow-md">
+          <article
+            key={index}
+            className="overflow-hidden rounded-lg border border-gray-200 bg-white transition-shadow hover:shadow-md"
+          >
             {/* Article thumbnail */}
             {article.thumbnail && (
               <a href={article.url} className="block">
-                <img 
-                  src={article.thumbnail} 
-                  alt={article.title} 
-                  className="w-full h-48 object-cover"
+                <img
+                  src={article.thumbnail}
+                  alt={article.title}
+                  className="h-48 w-full object-cover"
                 />
               </a>
             )}
-            
+
             <div className="p-4">
               {/* Category if present */}
               {article.category && (
                 <div className="mb-2">
-                  <span className="text-xs font-medium text-gray-600 uppercase tracking-wider">
+                  <span className="text-xs font-medium tracking-wider text-gray-600 uppercase">
                     {article.category}
                   </span>
                 </div>
               )}
-              
+
               {/* Title */}
-              <h3 className="text-lg font-bold mb-2 line-clamp-2">
-                <a href={article.url} className="text-gray-900 hover:text-gray-700">
+              <h3 className="mb-2 line-clamp-2 text-lg font-bold">
+                <a
+                  href={article.url}
+                  className="text-gray-900 hover:text-gray-700"
+                >
                   {article.title}
                 </a>
               </h3>
-              
+
               {/* Excerpt */}
               {article.excerpt && (
-                <p className="text-gray-600 text-sm mb-3 line-clamp-3">
+                <p className="mb-3 line-clamp-3 text-sm text-gray-600">
                   {article.excerpt}
                 </p>
               )}
-              
+
               {/* Metadata */}
               <div className="flex items-center text-xs text-gray-500">
                 {article.date && <span>{article.date}</span>}
-                {article.date && article.readTime && <span className="mx-2">•</span>}
+                {article.date && article.readTime && (
+                  <span className="mx-2">•</span>
+                )}
                 {article.readTime && <span>{article.readTime} min read</span>}
               </div>
             </div>
@@ -76,4 +86,4 @@ export default function RelatedArticles({
       </div>
     </div>
   );
-} 
+}

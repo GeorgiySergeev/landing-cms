@@ -1,0 +1,41 @@
+---
+import UniversalAdultLayout from '../layouts/base/UniversalAdultLayout.astro';
+---
+
+<UniversalAdultLayout
+  title="اختبار نموذج الطلب"
+  description="اختبار مكون نموذج الطلب المدمج"
+  country="iq"
+  language="ar"
+  productName="حبوب الطاقة القوية"
+  productPrice="150"
+  discountPercent="50"
+  oldPrice="300"
+  currency="IQD"
+  tags={['صحة', 'عافية', 'مكملات']}
+>
+  <h2>اختبار تكامل نموذج الطلب</h2>
+  <p>
+    تُظهر هذه الصفحة مكون OrderForm المدمج في UniversalAdultLayout باللغة
+    العربية.
+  </p>
+
+  <h3>مميزات المنتج</h3>
+  <ul>
+    <li>مكونات طبيعية عالية الجودة</li>
+    <li>تركيبة مُثبتة علمياً</li>
+    <li>نتائج سريعة المفعول</li>
+    <li>ضمان استرداد الأموال</li>
+  </ul>
+
+  <h3>آراء العملاء</h3>
+  <blockquote>
+    "نتائج مذهلة! لاحظت تحسناً خلال أيام قليلة من الاستخدام." - أحمد س.
+  </blockquote>
+
+  <blockquote>
+    "منتج رائع، تماماً كما هو موصوف. شحن سريع أيضاً!" - فاطمة م.
+  </blockquote>
+
+  <p>يجب أن يظهر نموذج الطلب أسفل هذا المحتوى...</p>
+</UniversalAdultLayout>

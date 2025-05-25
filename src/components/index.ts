@@ -6,4 +6,5 @@ export { default as ImageWithCaption } from './ImageWithCaption';
 export { default as AuthorBio } from './AuthorBio';
 export { default as RelatedArticles } from './RelatedArticles';
 export { default as Testimonial } from './Testimonial';
-export { default as CTAButton } from './CTAButton'; 
+export { default as CTAButton } from './CTAButton';
+export { default as OrderForm } from './OrderForm';

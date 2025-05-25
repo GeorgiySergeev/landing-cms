@@ -2,129 +2,182 @@
 import { getContentLayout } from '../../layouts/getLayout';
 
 // Get the appropriate layout based on content type and category
-const { Component: Layout } = await getContentLayout(
-  'media',
-  'video',
-  'us'
-);
+const { Component: Layout } = await getContentLayout('media', 'video', 'us');
 
 // Page-specific props
 const pageProps = {
-  title: "Breaking: Major Climate Agreement Reached at Global Summit",
-  description: "World leaders announce historic climate agreement with ambitious emission reduction targets.",
-  publishDate: "2023-11-12T18:30:00Z",
-  videoSrc: "https://example.com/videos/climate-summit-agreement.mp4",
-  videoPoster: "https://images.unsplash.com/photo-1520190282873-afe1285c9a2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80",
-  videoCaption: "World leaders at the Global Climate Summit announcing the new emissions agreement.",
-  videoCredits: "Global News Network",
+  title: 'Breaking: Major Climate Agreement Reached at Global Summit',
+  description:
+    'World leaders announce historic climate agreement with ambitious emission reduction targets.',
+  publishDate: '2023-11-12T18:30:00Z',
+  videoSrc: 'https://example.com/videos/climate-summit-agreement.mp4',
+  videoPoster:
+    'https://images.unsplash.com/photo-1520190282873-afe1285c9a2a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080&q=80',
+  videoCaption:
+    'World leaders at the Global Climate Summit announcing the new emissions agreement.',
+  videoCredits: 'Global News Network',
   breakingNews: true,
   liveEvent: false,
   networkBranding: {
-    name: "Global News Network",
-    logo: "https://placehold.co/200x50/0066cc/white?text=GNN"
+    name: 'Global News Network',
+    logo: 'https://placehold.co/200x50/0066cc/white?text=GNN',
   },
   author: {
-    name: "Sarah Johnson",
-    image: "https://randomuser.me/api/portraits/women/22.jpg",
-    title: "Senior International Correspondent"
+    name: 'Sarah Johnson',
+    image: 'https://randomuser.me/api/portraits/women/22.jpg',
+    title: 'Senior International Correspondent',
   },
-  category: "Environment",
-  tags: ["climate change", "global summit", "emissions", "international agreement"],
+  category: 'Environment',
+  tags: [
+    'climate change',
+    'global summit',
+    'emissions',
+    'international agreement',
+  ],
   relatedVideos: [
     {
-      title: "Analysis: What the Climate Agreement Means for Developing Nations",
-      thumbnail: "https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
-      url: "/videos/climate-agreement-developing-nations",
-      duration: "8:24"
+      title:
+        'Analysis: What the Climate Agreement Means for Developing Nations',
+      thumbnail:
+        'https://images.unsplash.com/photo-1621452773781-0f992fd1f5cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80',
+      url: '/videos/climate-agreement-developing-nations',
+      duration: '8:24',
     },
     {
-      title: "Behind the Scenes: The Negotiations That Saved the Climate Summit",
-      thumbnail: "https://images.unsplash.com/photo-1551836022-8b2858c9c69b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
-      url: "/videos/climate-summit-negotiations",
-      duration: "12:51"
+      title:
+        'Behind the Scenes: The Negotiations That Saved the Climate Summit',
+      thumbnail:
+        'https://images.unsplash.com/photo-1551836022-8b2858c9c69b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80',
+      url: '/videos/climate-summit-negotiations',
+      duration: '12:51',
     },
     {
-      title: "Climate Activists React to the New Global Agreement",
-      thumbnail: "https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
-      url: "/videos/activists-react-climate-agreement",
-      duration: "5:32"
+      title: 'Climate Activists React to the New Global Agreement',
+      thumbnail:
+        'https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80',
+      url: '/videos/activists-react-climate-agreement',
+      duration: '5:32',
     },
     {
-      title: "The Technology Behind Carbon Capture: A Key Component of the Agreement",
-      thumbnail: "https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80",
-      url: "/videos/carbon-capture-technology",
-      duration: "10:15"
-    }
-  ]
+      title:
+        'The Technology Behind Carbon Capture: A Key Component of the Agreement',
+      thumbnail:
+        'https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=340&q=80',
+      url: '/videos/carbon-capture-technology',
+      duration: '10:15',
+    },
+  ],
 };
 ---
 
 <Layout {...pageProps}>
   <p class="lead">
-    In a historic breakthrough, world leaders at the Global Climate Summit have reached a landmark agreement that commits all participating nations to cutting carbon emissions by 60% before 2040.
+    In a historic breakthrough, world leaders at the Global Climate Summit have
+    reached a landmark agreement that commits all participating nations to
+    cutting carbon emissions by 60% before 2040.
   </p>
-  
+
   <p>
-    The agreement, which took more than two weeks of intense negotiations, represents the most ambitious global climate pact in history. It includes mechanisms for financial support to developing nations and establishes a new international body to monitor compliance.
+    The agreement, which took more than two weeks of intense negotiations,
+    represents the most ambitious global climate pact in history. It includes
+    mechanisms for financial support to developing nations and establishes a new
+    international body to monitor compliance.
   </p>
-  
+
   <h2>Key Points of the Agreement</h2>
-  
+
   <ul>
-    <li>Global commitment to reduce emissions by 60% by 2040 (compared to 2010 levels)</li>
-    <li>$300 billion annual fund to help developing nations transition to clean energy</li>
+    <li>
+      Global commitment to reduce emissions by 60% by 2040 (compared to 2010
+      levels)
+    </li>
+    <li>
+      $300 billion annual fund to help developing nations transition to clean
+      energy
+    </li>
     <li>Phasing out of coal power in developed nations by 2035</li>
-    <li>Creation of an International Climate Compliance Committee with enforcement powers</li>
-    <li>Recognition of "loss and damage" claims for nations affected by climate disasters</li>
+    <li>
+      Creation of an International Climate Compliance Committee with enforcement
+      powers
+    </li>
+    <li>
+      Recognition of "loss and damage" claims for nations affected by climate
+      disasters
+    </li>
   </ul>
-  
+
   <p>
-    "This is a pivotal moment in our collective fight against climate change," said UN Secretary-General Antonio Santos. "For the first time, we have an agreement with real teeth and genuine commitment from all major emitters."
+    "This is a pivotal moment in our collective fight against climate change,"
+    said UN Secretary-General Antonio Santos. "For the first time, we have an
+    agreement with real teeth and genuine commitment from all major emitters."
   </p>
-  
+
   <div class="quote-block">
     <blockquote>
-      "We have turned a corner today. This agreement proves that global cooperation is possible even in these divided times. Our children and grandchildren will look back on this day as the moment when humanity finally took climate change seriously."
+      "We have turned a corner today. This agreement proves that global
+      cooperation is possible even in these divided times. Our children and
+      grandchildren will look back on this day as the moment when humanity
+      finally took climate change seriously."
     </blockquote>
     <cite>— Elina Kekkonen, Finnish Prime Minister</cite>
   </div>
-  
+
   <h2>Market Reaction</h2>
-  
+
   <p>
-    Financial markets have responded positively to the announcement, with renewable energy stocks surging in after-hours trading. Traditional fossil fuel companies have seen mixed reactions, with those that have invested heavily in alternative energy technologies performing better than pure-play oil and gas firms.
+    Financial markets have responded positively to the announcement, with
+    renewable energy stocks surging in after-hours trading. Traditional fossil
+    fuel companies have seen mixed reactions, with those that have invested
+    heavily in alternative energy technologies performing better than pure-play
+    oil and gas firms.
   </p>
-  
+
   <p>
-    The agreement has also triggered a rally in "green bonds" and other climate-focused investment vehicles, as analysts predict a massive increase in government-backed climate initiatives worldwide.
+    The agreement has also triggered a rally in "green bonds" and other
+    climate-focused investment vehicles, as analysts predict a massive increase
+    in government-backed climate initiatives worldwide.
   </p>
-  
+
   <h2>Industry Response</h2>
-  
+
   <p>
-    Major corporations have begun issuing statements in response to the agreement, with many pledging to align their own emission targets with the new global standards. Tech giants and manufacturing conglomerates are among the first to publicly endorse the pact.
+    Major corporations have begun issuing statements in response to the
+    agreement, with many pledging to align their own emission targets with the
+    new global standards. Tech giants and manufacturing conglomerates are among
+    the first to publicly endorse the pact.
   </p>
-  
+
   <p>
-    "This provides the regulatory certainty that businesses have been asking for," said Maria Chen, chief sustainability officer at GlobalTech. "We can now invest with confidence in long-term decarbonization strategies."
+    "This provides the regulatory certainty that businesses have been asking
+    for," said Maria Chen, chief sustainability officer at GlobalTech. "We can
+    now invest with confidence in long-term decarbonization strategies."
   </p>
-  
+
   <p>
-    However, organizations representing carbon-intensive industries have expressed concern about the aggressive timeline, with some warning about potential job losses and economic disruption if the transition is not managed carefully.
+    However, organizations representing carbon-intensive industries have
+    expressed concern about the aggressive timeline, with some warning about
+    potential job losses and economic disruption if the transition is not
+    managed carefully.
   </p>
-  
+
   <h2>What's Next</h2>
-  
+
   <p>
-    Countries will now begin the process of incorporating the agreement into national laws and policies. The first progress reports are due in 18 months, with the new monitoring body scheduled to begin operations in January.
+    Countries will now begin the process of incorporating the agreement into
+    national laws and policies. The first progress reports are due in 18 months,
+    with the new monitoring body scheduled to begin operations in January.
   </p>
-  
+
   <p>
-    Climate experts say the next few years will be critical in determining whether the ambitious targets can be met, as countries must quickly develop and implement detailed plans for transforming their energy, transportation, and industrial sectors.
+    Climate experts say the next few years will be critical in determining
+    whether the ambitious targets can be met, as countries must quickly develop
+    and implement detailed plans for transforming their energy, transportation,
+    and industrial sectors.
   </p>
-  
+
   <p>
-    Our team will continue to provide updates and analysis as governments begin to announce their implementation strategies in the coming weeks.
+    Our team will continue to provide updates and analysis as governments begin
+    to announce their implementation strategies in the coming weeks.
   </p>
 </Layout>
 
@@ -135,20 +188,20 @@ const pageProps = {
     font-weight: 500;
     margin-bottom: 1.5rem;
   }
-  
+
   h2 {
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 1.5rem;
   }
-  
+
   .quote-block {
     margin: 2rem 0;
     padding: 1.5rem;
     background-color: #f8f9fa;
     border-radius: 0.5rem;
   }
-  
+
   .quote-block blockquote {
     font-size: 1.125rem;
     font-style: italic;
@@ -156,19 +209,19 @@ const pageProps = {
     padding: 0;
     border: none;
   }
-  
+
   .quote-block cite {
     display: block;
     font-style: normal;
     font-weight: 600;
   }
-  
+
   ul {
     margin: 1.5rem 0;
     padding-left: 1.5rem;
   }
-  
+
   li {
     margin-bottom: 0.5rem;
   }
-</style> 
+</style>

@@ -11,7 +11,7 @@ function _applyTheme(theme) {
     'theme-bn-bd-adult',
     'theme-default',
     'dark',
-    'light',
+    'light'
   );
 
   if (theme === 'dark') {
@@ -38,7 +38,8 @@ export function initializeTheme() {
 
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersDark =
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    window.matchMedia &&
+    window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   if (savedTheme) {
     _applyTheme(savedTheme);

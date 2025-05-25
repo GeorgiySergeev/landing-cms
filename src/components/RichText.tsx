@@ -6,13 +6,14 @@ interface RichTextProps {
   className?: string;
 }
 
-export default function RichText({ children, className = "" }: RichTextProps): JSX.Element {
+export default function RichText({
+  children,
+  className = '',
+}: RichTextProps): JSX.Element {
   return (
-    <div className={`prose prose-lg max-w-none ${className}`}>
-      {children}
-    </div>
+    <div className={`prose prose-lg max-w-none ${className}`}>{children}</div>
   );
 }
 
 // Add this to your tailwind.config.cjs in the plugins array:
-// require('@tailwindcss/typography'), 
+// require('@tailwindcss/typography'),

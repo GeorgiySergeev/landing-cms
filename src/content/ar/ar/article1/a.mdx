@@ -1,22 +1,23 @@
 ---
-title: "كريم ترطيب فائق الجودة"
+title: 'كريم ترطيب فائق الجودة'
 ---
-import CTAButton from "../../../../components/CTAButton.jsx";
-import Testimonial from "../../../../components/Testimonial.jsx";
+
+import CTAButton from '../../../../components/CTAButton.jsx';
+import Testimonial from '../../../../components/Testimonial.jsx';
 
 <div dir="rtl" class="text-right">
 
-# {import.meta.env.DEV ? 'كريم ترطيب فائق الجودة' : '{_offer_value:product_name}'}
+# {import.meta.env.DEV ? 'كريم ترطيب فائق الجودة' : '{\_offer_value:product_name}'}
 
 ## بشرة أكثر نعومة وشباباً
 
 اكتشف تركيبتنا المتطورة التي تساعد على ترطيب البشرة وإعادة حيويتها ونضارتها.
 
 <div class="mt-6 mb-8">
-  <img 
-    src="./pic.webp" 
-    alt={import.meta.env.DEV ? 'كريم الترطيب' : '{_offer_value:product_image_alt}'} 
-    class="rounded-lg shadow-md w-full max-w-md mx-auto"
+  <img
+    src="./pic.webp"
+    alt={import.meta.env.DEV ? 'كريم الترطيب' : '{_offer_value:product_image_alt}'}
+    class="mx-auto w-full max-w-md rounded-lg shadow-md"
   />
 </div>
 
@@ -25,29 +26,33 @@ import Testimonial from "../../../../components/Testimonial.jsx";
 - ترطيب عميق للبشرة
 - مكافحة علامات التقدم في السن
 - حماية من أشعة الشمس الضارة
-- {import.meta.env.DEV ? 'مكونات طبيعية 100%' : '{_offer_value:benefit_4}'}
+- {import.meta.env.DEV ? 'مكونات طبيعية 100%' : '{\_offer_value:benefit_4}'}
 
 ## عرض خاص لفترة محدودة
 
 لفترة محدودة، احصل على المنتج بسعر
-**{import.meta.env.DEV ? '١٩٩' : '{_offer_value:price}'} ريال** 
-(السعر العادي: {import.meta.env.DEV ? '٢٩٩' : '{_offer_value:regular_price}'} ريال)
+**{import.meta.env.DEV ? '١٩٩' : '{\_offer_value:price}'} ريال**
+(السعر العادي: {import.meta.env.DEV ? '٢٩٩' : '{\_offer_value:regular_price}'} ريال)
 
 <div class="mt-6">
-  <CTAButton 
-    text={import.meta.env.DEV ? 'اطلب الآن' : '{_offer_value:cta_text}'} 
+  <CTAButton
+    text={import.meta.env.DEV ? 'اطلب الآن' : '{_offer_value:cta_text}'}
     color="green"
     href={import.meta.env.DEV ? '#order-now' : '{_offer_value:cta_url}'}
   />
 </div>
 
 <div class="mt-10">
-  <Testimonial 
-    quote={import.meta.env.DEV ? "هذا المنتج رائع جداً! بشرتي أصبحت أكثر نعومة وإشراقاً بعد استخدامه لمدة أسبوعين فقط." : "{_offer_value:testimonial_1_text}"}
-    author={import.meta.env.DEV ? "سارة أحمد" : "{_offer_value:testimonial_1_author}"}
-    role={import.meta.env.DEV ? "عميل موثق" : "{_offer_value:testimonial_1_role}"}
+  <Testimonial
+    quote={
+      import.meta.env.DEV
+        ? 'هذا المنتج رائع جداً! بشرتي أصبحت أكثر نعومة وإشراقاً بعد استخدامه لمدة أسبوعين فقط.'
+        : '{_offer_value:testimonial_1_text}'
+    }
+    author={import.meta.env.DEV ? 'سارة أحمد' : '{_offer_value:testimonial_1_author}'}
+    role={import.meta.env.DEV ? 'عميل موثق' : '{_offer_value:testimonial_1_role}'}
     theme="primary"
   />
 </div>
 
-</div> 
+</div>
