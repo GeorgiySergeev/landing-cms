@@ -142,7 +142,7 @@ const OrderForm = ({
         <img
           src="/images/product-image.png"
           alt="Logo"
-          className={styles.formLogo}
+          className={styles.productImage}
         />
 
         {/* Form Title */}

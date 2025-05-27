@@ -41,6 +41,163 @@ function processLandingPages(dir, level = 0) {
   }
 }
 
+// Fix paths in HTML content
+function fixHtmlPaths(html, distDir, outputDir) {
+  // Fix CSS file paths from /src/styles/
+  html = html.replace(/href="\/src\/styles\/([^"]*\.css)"/g, (match, file) => {
+    const sourcePath = path.join(rootDir, 'src', 'styles', file);
+    if (fs.existsSync(sourcePath)) {
+      const fileName = path.basename(file);
+      const targetPath = path.join(outputDir, fileName);
+      if (!fs.existsSync(targetPath)) {
+        fs.copyFileSync(sourcePath, targetPath);
+        console.log(`Copied CSS file: ${file} -> ${fileName}`);
+      }
+      return `href="${fileName}"`;
+    }
+    // If file doesn't exist, comment it out
+    return `href="#" disabled`;
+  });
+
+  // Fix CSS file paths from /assets/
+  html = html.replace(/href="\/assets\/([^"]*\.css)"/g, (match, file) => {
+    const sourcePath = path.join(distDir, 'assets', file);
+    if (fs.existsSync(sourcePath)) {
+      const fileName = path.basename(file);
+      const targetPath = path.join(outputDir, fileName);
+      if (!fs.existsSync(targetPath)) {
+        fs.copyFileSync(sourcePath, targetPath);
+        console.log(`Copied CSS file: ${file} -> ${fileName}`);
+      }
+      return `href="${fileName}"`;
+    }
+    return match;
+  });
+
+  // Fix CSS file paths
+  html = html.replace(/href="\/([^"]*\.css)"/g, (match, file) => {
+    const sourcePath = path.join(distDir, file);
+    if (fs.existsSync(sourcePath)) {
+      const fileName = path.basename(file);
+      const targetPath = path.join(outputDir, fileName);
+      if (!fs.existsSync(targetPath)) {
+        fs.copyFileSync(sourcePath, targetPath);
+        console.log(`Copied CSS file: ${file} -> ${fileName}`);
+      }
+      return `href="${fileName}"`;
+    }
+    return match;
+  });
+
+  // Fix CSS paths with ./
+  html = html.replace(/href="\/\.\/([^"]*\.css)"/g, 'href="$1"');
+
+  // Fix image paths
+  html = html.replace(
+    /src="\/([^"]*\.(jpe?g|png|gif|webp|svg))"/g,
+    (match, file) => {
+      const sourcePath = path.join(distDir, file);
+      if (fs.existsSync(sourcePath)) {
+        const fileName = path.basename(file);
+        const targetPath = path.join(outputDir, fileName);
+        if (!fs.existsSync(targetPath)) {
+          fs.copyFileSync(sourcePath, targetPath);
+        }
+        return `src="${fileName}"`;
+      }
+      return match;
+    }
+  );
+
+  // Fix image paths with ./
+  html = html.replace(
+    /src="\/\.\/([^"]*\.(jpe?g|png|gif|webp|svg))"/g,
+    'src="$1"'
+  );
+
+  // Fix CSS background-image paths
+  html = html.replace(
+    /background-image:\s*url\(\/([^)]+)\)/g,
+    (match, file) => {
+      const sourcePath = path.join(distDir, file);
+      if (fs.existsSync(sourcePath)) {
+        const fileName = path.basename(file);
+        const targetPath = path.join(outputDir, fileName);
+        if (!fs.existsSync(targetPath)) {
+          fs.copyFileSync(sourcePath, targetPath);
+        }
+        return `background-image: url(${fileName})`;
+      }
+      // If file doesn't exist, replace with a placeholder
+      return 'background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmOGY5ZmEiLz48L3N2Zz4=)';
+    }
+  );
+
+  // Remove or comment out references to non-existent CSS files
+  html = html.replace(/href="#" disabled/g, 'href="#" disabled');
+  html = html.replace(
+    /<link rel="stylesheet"\s+href="#" disabled>/g,
+    '<!-- <link rel="stylesheet" href="#" disabled> -->'
+  );
+
+  // Fix onerror attributes for images
+  html = html.replace(
+    /onerror="this\.src='\/[^']*'; this\.onerror=null;"/g,
+    'onerror="this.style.display=\'none\'; this.onerror=null;"'
+  );
+
+  // Fix script src paths
+  html = html.replace(/src="\/([^"]*\.js)"/g, (match, file) => {
+    const sourcePath = path.join(distDir, file);
+    if (fs.existsSync(sourcePath)) {
+      const fileName = path.basename(file);
+      const targetPath = path.join(outputDir, fileName);
+      if (!fs.existsSync(targetPath)) {
+        fs.copyFileSync(sourcePath, targetPath);
+      }
+      return `src="${fileName}"`;
+    }
+    return match;
+  });
+
+  return html;
+}
+
+// Copy required assets from public directory
+function copyPublicAssets(outputDir) {
+  const publicDir = path.join(rootDir, 'public');
+  if (!fs.existsSync(publicDir)) return;
+
+  // Copy common assets that might be referenced
+  const commonAssets = [
+    'images/flags/ng.svg',
+    'images/flags/us.svg',
+    'images/flags/uk.svg',
+    'images/flags/de.svg',
+    'images/flags/bd.svg',
+    'images/flags/ar.svg',
+    'images/flags/iq.svg',
+    'images/product-image.png',
+    'favicon.png',
+    'apple-touch-icon.png',
+  ];
+
+  for (const asset of commonAssets) {
+    const sourcePath = path.join(publicDir, asset);
+    if (fs.existsSync(sourcePath)) {
+      const fileName = path.basename(asset);
+      const targetPath = path.join(outputDir, fileName);
+      if (!fs.existsSync(targetPath)) {
+        try {
+          fs.copyFileSync(sourcePath, targetPath);
+        } catch (error) {
+          console.warn(`Could not copy ${asset}: ${error.message}`);
+        }
+      }
+    }
+  }
+}
+
 // Process a single landing page
 function processLandingPage(landingDir) {
   // Extract country, language, article, and variant from the path
@@ -69,47 +226,57 @@ function processLandingPage(landingDir) {
 
   let html = fs.readFileSync(indexPath, 'utf-8');
 
-  // Find all CSS and JS references
+  // Copy public assets first
+  copyPublicAssets(outputDir);
+
+  // Fix all paths in HTML
+  html = fixHtmlPaths(html, distDir, outputDir);
+
+  // Find and copy any remaining CSS and JS files referenced in HTML
   const cssMatches = html.match(/<link[^>]*href="([^"]*\.css)"[^>]*>/g) || [];
   const jsMatches = html.match(/<script[^>]*src="([^"]*\.js)"[^>]*>/g) || [];
-  const imageMatches =
-    html.match(/<img[^>]*src="([^"]*\.(jpe?g|png|gif|webp|svg))"[^>]*>/g) || [];
 
-  // Extract paths
-  const cssFiles = cssMatches.map(match => {
+  // Extract and copy CSS files
+  for (const match of cssMatches) {
     const href = match.match(/href="([^"]*)"/)[1];
-    return path.isAbsolute(href) ? href.substring(1) : href;
-  });
+    if (
+      !href.startsWith('http') &&
+      !href.includes('#') &&
+      href.endsWith('.css')
+    ) {
+      const sourcePath = path.join(
+        distDir,
+        href.startsWith('/') ? href.substring(1) : href
+      );
+      const targetPath = path.join(outputDir, path.basename(href));
 
-  const jsFiles = jsMatches.map(match => {
-    const src = match.match(/src="([^"]*)"/)[1];
-    return path.isAbsolute(src) ? src.substring(1) : src;
-  });
-
-  const imageFiles = imageMatches
-    .map(match => {
-      const src = match.match(/src="([^"]*)"/)[1];
-      return path.isAbsolute(src) ? src.substring(1) : src;
-    })
-    .filter(src => !src.startsWith('http') && !src.startsWith('data:'));
-
-  // Copy all required files
-  const allFiles = [...cssFiles, ...jsFiles, ...imageFiles];
-  for (const file of allFiles) {
-    try {
-      const sourcePath = path.join(distDir, file);
-      const targetPath = path.join(outputDir, path.basename(file));
-
-      if (fs.existsSync(sourcePath)) {
-        fs.copyFileSync(sourcePath, targetPath);
-
-        // Update references in HTML
-        html = html.replace(new RegExp(file, 'g'), `./${path.basename(file)}`);
-      } else {
-        console.warn(`File not found: ${sourcePath}`);
+      if (fs.existsSync(sourcePath) && !fs.existsSync(targetPath)) {
+        try {
+          fs.copyFileSync(sourcePath, targetPath);
+        } catch (error) {
+          console.warn(`Could not copy CSS file ${href}: ${error.message}`);
+        }
       }
-    } catch (error) {
-      console.error(`Error copying file ${file}: ${error.message}`);
+    }
+  }
+
+  // Extract and copy JS files
+  for (const match of jsMatches) {
+    const src = match.match(/src="([^"]*)"/)[1];
+    if (!src.startsWith('http') && src.endsWith('.js')) {
+      const sourcePath = path.join(
+        distDir,
+        src.startsWith('/') ? src.substring(1) : src
+      );
+      const targetPath = path.join(outputDir, path.basename(src));
+
+      if (fs.existsSync(sourcePath) && !fs.existsSync(targetPath)) {
+        try {
+          fs.copyFileSync(sourcePath, targetPath);
+        } catch (error) {
+          console.warn(`Could not copy JS file ${src}: ${error.message}`);
+        }
+      }
     }
   }
 

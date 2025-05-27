@@ -34,6 +34,15 @@ export const landings: Landing[] = [
     layout: 'NewsLayout',
     contentPath: '/us/en/article1/b.mdx',
   },
+
+  {
+    country: 'us',
+    language: 'en',
+    article: 'article1',
+    variant: 'c',
+    layout: 'NewsLayout',
+    contentPath: '/us/en/article1/c.mdx',
+  },
   {
     country: 'uk',
     language: 'en',
@@ -90,6 +99,32 @@ export const landings: Landing[] = [
     language: 'en',
     article: 'potency',
     variant: 'womencheating',
+    layout: 'LendLayout',
+    contentPath: '/ng/en/potency/womencheating.mdx',
+  },
+  {
+    country: 'ng',
+    language: 'en',
+    article: 'potency',
+    variant: 'killerimpotence',
+    layout: 'UniversalAdultLayout',
+    contentPath: '/ng/en/potency/killerimpotence.mdx',
+  },
+
+  // Lend Layout - Nigeria potency page (LTR)
+  {
+    country: 'ng',
+    language: 'en',
+    article: 'potency',
+    variant: 'womencheating',
+    layout: 'LendLayout',
+    contentPath: '/lend-example.mdx',
+  },
+  {
+    country: 'ng',
+    language: 'en',
+    article: 'potency',
+    variant: 'womencheating',
     layout: 'UniversalAdultLayout',
     contentPath: '/ng/en/potency/womencheating.mdx',
   },
@@ -103,5 +138,6 @@ export const landings: Landing[] = [
     layout: 'UniversalAdultLayout',
     contentPath: '/iq/ar/potency/killerimpotence.mdx',
   },
+
   // Additional combinations can be added as needed
 ];

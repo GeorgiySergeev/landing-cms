@@ -1,0 +1,313 @@
+---
+import { getLayout } from '../layouts/getLayout';
+import DoorsGame from '../components/lend/DoorsGame.astro';
+import OrderForm from '../components/lend/OrderForm.astro';
+import SurveyResults from '../components/lend/SurveyResults.astro';
+import CommentSection from '../components/lend/CommentSection.astro';
+
+const { Component: Layout } = await getLayout('LendLayout', 'co', 'es');
+
+const frontmatter = {
+  title:
+    'Una joven uróloga ha revelado cómo consigue devolver la potencia a hombres de entre 60 y 70 años.',
+  description:
+    'Descubre el método revolucionario que está ayudando a miles de hombres a recuperar su potencia sexual',
+  author: 'Dr. Lourdes Morales',
+  date: '2024-01-15',
+  language: 'es',
+};
+---
+
+<Layout {...frontmatter}>
+  <p
+    class="top-text"
+    style="font-size: 24px; background-color: rgb(255, 255, 0); padding: 5px 10px; display: block; margin-bottom: 20px; color: rgb(255, 0, 0);"
+  >
+    A pesar de su corta edad, la Dra. del Centro de Urología de Ángeles Sur -
+    Lourdes Morales puede dar una ventaja incluso a los profesores conocidos en
+    todo el país. Esta mujer recibe en su consultorio una cola de hombres cada
+    mes. La joven doctora es eficaz, ayuda a sus pacientes masculinos a
+    restaurar la potencia, que desaparece después de los 50 años.
+  </p>
+
+  <p>
+    Nuestro corresponsal logró entrevistar a la mejor uróloga de del Centro de
+    Urología de Ángeles Sur - Lourdes Morales.
+  </p>
+
+  <picture class="content-img">
+    <source srcset="/images/doc1.jpg" type="image/webp" class="content-img" />
+    <img
+      src="/images/doc1.jpg"
+      class="content-img"
+      alt="Dra. Lourdes Morales"
+    />
+  </picture>
+
+  <span class="text-photo">
+    Lourdes Morales - Dra. uróloga de la más alta categoría, profesora asociada
+    del Departamento de Urología, habló sobre el tratamiento moderno de la
+    impotencia en la Universidad Nacional de Colombia.
+  </span>
+
+  <p>
+    <strong
+      >- Lourdes Morales, vienen a su consulta hombres de entre 60 y 70 años.
+      ¿Es realmente necesario tener relaciones sexuales a esa edad?</strong
+    >
+  </p>
+
+  <p>
+    - ¡Claro que sí! Sobre todo para los hombres. Afecta directamente la salud
+    masculina y a lo rápido que envejecen.
+  </p>
+
+  <p>
+    Siempre me sorprenden sinceramente aquellos pacientes que acuden con
+    prostatitis o adenoma y a la pregunta ¿Cuándo fue la última vez que tuvo
+    relaciones sexuales?, sonríen y responden: Doctora, ¿qué sexo? Hace siete
+    años que no tengo sexo. Por eso tienes prostatitis. Y si sigues sin tener
+    relaciones sexuales, por eso contraes cáncer de próstata.
+  </p>
+
+  <p>
+    La falta de sexo es muy perjudicial a los 30, 40, 50 y 70 años. La próstata
+    es el órgano donde se produce la eyaculación. Tiene que ser producida. Si no
+    se produce, empieza literalmente a deteriorarse. En la próstata aparecen
+    estancamientos patológicos (acumulaciones de microorganismos peligrosos).
+    Conducen a la inflamación de la próstata (prostatitis). Una próstata
+    inflamada durante mucho tiempo es adenoma, dificultad para orinar y
+    pielonefritis. El siguiente estado después del adenoma es el cáncer de
+    próstata. En los que tienen problemas de potencia, el cáncer de próstata se
+    produce 7 veces más a menudo que en los hombres sanos.
+  </p>
+
+  <p>
+    Y esa es solo una de las peligrosas consecuencias. Y hay muchas más. Podemos
+    decir que la <strong
+      >abstinencia prolongada es en realidad una muerte rápida</strong
+    >. Porque todo el organismo humano está diseñado para reproducir
+    descendencia. Y cuando esta función se desvanece, el cuerpo comienza a
+    envejecer catastróficamente rápido.
+  </p>
+
+  <h2>Comparación de Tratamientos</h2>
+
+  <h3>Viagra</h3>
+
+  <p>
+    La Viagra es el potenciador masculino más famoso del mundo. Y esto no es
+    casual: el remedio funciona, su eficacia ha sido repetidamente probada y
+    demostrada. La marca es famosa, pero tiene muchas desventajas.
+  </p>
+
+  <center>
+    <picture style="width: 60%;">
+      <source srcset="/images/009.jpg" type="image/webp" />
+      <img src="/images/009.jpg" style="width: 60%;" alt="Viagra" />
+    </picture>
+  </center>
+
+  <ol>
+    <li>
+      La Viagra sólo es eficaz para la excitación sexual. En otras palabras,
+      potencia el efecto en lugar de producirlo.
+    </li>
+    <li>
+      La composición es tóxica, afecta fuertemente al hígado y los riñones.
+    </li>
+    <li>Contraindicado en personas que sufren de hipertensión arterial.</li>
+    <li>Tiene una amplia gama de efectos secundarios impredecibles.</li>
+    <li>Caro en comparación con los análogos.</li>
+    <li>
+      Autorizado para un solo uso, no resolverá el problema de la erección
+      débil.
+    </li>
+  </ol>
+
+  <h3>Bururan</h3>
+
+  <p>
+    Si hablamos específicamente de la esfera sexual de los hombres, entonces sí,
+    tenemos unas cápsulas especiales - un desarrollo de nuestra universidad -
+    llamado Bururan.
+  </p>
+
+  <p>
+    Y es el líder indiscutible de nuestra clasificación Bururan. Se trata de un
+    desarrollo relativamente reciente, pero ya ha batido todos los récords
+    imaginables en términos de eficacia.
+  </p>
+
+  <center>
+    <picture style="width: 100%; max-width: 380px;">
+      <source srcset="/images/product.png" type="image/webp" />
+      <img
+        src="/images/product.png"
+        style="width: 100%; max-width: 380px;"
+        alt="Bururan"
+      />
+    </picture>
+  </center>
+
+  <p>
+    Bururan no sólo aumenta la excitación inmediatamente después de tomarlo
+    (puede utilizarse como agente excitador como análogo seguro de la Viagra),
+    sino que también restaura la potencia natural cuando se toma regularmente.
+    Este remedio no existe en ningún otro lugar y no se vende en farmacias.
+  </p>
+
+  <h2>Resultados de Estudios Clínicos</h2>
+
+  <p>
+    El producto es realmente muy bueno. Lo demuestra al menos el hecho de que
+    muchas personas agendan citas conmigo con varias semanas de antelación.
+  </p>
+
+  <p>
+    Si hablamos de la eficacia de Bururan, quiero mostrar los resultados de sus
+    ensayos clínicos, que el instituto llevó a cabo en 2019-2020. En total,
+    alrededor de 2000 hombres mayores de 50 años participaron en ellos.
+  </p>
+
+  <div style="border: 1px solid black; padding: 15px; margin-bottom: 25px;">
+    <p>Resultados del estudio:</p>
+    <ol class="mainol">
+      <li>
+        Recuperación total de la potencia (capacidad de mantener relaciones
+        sexuales al menos una vez a la semana): 96% de los participantes.
+      </li>
+      <li>
+        Aumento de los niveles de testosterona - 94% de los participantes.
+      </li>
+      <li>
+        Normalización de la micción (incluido el número de micciones) - 98% de
+        los participantes.
+      </li>
+      <li>Mejora del bienestar general - 90 % de los participantes.</li>
+      <li>Sin efectos secundarios - 100% de los participantes.</li>
+    </ol>
+  </div>
+
+  <h2>Encuesta de Usuarios</h2>
+
+  <SurveyResults productName="Bururan" />
+
+  <h2>Mecanismo de Acción</h2>
+
+  <p>
+    La causa principal de la falta de potencia es la falta de testosterona. Es a
+    este problema al que se dirige Bururan.
+  </p>
+
+  <p>
+    La testosterona es esencialmente la hormona de la excitación masculina.
+    Cuanto mayor es su cantidad, más desea el hombre a las mujeres y mayor es su
+    potencia. La producción de testosterona alcanza su punto máximo entre los 18
+    y los 22 años. A partir de entonces, su producción empieza a disminuir,
+    primero lentamente y luego cada vez más rápido.
+  </p>
+
+  <picture style="display: block; margin: 0px auto;">
+    <source
+      srcset="/images/image1.webp"
+      type="image/webp"
+      style="width: 100%; max-width:400px; display: block; margin: 0px auto;"
+    />
+    <img
+      src="/images/image1.jpg"
+      alt="Niveles de testosterona"
+      style="width: 100%; max-width:400px; display: block; margin: 0px auto;"
+    />
+  </picture>
+
+  <span
+    style="display: block; max-width: 400px; margin: 0px auto; font-size: 14px; font-style: italic; text-align: center;"
+  >
+    Todos los hombres experimentan un descenso de los niveles de testosterona,
+    algunos mucho más rápido y otros más despacio. Si el nivel de testosterona
+    es inferior a 13 nmol/l, la potencia se pierde por completo.
+  </span>
+
+  <h3>Síntomas de Testosterona Baja</h3>
+
+  <p>
+    Compruebe si tiene una producción reducida de testosterona mediante los
+    siguientes síntomas:
+  </p>
+
+  <ul>
+    <li>Falta constante de energía</li>
+    <li>Debilidad muscular</li>
+    <li>Dolores de cabeza frecuentes</li>
+    <li>Problemas estomacales</li>
+    <li>Sueño constantemente</li>
+    <li>Falta de deseo sexual</li>
+    <li>Tiempo de reacción lento</li>
+    <li>Trastornos de la memoria</li>
+    <li>Picos de presión arterial</li>
+    <li>Laxitud muscular y cutánea</li>
+    <li>Apatía e irritabilidad</li>
+    <li>Caída del cabello</li>
+    <li>Problemas de salud frecuentes</li>
+  </ul>
+
+  <p>
+    Si tiene al menos 2 de estos síntomas, su nivel de testosterona es bajo. Es
+    necesario elevarlo. Entonces se restablecerá su potencia.
+  </p>
+
+  <h2>Oferta Especial</h2>
+
+  <center style="margin-top: 30px; font-size: 22px">
+    <div style="margin-bottom: 20px;">
+      <h2>ADVERTENCIA ¡Cuidado con las falsificaciones!</h2>
+      <p style="margin-top: 10px;">
+        Las cápsulas Bururan en Colombia sólo pueden adquirirse participando en
+        el{' '}
+        <a href="#order" class="ruletka-a">Sorteo Oficial</a>{' '}
+        con descuento de hasta el 50%.
+      </p>
+    </div>
+  </center>
+
+  <DoorsGame productName="Bururan" />
+
+  <OrderForm
+    productName="Bururan"
+    productImage="/images/product.png"
+    originalPrice="1580MXN"
+    discountPrice="790MXN"
+    discountText="con descuento"
+  />
+
+  <CommentSection />
+
+  <p><strong>¿Qué necesito para obtener Bururan con descuento?</strong></p>
+
+  <ol>
+    <li>Estar situado en el territorio de Colombia.</li>
+    <li>Participa en el <a href="#order">sorteo de descuentos</a>.</li>
+    <li>
+      Ingrese su nombre y número de teléfono en el <a href="#order"
+        >formulario de solicitud</a
+      >.
+    </li>
+    <li>
+      Transcurridos 5-7 días (plazo de entrega) tendrá que acudir a la oficina
+      de correos para recibir el remedio.
+    </li>
+  </ol>
+
+  <p>
+    Bururan es completamente natural - contiene extractos altamente concentrados
+    de las plantas más útiles para el hombre, traídas de todo el mundo. Por lo
+    tanto, se puede tomar en casa sin receta médica.
+  </p>
+
+  <p>
+    A diferencia de Viagra, Bururan restablece el deseo y la potencia sexuales
+    naturales, es decir, los que aparecen por sí solos sin el uso de agentes
+    excitantes.
+  </p>
+</Layout>

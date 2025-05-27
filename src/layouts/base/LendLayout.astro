@@ -1,0 +1,443 @@
+---
+export interface Props {
+  title?: string;
+  description?: string;
+  author?: string;
+  date?: string;
+  language?: string;
+}
+
+const {
+  title = 'Una joven uróloga ha revelado cómo consigue devolver la potencia a hombres de entre 60 y 70 años.',
+  description = '',
+  author = '**',
+  date = '',
+  language = 'es',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={language} dir="ltr">
+  <head>
+    <script
+      src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"
+      is:inline></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/src/styles/land/css/index.css" />
+    <link rel="stylesheet" href="/src/styles/land/css/header-footer.css" />
+    <link rel="stylesheet" href="/src/styles/land/css/doors.css" />
+
+    <!-- Inline CSS from index.css -->
+
+    <!-- Header/Footer CSS -->
+
+    <!-- Doors CSS -->
+
+    <script is:inline>
+      function fdateTwoDigits(d) {
+        let now = new Date();
+        now.setDate(now.getDate() + d);
+        let mm = now.getMonth() + 1;
+        let day = now.getDate();
+        if (now.getDate() < 10) day = '0' + now.getDate();
+        if (mm < 10) mm = '0' + mm;
+        document.write(day + '.' + mm + '.' + now.getFullYear());
+      }
+    </script>
+
+    <!--[HEADER]-->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="" />
+
+    <style>
+      /* Центрирование всех изображений в контенте - повышенная специфичность */
+      .article .article__text img,
+      .article .article__text picture img,
+      .article figure img,
+      .content-img {
+        display: block !important;
+        margin: 0 auto !important;
+        max-width: 100% !important;
+      }
+
+      /* Центрирование picture элементов */
+      .article .article__text picture {
+        display: block !important;
+        text-align: center !important;
+      }
+
+      /* Центрирование center элементов (для совместимости) */
+      .article .article__text center {
+        display: block !important;
+        text-align: center !important;
+      }
+
+      .article .article__text center picture,
+      .article .article__text center img {
+        display: block !important;
+        margin: 0 auto !important;
+      }
+
+      /* Дополнительные стили для inline стилей из MDX */
+      .article .article__text img[style*='margin'] {
+        margin: 0 auto !important;
+      }
+
+      .article .article__text picture[style*='margin'] {
+        margin: 0 auto !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="header-top-left">
+          <a href="#order"
+            ><img src="/images/land/header/top1.png" height="32" alt="" /></a
+          >
+          <a href="#order"
+            ><img src="/images/land/header/top2.png" height="32" alt="" /></a
+          >
+        </div>
+        <div class="header-top-right">
+          <a href="#order"
+            ><img src="/images/land/header/top3.png" height="45" alt="" /></a
+          >
+          <div class="header-top-line"></div>
+          <a href="#order"
+            ><img src="/images/land/header/top4.png" height="32" alt="" /></a
+          >
+        </div>
+      </div>
+      <div class="header-middle">
+        <div class="header-middle-left">
+          <b>
+            <script is:inline>
+              const today = new Date();
+              const yesterday = new Date(today);
+              yesterday.setDate(today.getDate());
+              const monthNames = [
+                'enero',
+                'febrero',
+                'marzo',
+                'abril',
+                'mayo',
+                'junio',
+                'julio',
+                'agosto',
+                'septiembre',
+                'octubre',
+                'noviembre',
+                'diciembre',
+              ];
+              const dayNames = [
+                'Domingo',
+                'Lunes',
+                'Martes',
+                'Miércoles',
+                'Jueves',
+                'Viernes',
+                'Sábado',
+              ];
+              document.write(
+                dayNames[yesterday.getDay()] +
+                  ' ' +
+                  yesterday.getDate() +
+                  ' ' +
+                  monthNames[yesterday.getMonth()] +
+                  ' ' +
+                  yesterday.getFullYear()
+              );
+            </script>
+          </b>
+          <br />
+          <span>Últimas Noticias de Colombia y el Mundo</span>
+        </div>
+        <div class="header-middle-center">
+          <a href="#order"
+            ><img src="/images/land/header/logo.png" width="265" alt="" /></a
+          >
+        </div>
+        <div class="header-middle-right">
+          <a href="#order"
+            ><img src="/images/land/header/soc.png" width="190" alt="" /></a
+          >
+        </div>
+      </div>
+      <div class="header-bottom">
+        <ul>
+          <li><a href="#order">OPINIÓN</a></li>
+          <li><a href="#order">COLOMBIA</a></li>
+          <li><a href="#order">BOGOTÁ</a></li>
+          <li><a href="#order">INTERNACIONAL</a></li>
+          <li><a href="#order">POLÍTICA</a></li>
+          <li><a href="#order">JUSTICIA</a></li>
+          <li><a href="#order">ECONOMÍA</a></li>
+          <li><a href="#order">DEPORTES</a></li>
+          <li><a href="#order">CULTURA</a></li>
+          <li><a href="#order">TECNOLOGÍA</a></li>
+          <li><a href="#order">VIDA</a></li>
+          <li><a href="#order">UNIDAD INVESTIGATIVA</a></li>
+          <li><a href="#order">SALUD</a></li>
+          <li><a href="#order">EL TIEMPO PLAY</a></li>
+          <li><a href="#order">ESPECIALES</a></li>
+          <li style="display: flex; align-items: center; column-gap: 5px;">
+            <a href="#order">MÁS</a>
+            <a href="#order"
+              ><img src="/images/land/header/arr.png" width="12" alt="" /></a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-wrap">
+      <aside class="aside-video">
+        <h2>**</h2>
+        <img src="/images/land/levo.png" alt="" />
+        <p>
+          <br /> Piden investigar a generadoras de energía por presunta cartelización,
+          lo que habría llevado a que se disparen las tarifas
+        </p>
+      </aside>
+
+      <section class="main-content">
+        <div class="container content">
+          <div class="content__inner content__inner_wide">
+            <div class="article">
+              <div class="article__date">
+                <script is:inline>
+                  fdateTwoDigits(-5);
+                </script>
+                <span class="article__time"></span>
+                <span class="article__author">{author}</span>
+              </div>
+
+              <h3 class="article__title">{title}</h3>
+
+              <div class="article__text js-mediator-article">
+                <!--! MDX Content will be inserted here -->
+                <slot />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-top">
+        <div class="footer-top-container">
+          <div class="footer-top-column">
+            <a href="#order"
+              ><img src="/images/land/header/logo.png" width="180" alt="" /></a
+            >
+            <a href="#order"
+              ><img
+                src="/images/land/header/footer-soc.png"
+                width="180"
+                alt=""
+              /></a
+            >
+          </div>
+          <ul class="footer-top-column">
+            <li><a href="#order">AYUDA</a></li>
+            <li><a href="#order">AVISO DE PRIVACIDAD</a></li>
+            <li><a href="#order">TÉRMINOS Y CONDICIONES</a></li>
+            <li><a href="#order">POLÍTICA DE COOKIES</a></li>
+            <li><a href="#order">MAPA DEL SITIO</a></li>
+            <li><a href="#order">CONOCE NUESTROS PORTALES</a></li>
+          </ul>
+          <ul class="footer-top-column">
+            <li><a href="#order">SERVICIO AL CLIENTE</a></li>
+            <li><a href="#order">LÍNEA ÉTICA</a></li>
+            <li><a href="#order">CLUB EL TIEMPO VIVAMOS</a></li>
+            <li><a href="#order">RSS</a></li>
+            <li><a href="#order">CASA EDITORIAL EL TIEMPO</a></li>
+          </ul>
+          <div class="empty-column"></div>
+          <ul class="footer-top-column">
+            <li><a href="#order">COLECCIONES EL TIEMPO</a></li>
+            <li><a href="#order">PAUTE CON NOSOTROS</a></li>
+            <li><a href="#order">TRABAJE CON NOSOTROS</a></li>
+            <li><a href="#order">PUBLICIDAD POLÍTICA PAGADA</a></li>
+            <li><a href="#order">SUSCRIBIRSE</a></li>
+            <li><a href="#order">REVERSIÓN DE PAGO</a></li>
+          </ul>
+          <ul class="footer-top-column">
+            <li><a href="#order">MIEMBRO DE</a></li>
+            <li><a href="#order">Grupo de Diarios de América</a></li>
+            <li>
+              <a href="#order">Asociación Colombiana de Medios de Información</a
+              >
+            </li>
+            <li><a href="#order">Interactive Advertisement Bureau</a></li>
+            <li>
+              <a href="#order">Superintendencia de Industria y Comercio</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        COPYRIGHT ©
+        <script>
+          document.write(new Date().getFullYear().toString());
+        </script> EL TIEMPO Casa Editorial NIT. 860.001.022-7. Prohibida su reproducción
+        total o parcial, o su uso para el desarrollo de programas de inteligencia
+        artificial o aprendizaje automático, así como su traducción a cualquier idioma,
+        sin autorización escrita de su titular. ELTIEMPO.com todas las noticias de
+        Colombia y el Mundo.
+      </div>
+    </footer>
+
+    <!-- Дополнительные стили для центрирования изображений -->
+    <style>
+      /* Максимальная специфичность для переопределения inline стилей */
+      body .page-wrap .main-content .content .article .article__text img {
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      body .page-wrap .main-content .content .article .article__text picture {
+        display: block !important;
+        text-align: center !important;
+      }
+
+      body
+        .page-wrap
+        .main-content
+        .content
+        .article
+        .article__text
+        picture
+        img {
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      body .page-wrap .main-content .content .article .article__text center {
+        display: block !important;
+        text-align: center !important;
+      }
+
+      body .page-wrap .main-content .content .article .article__text center img,
+      body
+        .page-wrap
+        .main-content
+        .content
+        .article
+        .article__text
+        center
+        picture {
+        display: block !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+    </style>
+
+    <!-- JavaScript for interactive elements -->
+    <script>
+      // Scroll to form functionality
+      document.addEventListener('DOMContentLoaded', function () {
+        const scrollLinks = document.querySelectorAll('[href="#order"]');
+        scrollLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const orderElement = document.getElementById('order');
+            if (orderElement) {
+              orderElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+              });
+            }
+          });
+        });
+      });
+
+      // Doors game functionality
+      function initDoorsGame() {
+        const doors = document.querySelectorAll('.door');
+        const discounts = ['30%', '50%', '20%'];
+        let gameCompleted = false;
+
+        doors.forEach((door, index) => {
+          door.addEventListener('click', function () {
+            if (gameCompleted) return;
+
+            // Show discount
+            const salesElement =
+              door.parentElement?.querySelector('.door__sales');
+            if (salesElement && door.parentElement) {
+              salesElement.textContent = discounts[index];
+              door.parentElement.classList.add('opened');
+              door.classList.add('opened');
+            }
+
+            gameCompleted = true;
+
+            // Show order form after delay
+            setTimeout(() => {
+              const orderElement = document.getElementById('order');
+              if (orderElement) {
+                orderElement.style.display = 'block';
+                orderElement.scrollIntoView({
+                  behavior: 'smooth',
+                  block: 'start',
+                });
+              }
+            }, 1000);
+          });
+        });
+      }
+
+      // Initialize doors game when DOM is loaded
+      document.addEventListener('DOMContentLoaded', initDoorsGame);
+
+      // Force center all images in article content
+      document.addEventListener('DOMContentLoaded', function () {
+        const articleText = document.querySelector('.article__text');
+        if (articleText) {
+          // Center all images
+          const images = articleText.querySelectorAll('img');
+          images.forEach(img => {
+            img.style.display = 'block';
+            img.style.marginLeft = 'auto';
+            img.style.marginRight = 'auto';
+            img.style.maxWidth = '100%';
+          });
+
+          // Center all picture elements
+          const pictures = articleText.querySelectorAll('picture');
+          pictures.forEach(picture => {
+            picture.style.display = 'block';
+            picture.style.textAlign = 'center';
+            const img = picture.querySelector('img');
+            if (img) {
+              img.style.display = 'block';
+              img.style.marginLeft = 'auto';
+              img.style.marginRight = 'auto';
+            }
+          });
+
+          // Center all center elements
+          const centers = articleText.querySelectorAll('center');
+          centers.forEach(center => {
+            center.style.display = 'block';
+            center.style.textAlign = 'center';
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -38,6 +38,12 @@ export async function getLayout(
     return { Component: (mod as any).default, theme };
   }
 
+  // Special case for LendLayout (base layout)
+  if (layoutName === 'LendLayout') {
+    const mod = await baseLayouts['./base/LendLayout.astro']();
+    return { Component: (mod as any).default, theme };
+  }
+
   // Special case for NewsLayout - now it's a template, redirect to appropriate base layout
   if (layoutName === 'NewsLayout') {
     // For NewsLayout, use BaseLayout as the base and let templates handle composition

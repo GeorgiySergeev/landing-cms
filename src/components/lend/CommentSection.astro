@@ -1,0 +1,105 @@
+---
+export interface Props {
+  comments?: Array<{
+    name: string;
+    date: string;
+    text: string;
+    image?: string;
+    gender?: 'man' | 'woman';
+  }>;
+}
+
+const {
+  comments = [
+    {
+      name: 'Alexander Montilla',
+      date: '-5',
+      text: 'He podido pedir Bururan. Muchas gracias. Prometieron que lo recibiría en 5 días.',
+      gender: 'man',
+    },
+    {
+      name: 'Michael Zapata',
+      date: '-5',
+      text: 'También participé y pedí uno. Hace un año que no puedo hacerlo, pero no quiero dejarlo. Realmente espero que Bururan me ayude. No puedo tomar viagra por contraindicaciones - mi corazón está mal.',
+      gender: 'man',
+    },
+    {
+      name: 'Alexis Zambrano',
+      date: '-5',
+      text: 'No podría estar más de acuerdo. Bururan es un gran remedio. Tengo 54 años. Recientemente, casi no había potencia. Las conseguía muy raramente. Intenté muchas cosas para recuperarla. Recetas populares, pastillas, fui al urólogo muchas veces. Lo único que ayudó fue este remedio. Ahora tengo relaciones sexuales estables una vez a la semana. Además, mi salud ha mejorado, porque la testosterona es muy saludable para el organismo masculino.',
+      gender: 'man',
+      image: '/images/rew2.jpg',
+    },
+  ],
+} = Astro.props;
+---
+
+<div class="comment-block">
+  <div class="article">
+    <br />
+    <h3 class="article__title">Comentarios</h3>
+    <div class="article__text">
+      {
+        comments.map(comment => (
+          <div class="comment-user">
+            <p class={`user-name ${comment.gender || 'man'}`}>
+              {comment.name}
+              <span style="color: grey;" data-date={comment.date} />
+            </p>
+            <picture>
+              <source srcset="/images/user_no_foto.webp" type="image/webp" />
+              <img src="/images/user_no_foto.jpg" alt="User avatar" />
+            </picture>
+            <p>{comment.text}</p>
+            {comment.image && (
+              <img class="rev-img" src={comment.image} alt="Review image" />
+            )}
+          </div>
+        ))
+      }
+      <div class="cta-button reset-styles">
+        <div class="cta-button-wrapper">
+          <a href="#order" class="cta-button-link">PARTICIPAR EN EL SORTEO</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function fdateTwoDigits(d: number): string {
+    let now = new Date();
+    now.setDate(now.getDate() + d);
+    let mm: number | string = now.getMonth() + 1;
+    let day: number | string = now.getDate();
+    if (now.getDate() < 10) day = '0' + now.getDate();
+    if (mm < 10) mm = '0' + mm;
+    return day + '.' + mm + '.' + now.getFullYear();
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    // Format dates
+    document.querySelectorAll('[data-date]').forEach(span => {
+      const dateAttr = span.getAttribute('data-date');
+      if (dateAttr) {
+        const dateOffset = parseInt(dateAttr);
+        span.textContent = fdateTwoDigits(dateOffset);
+      }
+    });
+
+    // Add scroll functionality to CTA button
+    const ctaLink = document.querySelector('.cta-button-link');
+    if (ctaLink) {
+      ctaLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const orderElement = document.getElementById('order');
+        if (orderElement) {
+          orderElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          });
+        }
+      });
+    }
+  });
+</script>

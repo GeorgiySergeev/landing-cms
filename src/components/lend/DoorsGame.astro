@@ -1,0 +1,86 @@
+---
+export interface Props {
+  productName?: string;
+  discountText?: string;
+}
+
+const { productName = 'Bururan', discountText = '50% de descuento' } =
+  Astro.props;
+---
+
+<div id="form-block">
+  <h3 class="door__head">
+    Participa en el sorteo y consigue hasta un 50% de descuento en tu compra de {
+      productName
+    }.
+  </h3>
+  <div class="door__wrapper">
+    <h2 class="door__title">Adivina qué puerta tiene el 50% de descuento</h2>
+    <div class="door__container">
+      <div class="door_box">
+        <div class="hi">
+          <p id="door__sales2" class="door__sales"></p>
+        </div>
+        <div id="door__2" class="door"></div>
+      </div>
+      <div class="door_box">
+        <div class="hi">
+          <p id="door__sales1" class="door__sales"></p>
+        </div>
+        <div id="door__1" class="door"></div>
+      </div>
+      <div class="door_box">
+        <div class="hi">
+          <p id="door__sales3" class="door__sales"></p>
+        </div>
+        <div id="door__3" class="door"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initDoorsGame() {
+    const doors = document.querySelectorAll('.door');
+    const discounts = ['30%', '50%', '20%'];
+    let gameCompleted = false;
+
+    doors.forEach((door, index) => {
+      door.addEventListener('click', function () {
+        if (gameCompleted) return;
+
+        // Show discount
+        const parentElement = door.parentElement;
+        if (parentElement) {
+          const salesElement = parentElement.querySelector('.door__sales');
+          if (salesElement) {
+            salesElement.textContent = discounts[index];
+            parentElement.classList.add('opened');
+            door.classList.add('opened');
+          }
+        }
+
+        gameCompleted = true;
+
+        // Show order form after delay
+        setTimeout(() => {
+          const orderElement = document.getElementById('order');
+          if (orderElement) {
+            orderElement.style.display = 'block';
+            orderElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          }
+        }, 1000);
+      });
+    });
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initDoorsGame);
+  } else {
+    initDoorsGame();
+  }
+</script>

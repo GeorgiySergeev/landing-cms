@@ -1,0 +1,61 @@
+---
+export interface Props {
+  productName?: string;
+  results?: Array<{
+    label: string;
+    percentage: number;
+    color?: string;
+  }>;
+}
+
+const {
+  productName = 'Bururan',
+  results = [
+    {
+      label: 'La potencia se ha restablecido por completo',
+      percentage: 92,
+      color: '#65a11b',
+    },
+    {
+      label: 'Me ha ayudado en cierta parte:',
+      percentage: 4.5,
+      color: '#65a11b',
+    },
+    { label: 'El remedio no funcionó', percentage: 0.6, color: '#65a11b' },
+    { label: 'No puedo responder a eso:', percentage: 1.2, color: '#b9b9b9' },
+  ],
+} = Astro.props;
+---
+
+<center>
+  <div class="containersz">
+    <div class="cont">
+      <span class="hehe first-line">Encuesta de Investigación Urológica</span>
+      <span class="hehe second-line"
+        >RESULTADOS del tratamiento con <span class="vixer">{productName}</span
+        ></span
+      >
+    </div>
+    <div class="results">
+      {
+        results.map(result => (
+          <div class="result">
+            <span>{result.label}</span>
+            <div class="perc-color">
+              <div
+                class="poloska"
+                style={`width: ${result.percentage}%; background-color: ${result.color || '#65a11b'};`}
+              />
+              <span
+                class="percent"
+                style={result.color === '#b9b9b9' ? 'color: #b9b9b9;' : ''}
+              >
+                {result.percentage}%
+              </span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</center>

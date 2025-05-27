@@ -1,0 +1,82 @@
+.door__head {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.door__wrapper {
+  margin-bottom: 30px;
+}
+.door__title {
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+.door__container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+.door_box {
+  position: relative;
+  cursor: pointer;
+}
+.door_box .hi {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.door_box.opened .hi {
+  opacity: 1;
+}
+.door__sales {
+  font-size: 24px;
+  font-weight: 700;
+  color: #e8373a;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.door {
+  width: 120px;
+  height: 160px;
+  background: linear-gradient(135deg, #8b4513, #a0522d);
+  border: 3px solid #654321;
+  border-radius: 10px;
+  position: relative;
+  transition: transform 0.3s;
+}
+.door:hover {
+  transform: scale(1.05);
+}
+.door::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  background: #ffd700;
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.door.opened {
+  background: linear-gradient(135deg, #228b22, #32cd32);
+  border-color: #006400;
+}
+@media (max-width: 600px) {
+  .door__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .door {
+    width: 100px;
+    height: 140px;
+  }
+}

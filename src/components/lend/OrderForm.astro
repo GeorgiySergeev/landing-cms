@@ -1,0 +1,155 @@
+---
+export interface Props {
+  productName?: string;
+  productImage?: string;
+  originalPrice?: string;
+  discountPrice?: string;
+  discountText?: string;
+}
+
+const {
+  productName = 'Bururan',
+  productImage = '/images/product.png',
+  originalPrice = '1580MXN',
+  discountPrice = '790MXN',
+  discountText = 'con descuento',
+} = Astro.props;
+---
+
+<div id="order" style="display: none;">
+  <div class="price-tusasuda">
+    <span class="price price-before">{originalPrice}</span>
+    <span class="price price-after">{discountPrice}</span>
+  </div>
+  <img
+    src={productImage}
+    style="width:100%; max-width: 300px"
+    alt={productName}
+  />
+  <h3 id="roulette">
+    Solo tiene que introducir su nombre y número de teléfono.<br /> ¡Dese prisa!
+    Te queda tiempo:<br />
+    <span class="time_remains" id="min">10</span> : <span
+      class="time_remains"
+      id="sec">00</span
+    >
+  </h3>
+  <div class="ruletka-p"></div>
+  <form class="main-order-form" id="order_form" action="#" method="post">
+    <input
+      type="text"
+      class="input-roulette ym-record-keys"
+      name="name"
+      id="input-name"
+      placeholder="Introduzca su nombre"
+      required
+    />
+    <input
+      type="tel"
+      class="input-roulette ym-record-keys"
+      name="phone"
+      id="input-phone"
+      placeholder="Introduzca su número"
+      required
+    />
+    <input name="subid" type="hidden" value="{subid}" />
+    <button type="submit" class="submit-roulette"
+      >Ordenar <span class="new_price_val">{discountText}</span></button
+    >
+    <div class="ring-loading"></div>
+    <input
+      type="hidden"
+      name="l"
+      value="3fabd7058d4ddfdc32d5b05108c47fcd0ab0ee56"
+    />
+    <input
+      type="hidden"
+      name="eda3eb3af3fcee5ea43cf00a1701b09c3d054e46"
+      value="M2Y0N2Q4MGRjNzY4NDE2OGY2NzMyYjM0NTFiZTNjNjI1NzU="
+    />
+  </form>
+</div>
+
+<script>
+  // Countdown timer
+  function startCountdown() {
+    let minutes = 10;
+    let seconds = 0;
+
+    const minElement = document.getElementById('min');
+    const secElement = document.getElementById('sec');
+
+    const timer = setInterval(() => {
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(timer);
+          return;
+        }
+        minutes--;
+        seconds = 59;
+      } else {
+        seconds--;
+      }
+
+      if (minElement) minElement.textContent = minutes.toString();
+      if (secElement)
+        secElement.textContent = seconds.toString().padStart(2, '0');
+    }, 1000);
+  }
+
+  // Form submission handler
+  function handleFormSubmission() {
+    const form = document.getElementById('order_form');
+    if (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById(
+          'input-name'
+        ) as HTMLInputElement;
+        const phoneInput = document.getElementById(
+          'input-phone'
+        ) as HTMLInputElement;
+        const loadingElement = document.querySelector(
+          '.ring-loading'
+        ) as HTMLElement;
+
+        if (!nameInput?.value.trim()) {
+          alert('Por favor, introduzca su nombre');
+          return;
+        }
+
+        if (!phoneInput?.value.trim()) {
+          alert('Por favor, introduzca su número de teléfono');
+          return;
+        }
+
+        // Show loading
+        if (loadingElement) {
+          loadingElement.style.display = 'block';
+        }
+
+        // Simulate form submission
+        setTimeout(() => {
+          if (loadingElement) {
+            loadingElement.style.display = 'none';
+          }
+          alert(
+            '¡Gracias! Su pedido ha sido enviado. Nos pondremos en contacto con usted pronto.'
+          );
+        }, 2000);
+      });
+    }
+  }
+
+  // Initialize when DOM is loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      startCountdown();
+      handleFormSubmission();
+    });
+  } else {
+    startCountdown();
+    handleFormSubmission();
+  }
+</script>
