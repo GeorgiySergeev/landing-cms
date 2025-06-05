@@ -110,3 +110,6 @@ Language and text direction are automatically set based on these themes.
 - [MDX](https://mdxjs.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Preact](https://preactjs.com/)
+
+- ## More docs:
+- https://code2tutorial.com/tutorial/46e7e555-a594-4547-9451-c485faaf2355/index.md
